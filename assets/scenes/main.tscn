@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3j5g5nb4t434"]
+
+[ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
+[ext_resource type="PackedScene" uid="uid://chkbbejdqfu" path="res://assets/scenes/main_character/main_character.tscn" id="2_jjyrf"]
+
+[node name="Node" type="Node"]
+
+[node name="1-entry-block" parent="." instance=ExtResource("1_0ixr5")]
+position = Vector2(-1, 0)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_jjyrf")]
+position = Vector2(45, 47)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-3.8147e-06, 1.1111)
+scale = Vector2(1.11111, 1.11111)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6m3qye5b13hp"
-path="res://.godot/imported/WallBrick.png-4adfd6d2b62c9f06f7f5504e684e02e4.ctex"
+path="res://.godot/imported/WallBrick.png-bfc089070e4ff2ed9bf5448a8f21e37d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/WallBrick.png"
-dest_files=["res://.godot/imported/WallBrick.png-4adfd6d2b62c9f06f7f5504e684e02e4.ctex"]
+source_file="res://assets/sprites/tiles/WallBrick.png"
+dest_files=["res://.godot/imported/WallBrick.png-bfc089070e4ff2ed9bf5448a8f21e37d.ctex"]
 
 [params]
 

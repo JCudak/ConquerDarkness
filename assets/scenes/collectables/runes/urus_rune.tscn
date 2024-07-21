@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi8jn22ybpdk6"]
+
+[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_w46gb"]
+[ext_resource type="Resource" uid="uid://bf1iok0xd4igr" path="res://assets/resources/inventory/items/runes/urus_rune.tres" id="2_7j20k"]
+[ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="3_4ybei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqkwi"]
+atlas = ExtResource("3_4ybei")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1yyoh"]
+
+[node name="UrusRune" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_w46gb")
+itemResource = ExtResource("2_7j20k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_oqkwi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1yyoh")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -10.0
+offset_top = -42.0
+offset_right = 10.0
+offset_bottom = -14.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

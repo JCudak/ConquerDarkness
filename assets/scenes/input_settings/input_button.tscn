@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2boi33dg7won"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hftw"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esvc1"]
+bg_color = Color(1, 1, 1, 0.392157)
+
+[sub_resource type="SystemFont" id="SystemFont_mifhc"]
+subpixel_positioning = 0
+
+[node name="InputButton" type="Button"]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hftw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_esvc1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esvc1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = SubResource("SystemFont_mifhc")
+text = "action name"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = SubResource("SystemFont_mifhc")
+text = "input key"
+vertical_alignment = 1
+uppercase = true

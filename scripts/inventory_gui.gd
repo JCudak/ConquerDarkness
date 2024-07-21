@@ -1,8 +1,5 @@
 extends Control
 
-signal opened
-signal closed
-
 var isOpen: bool = false
 
 @onready var inventory: Inventory = preload("res://assets/resources/inventory/player_inventory.tres")
@@ -19,9 +16,7 @@ func update():
 func open():
 	visible=true
 	isOpen=true
-	opened.emit()
 
 func close():
 	visible=false
 	isOpen=false
-	closed.emit()

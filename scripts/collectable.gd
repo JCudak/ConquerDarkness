@@ -4,6 +4,6 @@ extends Area2D
 @onready var inventory: Inventory = preload("res://assets/resources/inventory/player_inventory.tres")
 
 func _on_body_entered(body):
-	if(body.name == "Player"):
+	if(body.name == "Player" && inventory.has_space()):
 		inventory.insert(itemResource)
 		queue_free()

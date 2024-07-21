@@ -9,5 +9,11 @@ func insert(item: InventoryItem):
 	for i in range(items.size()):
 		if!items[i]:
 			items[i] = item
+			updated.emit()
 			break
-	updated.emit()
+
+func has_space():
+	for i in range(items.size()):
+		if!items[i]:
+			return true
+	return false

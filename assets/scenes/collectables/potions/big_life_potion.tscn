@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://bydwo0b04c2tx"]
 
-[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_bcpeh"]
-[ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="1_inpqc"]
-[ext_resource type="Resource" uid="uid://dexayakjrhrnv" path="res://assets/resources/inventory/items/big_life_potion.tres" id="2_pjjek"]
+[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_4hffv"]
+[ext_resource type="Resource" uid="uid://dexayakjrhrnv" path="res://assets/resources/inventory/items/potions/big_life_potion.tres" id="2_7hbfi"]
+[ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="3_ups5k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwxib"]
-atlas = ExtResource("1_inpqc")
+atlas = ExtResource("3_ups5k")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1yyoh"]
 
 [node name="BigLifePotion" type="Area2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_bcpeh")
-itemResource = ExtResource("2_pjjek")
+script = ExtResource("1_4hffv")
+itemResource = ExtResource("2_7hbfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

@@ -1,11 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=17 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
 [ext_resource type="PackedScene" uid="uid://chkbbejdqfu" path="res://assets/scenes/player/player.tscn" id="2_jjyrf"]
-[ext_resource type="PackedScene" uid="uid://bydwo0b04c2tx" path="res://assets/scenes/collectables/big_life_potion.tscn" id="3_t80a5"]
+[ext_resource type="PackedScene" uid="uid://bydwo0b04c2tx" path="res://assets/scenes/collectables/potions/big_life_potion.tscn" id="3_t80a5"]
 [ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="4_uxsoa"]
 [ext_resource type="PackedScene" uid="uid://cnnpba7fwvyjg" path="res://assets/scenes/inventory_gui.tscn" id="6_ldoug"]
+[ext_resource type="PackedScene" uid="uid://bi8jn22ybpdk6" path="res://assets/scenes/collectables/runes/urus_rune.tscn" id="7_dfics"]
+[ext_resource type="PackedScene" uid="uid://q1siel8qxfll" path="res://assets/scenes/collectables/runes/teiwaz_rune.tscn" id="8_rmnxx"]
+[ext_resource type="PackedScene" uid="uid://b61s65i4hmpw3" path="res://assets/scenes/collectables/runes/sowelu_rune.tscn" id="9_p2xe5"]
+[ext_resource type="PackedScene" uid="uid://diqn4njc8xjdx" path="res://assets/scenes/collectables/runes/rerth_rune.tscn" id="10_ad7qj"]
+[ext_resource type="PackedScene" uid="uid://162e8ll4xk2b" path="res://assets/scenes/collectables/runes/nauthiz_rune.tscn" id="11_2jtm2"]
+[ext_resource type="PackedScene" uid="uid://dj8rerrrqulah" path="res://assets/scenes/collectables/runes/laguz_rune.tscn" id="12_24c21"]
+[ext_resource type="PackedScene" uid="uid://0e85i1bpk05h" path="res://assets/scenes/collectables/runes/isa_rune.tscn" id="13_o63l3"]
+[ext_resource type="PackedScene" uid="uid://bbjqq6v761tyt" path="res://assets/scenes/collectables/runes/algiz_rune.tscn" id="14_vn2jk"]
+[ext_resource type="PackedScene" uid="uid://dvlk0r4g8q0vt" path="res://assets/scenes/collectables/potions/life_potion.tscn" id="15_jc17h"]
+[ext_resource type="PackedScene" uid="uid://c8usqkevbdwpn" path="res://assets/scenes/collectables/potions/small_life_potion.tscn" id="16_pekeg"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_jga0u")
@@ -14,6 +24,7 @@ script = ExtResource("1_jga0u")
 position = Vector2(-1, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_jjyrf")]
+z_index = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-10, 4.44443)
@@ -27,8 +38,37 @@ script = ExtResource("4_uxsoa")
 
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("6_ldoug")]
 
-[node name="BigLifePotion" parent="." instance=ExtResource("3_t80a5")]
-position = Vector2(92, 48)
+[node name="Consumables" type="Node" parent="."]
 
-[node name="BigLifePotion2" parent="." instance=ExtResource("3_t80a5")]
-position = Vector2(94, 88)
+[node name="UrusRune" parent="Consumables" instance=ExtResource("7_dfics")]
+position = Vector2(117, 113)
+
+[node name="TeiwazRune" parent="Consumables" instance=ExtResource("8_rmnxx")]
+position = Vector2(149, 111)
+
+[node name="SoweluRune" parent="Consumables" instance=ExtResource("9_p2xe5")]
+position = Vector2(184, 114)
+
+[node name="RerthRune" parent="Consumables" instance=ExtResource("10_ad7qj")]
+position = Vector2(220, 114)
+
+[node name="NauthizRune" parent="Consumables" instance=ExtResource("11_2jtm2")]
+position = Vector2(239, 91)
+
+[node name="LaguzRune" parent="Consumables" instance=ExtResource("12_24c21")]
+position = Vector2(239, 63)
+
+[node name="IsaRune" parent="Consumables" instance=ExtResource("13_o63l3")]
+position = Vector2(240, 121)
+
+[node name="AlgizRune" parent="Consumables" instance=ExtResource("14_vn2jk")]
+position = Vector2(240, 146)
+
+[node name="BigLifePotion" parent="Consumables" instance=ExtResource("3_t80a5")]
+position = Vector2(86, 49)
+
+[node name="LifePotion" parent="Consumables" instance=ExtResource("15_jc17h")]
+position = Vector2(115, 49)
+
+[node name="SmallLifePotion" parent="Consumables" instance=ExtResource("16_pekeg")]
+position = Vector2(110, 80)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=18 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
 [ext_resource type="PackedScene" uid="uid://chkbbejdqfu" path="res://assets/scenes/player/player.tscn" id="2_jjyrf"]
 [ext_resource type="PackedScene" uid="uid://bydwo0b04c2tx" path="res://assets/scenes/collectables/potions/big_life_potion.tscn" id="3_t80a5"]
 [ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="4_uxsoa"]
+[ext_resource type="PackedScene" uid="uid://dn3vjaep77r6h" path="res://assets/scenes/input_settings/input_settings.tscn" id="6_4ath2"]
 [ext_resource type="PackedScene" uid="uid://cnnpba7fwvyjg" path="res://assets/scenes/inventory_gui.tscn" id="6_ldoug"]
 [ext_resource type="PackedScene" uid="uid://bi8jn22ybpdk6" path="res://assets/scenes/collectables/runes/urus_rune.tscn" id="7_dfics"]
 [ext_resource type="PackedScene" uid="uid://q1siel8qxfll" path="res://assets/scenes/collectables/runes/teiwaz_rune.tscn" id="8_rmnxx"]
@@ -37,6 +38,8 @@ position_smoothing_speed = 7.0
 script = ExtResource("4_uxsoa")
 
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("6_ldoug")]
+
+[node name="InputSettings" parent="CanvasLayer" instance=ExtResource("6_4ath2")]
 
 [node name="Consumables" type="Node" parent="."]
 

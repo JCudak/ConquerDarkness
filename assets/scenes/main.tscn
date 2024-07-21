@@ -1,19 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=7 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
-[ext_resource type="PackedScene" uid="uid://chkbbejdqfu" path="res://assets/scenes/main_character/main_character.tscn" id="2_jjyrf"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
+[ext_resource type="PackedScene" uid="uid://chkbbejdqfu" path="res://assets/scenes/player/player.tscn" id="2_jjyrf"]
+[ext_resource type="PackedScene" uid="uid://bydwo0b04c2tx" path="res://assets/scenes/collectables/big_life_potion.tscn" id="3_t80a5"]
+[ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="4_uxsoa"]
+[ext_resource type="PackedScene" uid="uid://cnnpba7fwvyjg" path="res://assets/scenes/inventory_gui.tscn" id="6_ldoug"]
 
-[node name="Node" type="Node"]
+[node name="World" type="Node2D"]
+script = ExtResource("1_jga0u")
 
 [node name="1-entry-block" parent="." instance=ExtResource("1_0ixr5")]
 position = Vector2(-1, 0)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_jjyrf")]
-position = Vector2(45, 47)
+[node name="Player" parent="." instance=ExtResource("2_jjyrf")]
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-3.8147e-06, 1.1111)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-10, 4.44443)
 scale = Vector2(1.11111, 1.11111)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_uxsoa")
+
+[node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("6_ldoug")]
+
+[node name="BigLifePotion" parent="." instance=ExtResource("3_t80a5")]
+position = Vector2(92, 48)
+
+[node name="BigLifePotion2" parent="." instance=ExtResource("3_t80a5")]
+position = Vector2(94, 88)

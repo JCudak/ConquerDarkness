@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
+class_name Player
 
-const SPEED = 100.0
+@export var speed = 100.0
 const SPEED_REDUCTION = 12
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@export var inventory: Inventory
 
 func _physics_process(delta):
 	
@@ -16,11 +18,11 @@ func _physics_process(delta):
 	var directionY = Input.get_axis("up", "down")
 	
 	if directionX:
-		velocity.x = directionX * SPEED
+		velocity.x = directionX * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED_REDUCTION)
 	if directionY:
-		velocity.y = directionY * SPEED
+		velocity.y = directionY * speed
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED_REDUCTION)
 

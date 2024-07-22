@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=19 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bbjqq6v761tyt" path="res://assets/scenes/collectables/runes/algiz_rune.tscn" id="14_vn2jk"]
 [ext_resource type="PackedScene" uid="uid://dvlk0r4g8q0vt" path="res://assets/scenes/collectables/potions/life_potion.tscn" id="15_jc17h"]
 [ext_resource type="PackedScene" uid="uid://c8usqkevbdwpn" path="res://assets/scenes/collectables/potions/small_life_potion.tscn" id="16_pekeg"]
+[ext_resource type="PackedScene" uid="uid://cxdtnlxm0y8aq" path="res://assets/scenes/enemies/slime.tscn" id="18_r7ogc"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_jga0u")
@@ -75,3 +76,6 @@ position = Vector2(115, 49)
 
 [node name="SmallLifePotion" parent="Consumables" instance=ExtResource("16_pekeg")]
 position = Vector2(110, 80)
+
+[node name="Slime" parent="." instance=ExtResource("18_r7ogc")]
+position = Vector2(240, 179)

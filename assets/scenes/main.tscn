@@ -40,6 +40,8 @@ script = ExtResource("4_uxsoa")
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("6_ldoug")]
 
 [node name="InputSettings" parent="CanvasLayer" instance=ExtResource("6_4ath2")]
+offset_top = -1.0
+offset_bottom = -1.0
 
 [node name="Consumables" type="Node" parent="."]
 

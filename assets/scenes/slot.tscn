@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://v3s0c35yl6sp"]
 
 [ext_resource type="Script" path="res://scripts/slot.gd" id="1_ns278"]
-[ext_resource type="Texture2D" uid="uid://54g81f3ga0j4" path="res://assets/sprites/inventorySlot.png" id="2_wkurl"]
+[ext_resource type="Texture2D" uid="uid://iax14pcsohrp" path="res://assets/sprites/UI_slot.png" id="2_rukhs"]
 
 [node name="Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -21,9 +21,9 @@ script = ExtResource("1_ns278")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_wkurl")
-centered = false
-vframes = 2
+texture = ExtResource("2_rukhs")
+offset = Vector2(10, 10)
+hframes = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

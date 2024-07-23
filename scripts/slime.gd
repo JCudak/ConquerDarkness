@@ -8,6 +8,7 @@ enum State {IDLE, PURSUING, PREPARING_ATTACK, ATTACKING}
 @export var burst_speed = 250
 @export var dash_speed = 150
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 var player: Player = null
 var attack_direction = null
@@ -23,16 +24,19 @@ var timer = 0.0
 func _physics_process(delta):
 	set_line_of_sight()
 	if on_cooldown:
+		animated_sprite_2d.animation = 'default'
 		timer -= delta
 		if timer <= 0:
 			on_cooldown = false
 	elif current_state == State.PREPARING_ATTACK:
+		animated_sprite_2d.animation = 'charge'
 		prepare_attack()
 		timer -= delta
 		if timer <= 0:
 			current_state = State.ATTACKING
 			timer = dash_duration
 	elif current_state == State.ATTACKING:
+		animated_sprite_2d.animation = 'dash'
 		dash_attack(delta)
 		timer -= delta
 		if timer <= 0:
@@ -42,6 +46,7 @@ func _physics_process(delta):
 				current_state = State.PREPARING_ATTACK
 	else:
 		if has_line_of_sight:
+			animated_sprite_2d.animation = 'walk'
 			pursue_player(delta)
 
 func pursue_player(delta):

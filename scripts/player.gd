@@ -8,6 +8,9 @@ const SPEED_REDUCTION = 12
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @export var inventory: Inventory
 
+@export var maxHealth = 3
+@onready var currentHealth: int = maxHealth
+
 func _physics_process(delta):
 	if (absf(velocity.x) > 1.0 || absf(velocity.y) > 1.0):
 		animated_sprite_2d.animation = "running"
@@ -29,3 +32,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	animated_sprite_2d.flip_h = velocity.x < 0
+
+func _hit_box_area_entered(area):
+	if area.name =="hitBox":
+		currentHealth -= 1
+		if currentHealth < 0:
+			currentHealth = maxHealth
+		
+		healthChanged.emit(currentHealth)

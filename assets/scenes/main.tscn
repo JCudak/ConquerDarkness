@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dn3vjaep77r6h" path="res://assets/scenes/input_settings/input_settings.tscn" id="6_4ath2"]
 [ext_resource type="PackedScene" uid="uid://cnnpba7fwvyjg" path="res://assets/scenes/inventory_gui.tscn" id="6_ldoug"]
 [ext_resource type="PackedScene" uid="uid://bi8jn22ybpdk6" path="res://assets/scenes/collectables/runes/urus_rune.tscn" id="7_dfics"]
+[ext_resource type="PackedScene" uid="uid://hfhsffe8pkk8" path="res://assets/scenes/health_bar.tscn" id="7_y4fnx"]
 [ext_resource type="PackedScene" uid="uid://q1siel8qxfll" path="res://assets/scenes/collectables/runes/teiwaz_rune.tscn" id="8_rmnxx"]
 [ext_resource type="PackedScene" uid="uid://b61s65i4hmpw3" path="res://assets/scenes/collectables/runes/sowelu_rune.tscn" id="9_p2xe5"]
 [ext_resource type="PackedScene" uid="uid://diqn4njc8xjdx" path="res://assets/scenes/collectables/runes/rerth_rune.tscn" id="10_ad7qj"]
@@ -41,6 +42,8 @@ script = ExtResource("4_uxsoa")
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("6_ldoug")]
 
 [node name="InputSettings" parent="CanvasLayer" instance=ExtResource("6_4ath2")]
+
+[node name="healthBar" parent="CanvasLayer" instance=ExtResource("7_y4fnx")]
 
 [node name="Consumables" type="Node" parent="."]
 

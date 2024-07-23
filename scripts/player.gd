@@ -34,12 +34,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	animated_sprite_2d.flip_h = velocity.x < 0
-		
 
 func _on_hurt_box_area_entered(area):
 	if area.name =="hitBox":
 		currentHealth -= 1
-		if currentHealth < 0:
-			currentHealth = maxHealth
+		if currentHealth <= 0:
+			get_tree().change_scene_to_file("res://assets/scenes/game_over.tscn")
 		
 		healthChanged.emit(currentHealth)

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+signal healthChanged
+
 const SPEED_REDUCTION = 12
 @export var speed = 100.0
 @export var burst_speed = 250.0
@@ -32,8 +34,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	animated_sprite_2d.flip_h = velocity.x < 0
+		
 
-func _hit_box_area_entered(area):
+func _on_hurt_box_area_entered(area):
 	if area.name =="hitBox":
 		currentHealth -= 1
 		if currentHealth < 0:

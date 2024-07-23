@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://chkbbejdqfu"]
+[gd_scene load_steps=21 format=3 uid="uid://chkbbejdqfu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uv8wg"]
 [ext_resource type="Texture2D" uid="uid://dt4ed70kcurom" path="res://assets/sprites/player_idle.png" id="2_7h0a6"]
@@ -113,6 +113,10 @@ animations = [{
 radius = 6.66668
 height = 23.9216
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypxcp"]
+radius = 6.66667
+height = 24.4445
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(54, 44)
@@ -131,3 +135,12 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.94476e-06, 4.44445)
 shape = SubResource("CapsuleShape2D_1051l")
+
+[node name="hurtBox" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+position = Vector2(0, 4.44444)
+shape = SubResource("CapsuleShape2D_ypxcp")
+
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

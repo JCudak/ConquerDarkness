@@ -11,8 +11,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func setMaxHealth(max :int):
-	for i in range(max):
+func setMaxHealth(maxH :int):
+	for i in range(maxH):
 		var health = HealthGuiClass.instantiate()
 		add_child(health)
 	

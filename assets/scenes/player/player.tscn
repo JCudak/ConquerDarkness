@@ -1,9 +1,67 @@
-[gd_scene load_steps=21 format=3 uid="uid://chkbbejdqfu"]
+[gd_scene load_steps=40 format=3 uid="uid://chkbbejdqfu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uv8wg"]
 [ext_resource type="Texture2D" uid="uid://dt4ed70kcurom" path="res://assets/sprites/player_idle.png" id="2_7h0a6"]
 [ext_resource type="Resource" uid="uid://7n1dyepu35xa" path="res://assets/resources/inventory/player_inventory.tres" id="2_nqow7"]
+[ext_resource type="Texture2D" uid="uid://bg2s3frrm8bdd" path="res://assets/sprites/player_death.png" id="3_4xj56"]
 [ext_resource type="Texture2D" uid="uid://dm5obtdped6ik" path="res://assets/sprites/player_running.png" id="3_kintu"]
+[ext_resource type="Texture2D" uid="uid://br633i8e0xgda" path="res://assets/sprites/player_damaged.png" id="3_ttvr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ecvn"]
+atlas = ExtResource("3_ttvr5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01xbj"]
+atlas = ExtResource("3_ttvr5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7nji"]
+atlas = ExtResource("3_ttvr5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyvh1"]
+atlas = ExtResource("3_ttvr5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjx2r"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46a6j"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u65ef"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiij4"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5j7w"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k658v"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psqoc"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur00x"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3omax"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxcsx"]
+atlas = ExtResource("3_4xj56")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68hc1"]
 atlas = ExtResource("2_7h0a6")
@@ -59,6 +117,58 @@ region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qarc6"]
 animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_3ecvn")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_01xbj")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_d7nji")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_nyvh1")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjx2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46a6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u65ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiij4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5j7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k658v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psqoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur00x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3omax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxcsx")
+}],
+"loop": true,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_68hc1")
@@ -117,6 +227,45 @@ height = 23.9216
 radius = 6.66667
 height = 24.4445
 
+[sub_resource type="Animation" id="Animation_qpxlk"]
+resource_name = "hurtBlink"
+length = 0.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.313726), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w088p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2176n"]
+_data = {
+"RESET": SubResource("Animation_w088p"),
+"hurtBlink": SubResource("Animation_qpxlk")
+}
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(54, 44)
@@ -127,10 +276,18 @@ script = ExtResource("1_uv8wg")
 inventory = ExtResource("2_nqow7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+clip_children = 2
 position = Vector2(-1.14441e-05, -7.62939e-06)
 sprite_frames = SubResource("SpriteFrames_qarc6")
-animation = &"running"
+animation = &"damaged"
 autoplay = "default"
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+offset_left = -20.0
+offset_top = -17.7778
+offset_right = 20.0
+offset_bottom = 22.2222
+color = Color(1, 1, 1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.94476e-06, 4.44445)
@@ -142,5 +299,17 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
 position = Vector2(0, 4.44444)
 shape = SubResource("CapsuleShape2D_ypxcp")
+
+[node name="deathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="hurtTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Effects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2176n")
+}
 
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

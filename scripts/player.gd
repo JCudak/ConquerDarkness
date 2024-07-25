@@ -9,6 +9,7 @@ const SPEED_REDUCTION = 12
 @export var burst_speed = 250.0
 @onready var sprite_2d = $Sprites/Sprite2D
 @onready var sword = $Sprites/Sword
+@onready var sprites = $Sprites
 @onready var animation = $AnimationPlayer
 @export var inventory: Inventory
 
@@ -106,17 +107,21 @@ func attack_animation():
 		attackDirection = (targetPosition - global_position).normalized()
 		
 		
-		if attackDirection[0] > 0 and abs(attackDirection[1]) < attackDirection[0]:
-			print_debug("attackRight")
+		if attackDirection[0] > 0 and -attackDirection[1] > 0:
+			print_debug("attackRUp")
+			sprites.scale.x = abs(sprites.scale.x)
 			animation.play("attackUp")
-		elif -attackDirection[1] > 0 and abs(attackDirection[0]) < -attackDirection[1]:
-			print_debug("attackUp")
+		elif attackDirection[0] < 0 and -attackDirection[1] > 0:
+			print_debug("attackLUp")
+			sprites.scale.x = -abs(sprites.scale.x)
 			animation.play("attackUp") 
-		elif attackDirection[0] < 0 and abs(attackDirection[1]) < -attackDirection[0]:
-			print_debug("attackLeft")
+		elif attackDirection[0] < 0 and -attackDirection[1] < 0:
+			print_debug("attackLDown")
+			sprites.scale.x = -abs(sprites.scale.x)
 			animation.play("attackDown") 
 		else:
-			print_debug("attackDown")
+			print_debug("attackRDown")
+			sprites.scale.x = abs(sprites.scale.x)
 			animation.play("attackDown") 
 		
 		await get_tree().create_timer(0.6).timeout

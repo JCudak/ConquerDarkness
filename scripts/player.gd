@@ -17,7 +17,6 @@ const SPEED_REDUCTION = 12
 @onready var effects = $Effects
 
 var is_dead = false
-var is_hurt = false
 
 func _ready():
 	effects.play("RESET")
@@ -29,8 +28,6 @@ func _physics_process(delta):
 
 func update_animation():
 	if is_dead:
-		return
-	if is_hurt:
 		return
 	
 	if (absf(velocity.x) > 1.0 || absf(velocity.y) > 1.0):
@@ -63,13 +60,10 @@ func die():
 
 func _on_hurt_box_area_entered(area):
 	if area.name == "hitBox":
-		is_hurt = true
 		currentHealth -= 1
-		animated_sprite_2d.play("damaged")
 		effects.play("hurtBlink")
 		hurtTimer.start()
 		await hurtTimer.timeout
 		effects.play("RESET")
-		is_hurt = false
 		healthChanged.emit(currentHealth)
 

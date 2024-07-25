@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cxdtnlxm0y8aq"]
+[gd_scene load_steps=33 format=3 uid="uid://cxdtnlxm0y8aq"]
 
 [ext_resource type="Texture2D" uid="uid://8dqfemcpevpo" path="res://assets/sprites/slime_idle.png" id="1_3woc2"]
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_4sx4k"]
@@ -193,6 +193,10 @@ radius = 134.02
 [sub_resource type="CircleShape2D" id="CircleShape2D_rglos"]
 radius = 33.7731
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wl7y5"]
+radius = 6.25
+height = 20.0
+
 [node name="Slime" type="CharacterBody2D"]
 z_index = 10
 scale = Vector2(0.8, 0.8)
@@ -209,12 +213,14 @@ animation = &"charge"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -6.25)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3x0fo")
 debug_color = Color(0.752833, 0.457654, 1.92523e-07, 0.42)
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
@@ -223,12 +229,20 @@ shape = SubResource("CircleShape2D_8on0p")
 debug_color = Color(0.29769, 0.617775, 0.340922, 0.42)
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(7.10543e-15, -6.25)
 shape = SubResource("CircleShape2D_rglos")
 debug_color = Color(0.949357, 0.164145, 0.39779, 0.42)
+
+[node name="hitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(-1.69407e-21, -6.25)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wl7y5")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

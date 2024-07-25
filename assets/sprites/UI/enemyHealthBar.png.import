@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm5obtdped6ik"
-path="res://.godot/imported/player_running.png-6e9099042cc8086df6f7a94af3a9819a.ctex"
+uid="uid://cktalsdtymcia"
+path="res://.godot/imported/enemyHealthBar.png-fb479c26dabbc2ca8817e07286b014f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player_running.png"
-dest_files=["res://.godot/imported/player_running.png-6e9099042cc8086df6f7a94af3a9819a.ctex"]
+source_file="res://assets/sprites/UI/enemyHealthBar.png"
+dest_files=["res://.godot/imported/enemyHealthBar.png-fb479c26dabbc2ca8817e07286b014f2.ctex"]
 
 [params]
 

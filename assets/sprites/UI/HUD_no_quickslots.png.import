@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbf56rnygsjx8"
-path="res://.godot/imported/slime_walk.png-b4a67769fa0700451a9b81e0145ea3cb.ctex"
+uid="uid://d4nbgxmsqequk"
+path="res://.godot/imported/HUD_no_quickslots.png-e051f9c61db0ad43c148849776a06953.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/slime_walk.png"
-dest_files=["res://.godot/imported/slime_walk.png-b4a67769fa0700451a9b81e0145ea3cb.ctex"]
+source_file="res://assets/sprites/UI/HUD_no_quickslots.png"
+dest_files=["res://.godot/imported/HUD_no_quickslots.png-e051f9c61db0ad43c148849776a06953.ctex"]
 
 [params]
 

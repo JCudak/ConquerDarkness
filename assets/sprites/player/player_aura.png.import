@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br633i8e0xgda"
-path="res://.godot/imported/player_damaged.png-7103a9328e14f81ce1cb760d395fc1bf.ctex"
+uid="uid://nfglrosww3rx"
+path="res://.godot/imported/player_aura.png-a92183987b25f30d997711393ba4f2e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player_damaged.png"
-dest_files=["res://.godot/imported/player_damaged.png-7103a9328e14f81ce1cb760d395fc1bf.ctex"]
+source_file="res://assets/sprites/player/player_aura.png"
+dest_files=["res://.godot/imported/player_aura.png-a92183987b25f30d997711393ba4f2e1.ctex"]
 
 [params]
 

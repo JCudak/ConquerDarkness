@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3lltfmdqh0bj"
-path="res://.godot/imported/slime_charge.png-0580baf4535a6173e4d0616b43f8d49b.ctex"
+uid="uid://cvtujqll83xv3"
+path="res://.godot/imported/Walls.png-9e40638cbe65588f6b84524af9f3e013.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/slime_charge.png"
-dest_files=["res://.godot/imported/slime_charge.png-0580baf4535a6173e4d0616b43f8d49b.ctex"]
+source_file="res://assets/sprites/tiles/Walls.png"
+dest_files=["res://.godot/imported/Walls.png-9e40638cbe65588f6b84524af9f3e013.ctex"]
 
 [params]
 

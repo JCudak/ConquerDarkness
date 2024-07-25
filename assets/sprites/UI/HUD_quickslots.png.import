@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3w3oy0gsqyrk"
-path="res://.godot/imported/player.png-e1eaffe0873063c60a0d0b322e4d87d9.ctex"
+uid="uid://cuxfabysca3um"
+path="res://.godot/imported/HUD_quickslots.png-dc29408fd26e608c00676e8ccedf6e55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player.png"
-dest_files=["res://.godot/imported/player.png-e1eaffe0873063c60a0d0b322e4d87d9.ctex"]
+source_file="res://assets/sprites/UI/HUD_quickslots.png"
+dest_files=["res://.godot/imported/HUD_quickslots.png-dc29408fd26e608c00676e8ccedf6e55.ctex"]
 
 [params]
 

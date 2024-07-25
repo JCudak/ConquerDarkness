@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c265a154tvxcv"
-path="res://.godot/imported/slime_charging_attack.png-d46a45aa920a9081ac1ee34bdfcae4cc.ctex"
+uid="uid://bvk2plxk0pjt0"
+path="res://.godot/imported/BarFill.png-352e08cdd0a41f6218e9d988d80f5a9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/slime_charging_attack.png"
-dest_files=["res://.godot/imported/slime_charging_attack.png-d46a45aa920a9081ac1ee34bdfcae4cc.ctex"]
+source_file="res://assets/sprites/UI/BarFill.png"
+dest_files=["res://.godot/imported/BarFill.png-352e08cdd0a41f6218e9d988d80f5a9c.ctex"]
 
 [params]
 

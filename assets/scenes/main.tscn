@@ -79,3 +79,6 @@ position = Vector2(110, 80)
 
 [node name="Slime" parent="." instance=ExtResource("18_r7ogc")]
 position = Vector2(240, 179)
+
+[node name="BigLifePotion" parent="." instance=ExtResource("3_t80a5")]
+position = Vector2(83, 76)

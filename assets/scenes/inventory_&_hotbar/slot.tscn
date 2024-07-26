@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://v3s0c35yl6sp"]
 
-[ext_resource type="Script" path="res://scripts/slot.gd" id="1_ns278"]
-[ext_resource type="Texture2D" uid="uid://dvhxk3ssqx723" path="res://assets/sprites/UI/UI_slot.png" id="2_l6gxv"]
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/slot.gd" id="1_sy4de"]
+[ext_resource type="Texture2D" uid="uid://dvhxk3ssqx723" path="res://assets/sprites/UI/UI_slot.png" id="2_4qkhd"]
 
 [node name="Slot" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
@@ -17,11 +17,11 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ns278")
+script = ExtResource("1_sy4de")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_l6gxv")
+texture = ExtResource("2_4qkhd")
 centered = false
 offset = Vector2(-6, -6)
 hframes = 2

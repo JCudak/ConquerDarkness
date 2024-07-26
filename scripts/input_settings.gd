@@ -16,7 +16,9 @@ var input_actions = {
 	"right": "Move right",
 	"toggle_inventory": "Toggle inventory",
 	"toggle_settings": "Toggle settings",
-	"pickup_item": "Pickup item"
+	"pickup_item": "Pickup item",
+	"right_click": "Reset item in inventory",
+	"attack": "Attack"
 }
 
 func open():

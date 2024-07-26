@@ -11,7 +11,7 @@ const SPEED_REDUCTION = 12
 @onready var sword = $Sprites/Sword
 @onready var sprites = $Sprites
 @onready var animation = $AnimationPlayer
-@export var inventory: Inventory
+@export var inventory: SlotsContainer
 
 @export var maxHealth = 3
 @onready var currentHealth: int = maxHealth

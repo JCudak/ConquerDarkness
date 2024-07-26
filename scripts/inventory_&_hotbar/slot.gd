@@ -3,9 +3,11 @@ extends Button
 @onready var container: CenterContainer = $CenterContainer
 
 @onready var inventory = preload("res://assets/resources/inventory/player_inventory.tres")
+@onready var hotbar = preload("res://assets/resources/inventory/player_hotbar.tres")
 
 var itemGui: ItemGui
 var index: int
+var containerType: int
 
 func insert(ig: ItemGui):
 	itemGui = ig
@@ -15,13 +17,23 @@ func insert(ig: ItemGui):
 	if !itemGui.inventorySlot:
 		return
 	
-	inventory.insertSlot(index, itemGui.inventorySlot)
+	if containerType == 0:
+		hotbar.insertSlot(index, itemGui.inventorySlot)
+	elif containerType == 1:
+		inventory.insertSlot(index, itemGui.inventorySlot)
+	else:
+		print("WTF?")
 
 func takeItem():
 	var item = itemGui
 	
-	inventory.removeSlot(itemGui.inventorySlot)
-	
+	if containerType == 0:
+		hotbar.removeSlot(itemGui.inventorySlot)
+	elif containerType == 1:
+		inventory.removeSlot(itemGui.inventorySlot)
+	else:
+		print("WTF?")
+		
 	container.remove_child(itemGui)
 	itemGui = null
 	background.frame = 0

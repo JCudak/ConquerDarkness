@@ -11,7 +11,7 @@ const SPEED_REDUCTION = 12
 @onready var sword = $Sprites/Sword
 @onready var sprites = $Sprites
 @onready var animation = $AnimationPlayer
-@export var inventory: SlotsContainer
+@export var slotsContainer: Node
 
 @export var maxHealth = 3
 @onready var currentHealth: int = maxHealth
@@ -27,6 +27,7 @@ var attackDirection: Vector2
 var targetPosition: Vector2
 
 func _ready():
+	slotsContainer.get_node("HotbarGUI").use_item.connect(use_item)
 	effects.play("RESET")
 
 func _physics_process(delta):
@@ -130,3 +131,6 @@ func attack_animation():
 
 func deal_damage():
 	pass
+
+func use_item(item: InventoryItem):
+	item.use(self)

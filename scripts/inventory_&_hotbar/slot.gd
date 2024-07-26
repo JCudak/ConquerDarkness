@@ -1,6 +1,7 @@
 extends Button
 @onready var background: Sprite2D = $Background
 @onready var container: CenterContainer = $CenterContainer
+@onready var label = $Label
 
 @onready var inventory = preload("res://assets/resources/inventory/player_inventory.tres")
 @onready var hotbar = preload("res://assets/resources/inventory/player_hotbar.tres")
@@ -18,27 +19,35 @@ func insert(ig: ItemGui):
 		return
 	
 	if containerType == 0:
-		hotbar.insertSlot(index, itemGui.inventorySlot)
+		hotbar.insert_slot(index, itemGui.inventorySlot)
 	elif containerType == 1:
-		inventory.insertSlot(index, itemGui.inventorySlot)
+		inventory.insert_slot(index, itemGui.inventorySlot)
 	else:
 		print("WTF?")
 
-func takeItem():
+func take_item():
 	var item = itemGui
 	
 	if containerType == 0:
-		hotbar.removeSlot(itemGui.inventorySlot)
+		hotbar.remove_slot(itemGui.inventorySlot)
 	elif containerType == 1:
-		inventory.removeSlot(itemGui.inventorySlot)
+		inventory.remove_slot(itemGui.inventorySlot)
 	else:
 		print("WTF?")
-		
-	container.remove_child(itemGui)
-	itemGui = null
-	background.frame = 0
+	
+	clear()
 	
 	return item
 
-func isEmpty():
+func is_empty():
 	return !itemGui
+
+func set_label(txt):
+	label.text = txt
+
+func clear():
+	if itemGui:
+		container.remove_child(itemGui)
+		itemGui = null
+		
+	background.frame = 0

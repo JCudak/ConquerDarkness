@@ -3,7 +3,7 @@ extends SlotsContainerGui
 func _ready():
 	containerType = 1
 	slots = $NinePatchRect/GridContainer.get_children()
-	connectSlots()
+	connect_slots()
 	inventory.updated.connect(update)
 	update()
 

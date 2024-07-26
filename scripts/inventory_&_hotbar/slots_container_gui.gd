@@ -2,6 +2,7 @@ extends Control
 
 class_name SlotsContainerGui
 
+signal use_item
 var isOpen: bool = false
 
 @onready var inventory: SlotsContainer = preload("res://assets/resources/inventory/player_inventory.tres")
@@ -17,28 +18,14 @@ static var locked: bool = false
 static var lastSlot: Node
 var containerType: int = -1
 
-func connectSlots():
+func connect_slots():
 	for i in range(slots.size()):
 		var slot = slots[i]
 		slot.index = i
 		slot.containerType = containerType
-		var callable = Callable(onSlotClicked)
+		var callable = Callable(on_slot_clicked)
 		callable = callable.bind(slot)
 		slot.pressed.connect(callable)
-
-func update():
-	for i in range(min(inventory.slots.size(), slots.size())):
-		var inventorySlot: InventorySlot = inventory.slots[i]
-		
-		if !inventorySlot.item: continue
-		
-		var itemGui: ItemGui = slots[i].itemGui
-		if !itemGui:
-			itemGui = ItemGuiClass.instantiate()
-			slots[i].insert(itemGui)
-		
-		itemGui.inventorySlot = inventorySlot
-		itemGui.update()
 
 func open():
 	visible=true
@@ -48,55 +35,52 @@ func close():
 	visible=false
 	isOpen=false
 
-func onSlotClicked(slot):
+func on_slot_clicked(slot):
 	if locked: return
 	
 	if itemInHand:
-		if slot.isEmpty():
-			insertItemInSlot(slot)
+		if slot.is_empty():
+			insert_item_in_slot(slot)
 			lastSlot = null
 			return
 		else:
-			replaceItemInSlot(slot)
+			replace_item_in_slot(slot)
 			return
 	else:
-		if !slot.isEmpty():
-			takeItemFromSlot(slot)
+		if !slot.is_empty():
+			take_item_from_slot(slot)
 
-func takeItemFromSlot(slot):
-	itemInHand = slot.takeItem()
-	itemInHand.scale = Vector2(4,4)
+func take_item_from_slot(slot):
+	itemInHand = slot.take_item()
 	parent_node.add_child(itemInHand)
-	updateItemInHand()
+	update_item_in_hand()
 	
 	oldIndex = slot.index
 	oldContainerType = slot.containerType
 	lastSlot = slot
 	
-func replaceItemInSlot(slot):
-	var item = slot.takeItem()
-	insertItemInSlot(slot)
+func replace_item_in_slot(slot):
+	var item = slot.take_item()
+	insert_item_in_slot(slot)
 	
 	itemInHand = item
-	itemInHand.scale = Vector2(4,4)
 	parent_node.add_child(itemInHand)
-	updateItemInHand()
+	update_item_in_hand()
 
-func insertItemInSlot(slot):
+func insert_item_in_slot(slot):
 	var item = itemInHand
 	parent_node.remove_child(itemInHand)
-	itemInHand.scale = Vector2(1,1)
 	itemInHand = null
 	slot.insert(item)
 	oldIndex = -1
 	oldContainerType = -1
 
-func updateItemInHand():
+func update_item_in_hand():
 	if !itemInHand: return
 	itemInHand.global_position = get_global_mouse_position() - itemInHand.size / 2
 
 
-func putItemBack():
+func put_item_back():
 	locked = true	
 	var targetSlot = lastSlot
 	
@@ -105,11 +89,11 @@ func putItemBack():
 	tween.tween_property(itemInHand, "global_position", targetPosition, 0.2)
 	
 	await tween.finished	
-	insertItemInSlot(targetSlot)
+	insert_item_in_slot(targetSlot)
 	locked = false
 
 func _input(event):
 	if itemInHand and !locked and Input.is_action_pressed("right_click"):
-		putItemBack()
+		put_item_back()
 		
-	updateItemInHand()
+	update_item_in_hand()

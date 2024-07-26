@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://4a80fpilmeit"]
+[gd_resource type="Resource" script_class="LifePotion" load_steps=4 format=3 uid="uid://4a80fpilmeit"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/inventory_item.gd" id="1_jxghr"]
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/items/life_potion.gd" id="1_yk3bc"]
 [ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_4mipc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nq8n1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yv6a"]
 atlas = ExtResource("2_4mipc")
 region = Rect2(0, 64, 32, 32)
 
 [resource]
-script = ExtResource("1_jxghr")
+script = ExtResource("1_yk3bc")
+health_increase = 1
 name = "Small life potion"
-texture = SubResource("AtlasTexture_nq8n1")
+texture = SubResource("AtlasTexture_5yv6a")

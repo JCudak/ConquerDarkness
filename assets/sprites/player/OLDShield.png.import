@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdlpama4b6dtx"
-path="res://.godot/imported/player_no_weapon.png-f3371767c6eb41b2ff596103df8f5d7a.ctex"
+uid="uid://dkujx8m2xu8a1"
+path="res://.godot/imported/OLDShield.png-4f759463d48ec684c09bc70dde6eda13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/player_no_weapon.png"
-dest_files=["res://.godot/imported/player_no_weapon.png-f3371767c6eb41b2ff596103df8f5d7a.ctex"]
+source_file="res://assets/sprites/player/OLDShield.png"
+dest_files=["res://.godot/imported/OLDShield.png-4f759463d48ec684c09bc70dde6eda13.ctex"]
 
 [params]
 

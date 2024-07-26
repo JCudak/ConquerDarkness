@@ -51,16 +51,16 @@ func update_animation():
 		velocity.y = directionY * speed
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED_REDUCTION)
-
+	
+	if is_attacking:
+		return
+	
 	if velocity.x < 0:
 		sprites.scale.x = -abs(sprites.scale.x)
 	elif velocity.x > 0:
 		sprites.scale.x = abs(sprites.scale.x)
 	else:
 		pass
-	
-	if is_attacking:
-		return
 	
 	if is_hurt:
 		return

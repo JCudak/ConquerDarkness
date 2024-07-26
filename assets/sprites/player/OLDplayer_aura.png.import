@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdlpama4b6dtx"
-path="res://.godot/imported/player_no_weapon.png-f3371767c6eb41b2ff596103df8f5d7a.ctex"
+uid="uid://nfglrosww3rx"
+path="res://.godot/imported/OLDplayer_aura.png-5e0f10b81dffc5f45eba62ab9c639f5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/player_no_weapon.png"
-dest_files=["res://.godot/imported/player_no_weapon.png-f3371767c6eb41b2ff596103df8f5d7a.ctex"]
+source_file="res://assets/sprites/player/OLDplayer_aura.png"
+dest_files=["res://.godot/imported/OLDplayer_aura.png-5e0f10b81dffc5f45eba62ab9c639f5d.ctex"]
 
 [params]
 

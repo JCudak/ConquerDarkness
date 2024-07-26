@@ -12,7 +12,7 @@ signal healthChanged
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animation = $AnimationPlayer
 
-@onready var health: int = 10
+@onready var health: int = 3
 @onready var healthBar = $HealthBar
 
 var player: Player = null
@@ -27,10 +27,6 @@ var cooldown = 2.5
 var timer = 0.0
 var is_dead = false
 var is_hurt = false
-
-func _ready():
-	healthBar.max_value = 10
-	healthBar.value = healthBar.max_value
 
 func _physics_process(delta):
 	die()
@@ -149,5 +145,3 @@ func _on_hurt_box_area_entered(area):
 
 func updateHealth():
 	healthBar.value = health
-	
-	print_debug(healthBar.value)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LifePotion" load_steps=4 format=3 uid="uid://buqnuf14sh71h"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/items/potions/life_potion.gd" id="1_q5n41"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/potions/life_potion.gd" id="1_q5n41"]
 [ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_gorjv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5m4my"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NauthizRune" load_steps=4 format=3 uid="uid://cx3a1bhpcwena"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/items/runes/nauthiz_rune.gd" id="1_pknv8"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/nauthiz_rune.gd" id="1_pknv8"]
 [ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_kugf0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyv6u"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LaguzRune" load_steps=4 format=3 uid="uid://bwtqel8k3l351"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/items/runes/laguz_rune.gd" id="1_nfslm"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/laguz_rune.gd" id="1_nfslm"]
 [ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_i5hui"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uj4cc"]

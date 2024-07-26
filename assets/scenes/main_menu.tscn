@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnhq30dvhn4ae"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_cq4h6"]
+[ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/gui_button.tscn" id="2_icbml"]
+
+[sub_resource type="SystemFont" id="SystemFont_81c8j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lyl3"]
+font = SubResource("SystemFont_81c8j")
+font_size = 50
+font_color = Color(0.529412, 1, 1, 1)
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.537255)
+shadow_offset = Vector2(15, 15)
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cq4h6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+text = "Alchemik Czarnofob"
+label_settings = SubResource("LabelSettings_1lyl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Play" parent="MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("2_icbml")]
+layout_mode = 2
+
+[node name="Settings" parent="MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("2_icbml")]
+layout_mode = 2
+
+[node name="Quit" parent="MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("2_icbml")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]

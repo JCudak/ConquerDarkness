@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0xksm450gb78"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/item_gui.gd" id="1_wcoq0"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/item_gui.gd" id="1_wcoq0"]
 
 [node name="Panel" type="Panel"]
 script = ExtResource("1_wcoq0")

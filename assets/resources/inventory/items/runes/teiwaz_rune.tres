@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TeiwazRune" load_steps=4 format=3 uid="uid://demd8xswv3tm2"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/items/runes/teiwaz_rune.gd" id="1_r1fju"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/teiwaz_rune.gd" id="1_r1fju"]
 [ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_mo80d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8im2"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AlgizRune" load_steps=4 format=3 uid="uid://b6vjcumce4c4w"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/items/runes/algiz_rune.gd" id="1_8u4we"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/algiz_rune.gd" id="1_8u4we"]
 [ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_3tyre"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2wpw"]

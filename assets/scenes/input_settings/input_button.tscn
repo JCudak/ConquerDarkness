@@ -2,9 +2,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hftw"]
 bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esvc1"]
 bg_color = Color(1, 1, 1, 0.392157)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [sub_resource type="SystemFont" id="SystemFont_mifhc"]
 subpixel_positioning = 0
@@ -26,9 +34,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 6
+theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 6
+theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]

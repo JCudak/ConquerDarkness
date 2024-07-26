@@ -83,7 +83,7 @@ func die():
 		deathTimer.start()
 		await deathTimer.timeout
 		
-		get_tree().change_scene_to_file("res://assets/scenes/game_over.tscn")
+		get_tree().change_scene_to_file("res://assets/scenes/death_menu.tscn")
 
 func _on_hurt_box_area_entered(area):
 	if area.name == "hitBox": # Add more names when new enemies

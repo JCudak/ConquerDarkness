@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://fb25b7dhraf0"]
 
-[ext_resource type="PackedScene" uid="uid://cnnpba7fwvyjg" path="res://assets/scenes/inventory_&_hotbar/inventory_gui.tscn" id="1_la846"]
-[ext_resource type="PackedScene" uid="uid://b553bf8xodase" path="res://assets/scenes/inventory_&_hotbar/hotbar_gui.tscn" id="2_j17dn"]
-[ext_resource type="PackedScene" uid="uid://bmiuolluo66ls" path="res://assets/scenes/inventory_&_hotbar/rune_equip_gui.tscn" id="3_p6aor"]
+[ext_resource type="PackedScene" uid="uid://cnnpba7fwvyjg" path="res://assets/scenes/containers/inventory_gui.tscn" id="1_la846"]
+[ext_resource type="PackedScene" uid="uid://b553bf8xodase" path="res://assets/scenes/containers/hotbar_gui.tscn" id="2_j17dn"]
+[ext_resource type="PackedScene" uid="uid://bmiuolluo66ls" path="res://assets/scenes/containers/rune_equip_gui.tscn" id="3_p6aor"]
 
 [node name="SlotsContainersGUI" type="Control"]
 layout_mode = 3

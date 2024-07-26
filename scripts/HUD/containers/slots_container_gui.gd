@@ -10,7 +10,7 @@ enum CollectableType {RUNE, POTION}
 @onready var inventory: SlotsContainer = preload("res://assets/resources/inventory/player_inventory.tres")
 @onready var hotbar: SlotsContainer = preload("res://assets/resources/inventory/player_hotbar.tres")
 @onready var rune_equip: SlotsContainer = preload("res://assets/resources/inventory/player_rune_equip.tres")
-@onready var ItemGuiClass = preload("res://assets/scenes/inventory_&_hotbar/item_gui.tscn")
+@onready var ItemGuiClass = preload("res://assets/scenes/containers/item_gui.tscn")
 @onready var slots: Array
 @export var parent_node: Node
 

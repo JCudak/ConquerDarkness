@@ -6,9 +6,9 @@ signal updated
 @export var slots: Array[InventorySlot]
 
 func insert(item: InventoryItem):
-	for i in range(slots.size()):
-		if!slots[i].item:
-			slots[i].item = item
+	for slot in slots:
+		if!slot.item:
+			slot.item = item
 			updated.emit()
 			break
 

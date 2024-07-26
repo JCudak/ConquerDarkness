@@ -27,7 +27,7 @@ func _on_body_exited(body):
 
 func _input(event):
 	if event.is_action_pressed("pickup_item") and canPick:
-		if hotbar.has_space():
+		if hotbar.has_space() && itemResource.type == itemResource.CollectableType.POTION:
 			hotbar.insert(itemResource)
 			queue_free()
 		elif inventory.has_space():

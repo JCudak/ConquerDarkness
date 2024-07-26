@@ -5,9 +5,12 @@ class_name SlotsContainerGui
 signal use_item
 var isOpen: bool = false
 
+enum CollectableType {RUNE, POTION}
+
 @onready var inventory: SlotsContainer = preload("res://assets/resources/inventory/player_inventory.tres")
 @onready var hotbar: SlotsContainer = preload("res://assets/resources/inventory/player_hotbar.tres")
-@onready var ItemGuiClass = preload("res://assets/scenes/inventory_&_hotbar/item_gui.tscn")
+@onready var rune_equip: SlotsContainer = preload("res://assets/resources/inventory/player_rune_equip.tres")
+@onready var ItemGuiClass = preload("res://assets/scenes/containers/item_gui.tscn")
 @onready var slots: Array
 @export var parent_node: Node
 
@@ -39,16 +42,42 @@ func on_slot_clicked(slot):
 	if locked: return
 	
 	if itemInHand:
+		var current_item_name = itemInHand.inventorySlot.item.name
+		if !is_slot_valid(slot):
+			return
 		if slot.is_empty():
+			if containerType == 2 && current_item_name == "Laguz Rune":
+				return
 			insert_item_in_slot(slot)
 			lastSlot = null
 			return
 		else:
+			if containerType == 2:
+				if current_item_name == "Laguz Rune":
+					parent_node.remove_child(itemInHand)
+					itemInHand = null
+					take_item_from_slot(slot)
+					parent_node.remove_child(itemInHand)
+					itemInHand = null
+					update_item_in_hand()
+				return
 			replace_item_in_slot(slot)
-			return
 	else:
-		if !slot.is_empty():
+		if !slot.is_empty() && containerType != 2:
 			take_item_from_slot(slot)
+
+func is_slot_valid(slot):
+	var item_type = itemInHand.inventorySlot.item.type
+	var container_type = slot.containerType
+
+	if container_type == 1:
+		return true
+	elif container_type == 0 and item_type == CollectableType.POTION:
+		return true
+	elif container_type == 2 and item_type == CollectableType.RUNE:
+		return true
+	else:
+		return false
 
 func take_item_from_slot(slot):
 	itemInHand = slot.take_item()
@@ -82,10 +111,14 @@ func update_item_in_hand():
 
 func put_item_back():
 	locked = true	
-	var targetSlot = lastSlot
+	var targetSlot: Slot = lastSlot
+	
+	if !is_slot_valid(targetSlot):
+		locked = false
+		return
 	
 	var tween = create_tween()
-	var targetPosition = targetSlot.global_position + Vector2(10,10) # I had to add this cause targetSlot.size/2 didn't work
+	var targetPosition = targetSlot.global_position + Vector2(20,20) # I had to add this cause targetSlot.size/2 didn't work
 	tween.tween_property(itemInHand, "global_position", targetPosition, 0.2)
 	
 	await tween.finished	

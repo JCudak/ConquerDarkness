@@ -6,7 +6,8 @@ func _ready():
 	connect_slots()
 	hotbar.updated.connect(update)
 	for i in range(slots.size()):
-		slots[i].set_label(str(i + 1) + " ")
+		slots[i].set_amount_label(str(i + 1) + " ")
+		slots[i].background.frame = 3
 	update()
 
 func update():

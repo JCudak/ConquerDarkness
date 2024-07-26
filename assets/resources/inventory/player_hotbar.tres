@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SlotsContainer" load_steps=6 format=3 uid="uid://borkbaqaam8eq"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/slots_container.gd" id="1_jaxjs"]
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/inventory_slot.gd" id="2_rgf8l"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/slots_container.gd" id="1_jaxjs"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/inventory_slot.gd" id="2_rgf8l"]
 
 [sub_resource type="Resource" id="Resource_ntgug"]
 script = ExtResource("2_rgf8l")

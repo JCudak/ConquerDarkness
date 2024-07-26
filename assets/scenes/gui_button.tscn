@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://cov4wvkxrxhmx"]
+
+[ext_resource type="Texture2D" uid="uid://d1xhmint6od3v" path="res://assets/sprites/UI/big_ui_frame.png" id="1_ent5t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5woeb"]
+bg_color = Color(0.247059, 0.662745, 0.74902, 0)
+shadow_size = 20
+shadow_offset = Vector2(15, 15)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k22ux"]
+
+[sub_resource type="SystemFont" id="SystemFont_tpy1t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r24km"]
+font = SubResource("SystemFont_tpy1t")
+font_size = 27
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GuiButton" type="Button"]
+custom_minimum_size = Vector2(200, 50)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5woeb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5woeb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5woeb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k22ux")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -26.5
+offset_right = 100.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ent5t")
+region_rect = Rect2(28, 32, 72, 68)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -26.5
+offset_right = 100.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_r24km")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+uppercase = true

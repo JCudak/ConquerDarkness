@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bf1iok0xd4igr"]
+[gd_resource type="Resource" script_class="UrusRune" load_steps=4 format=3 uid="uid://bf1iok0xd4igr"]
 
-[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/inventory_item.gd" id="1_f7f8y"]
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/items/runes/urus_rune.gd" id="1_2dhsq"]
 [ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_psp7a"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_arhf5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jabl1"]
 atlas = ExtResource("2_psp7a")
 region = Rect2(0, 0, 32, 32)
 
 [resource]
-script = ExtResource("1_f7f8y")
-name = "Urus rune"
-texture = SubResource("AtlasTexture_arhf5")
+script = ExtResource("1_2dhsq")
+name = "Urus Rune"
+type = 0
+texture = SubResource("AtlasTexture_jabl1")

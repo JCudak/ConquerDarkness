@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmiuolluo66ls"]
+
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/rune_equip_gui.gd" id="1_4jqbu"]
+[ext_resource type="PackedScene" uid="uid://v3s0c35yl6sp" path="res://assets/scenes/inventory_&_hotbar/slot.tscn" id="2_f4gph"]
+[ext_resource type="Texture2D" uid="uid://d4inkiiecehuu" path="res://assets/sprites/UI/HUD_runes_no_slot.png" id="2_iwug8"]
+
+[node name="RuneEquipGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+script = ExtResource("1_4jqbu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -165.0
+offset_right = 530.0
+offset_bottom = 165.0
+grow_vertical = 2
+texture = ExtResource("2_iwug8")
+
+[node name="Slot" parent="NinePatchRect" instance=ExtResource("2_f4gph")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 209.0
+offset_top = 158.0
+offset_right = 269.0
+offset_bottom = 218.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Slot2" parent="NinePatchRect" instance=ExtResource("2_f4gph")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 141.0
+offset_top = 128.0
+offset_right = 201.0
+offset_bottom = 188.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Slot3" parent="NinePatchRect" instance=ExtResource("2_f4gph")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 72.0
+offset_top = 161.0
+offset_right = 132.0
+offset_bottom = 221.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctnehf0rcwkp3"
-path="res://.godot/imported/HUD_runes.png-58c606bd1852ee60fa80f29475de07d8.ctex"
+uid="uid://d1xhmint6od3v"
+path="res://.godot/imported/big_ui_frame.png-416bf913791fd63a44c5ab4906365857.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI/HUD_runes.png"
-dest_files=["res://.godot/imported/HUD_runes.png-58c606bd1852ee60fa80f29475de07d8.ctex"]
+source_file="res://assets/sprites/UI/big_ui_frame.png"
+dest_files=["res://.godot/imported/big_ui_frame.png-416bf913791fd63a44c5ab4906365857.ctex"]
 
 [params]
 

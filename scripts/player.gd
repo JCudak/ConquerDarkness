@@ -51,9 +51,13 @@ func update_animation():
 		velocity.y = directionY * speed
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED_REDUCTION)
-	
-	sprite_2d.flip_h = velocity.x < 0
-	sword.flip_h = velocity.x < 0
+
+	if velocity.x < 0:
+		sprites.scale.x = -abs(sprites.scale.x)
+	elif velocity.x > 0:
+		sprites.scale.x = abs(sprites.scale.x)
+	else:
+		pass
 	
 	if is_attacking:
 		return
@@ -82,7 +86,7 @@ func die():
 		get_tree().change_scene_to_file("res://assets/scenes/game_over.tscn")
 
 func _on_hurt_box_area_entered(area):
-	if area.name == "hitBox":
+	if area.name == "hitBox": # Add more names when new enemies
 		is_hurt = true
 		
 		currentHealth -= 1
@@ -95,7 +99,7 @@ func _on_hurt_box_area_entered(area):
 		await hurtTimer.timeout
 		effects.play("RESET")
 		
-		is_hurt = true
+		is_hurt = false
 		healthChanged.emit(currentHealth)
 
 func attack_animation():
@@ -109,19 +113,15 @@ func attack_animation():
 		
 		
 		if attackDirection[0] > 0 and -attackDirection[1] > 0:
-			print_debug("attackRUp")
 			sprites.scale.x = abs(sprites.scale.x)
 			animation.play("attackUp")
 		elif attackDirection[0] < 0 and -attackDirection[1] > 0:
-			print_debug("attackLUp")
 			sprites.scale.x = -abs(sprites.scale.x)
 			animation.play("attackUp") 
 		elif attackDirection[0] < 0 and -attackDirection[1] < 0:
-			print_debug("attackLDown")
 			sprites.scale.x = -abs(sprites.scale.x)
 			animation.play("attackDown") 
 		else:
-			print_debug("attackRDown")
 			sprites.scale.x = abs(sprites.scale.x)
 			animation.play("attackDown") 
 		

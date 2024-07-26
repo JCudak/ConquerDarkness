@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Inventory
+class_name SlotsContainer
 signal updated
 
 @export var slots: Array[InventorySlot]
@@ -18,12 +18,16 @@ func has_space():
 			return true
 	return false
 
-func removeSlot(inventorySlot: InventorySlot):
+func remove_slot(inventorySlot: InventorySlot):
 	var index = slots.find(inventorySlot)
 	if index < 0: return
 	
+	remove_at_index(index)
+
+func remove_at_index(index: int):
 	slots[index] = InventorySlot.new()
+	updated.emit()
 
-
-func insertSlot(index: int, inventorySlot: InventorySlot):
+func insert_slot(index: int, inventorySlot: InventorySlot):
 	slots[index] = inventorySlot
+	updated.emit()

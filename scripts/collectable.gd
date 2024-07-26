@@ -1,7 +1,8 @@
 extends Area2D
 
 @export var itemResource: InventoryItem
-@onready var inventory: Inventory = preload("res://assets/resources/inventory/player_inventory.tres")
+@onready var inventory: SlotsContainer = preload("res://assets/resources/inventory/player_inventory.tres")
+@onready var hotbar: SlotsContainer = preload("res://assets/resources/inventory/player_hotbar.tres")
 @onready var label = $Label
 
 var canPick = false
@@ -26,7 +27,10 @@ func _on_body_exited(body):
 
 func _input(event):
 	if event.is_action_pressed("pickup_item") and canPick:
-		if inventory.has_space():
+		if hotbar.has_space():
+			hotbar.insert(itemResource)
+			queue_free()
+		elif inventory.has_space():
 			inventory.insert(itemResource)
 			queue_free()
 		else:

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://v3s0c35yl6sp"]
+
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/slot.gd" id="1_sy4de"]
+[ext_resource type="Texture2D" uid="uid://dvhxk3ssqx723" path="res://assets/sprites/UI/UI_slot.png" id="2_4qkhd"]
+
+[sub_resource type="SystemFont" id="SystemFont_c2ypn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pbndr"]
+font = SubResource("SystemFont_c2ypn")
+font_size = 31
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Slot" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sy4de")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_4qkhd")
+centered = false
+offset = Vector2(-6, -6)
+hframes = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.05
+anchor_top = -0.05
+anchor_right = -0.05
+anchor_bottom = -0.05
+offset_right = 88.0
+offset_bottom = 88.0
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.05
+anchor_top = -0.05
+anchor_right = -0.05
+anchor_bottom = -0.05
+offset_right = 88.0
+offset_bottom = 88.0
+label_settings = SubResource("LabelSettings_pbndr")
+horizontal_alignment = 2
+vertical_alignment = 2

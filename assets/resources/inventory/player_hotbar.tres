@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SlotsContainer" load_steps=6 format=3 uid="uid://borkbaqaam8eq"]
+
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/slots_container.gd" id="1_jaxjs"]
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/inventory_slot.gd" id="2_rgf8l"]
+
+[sub_resource type="Resource" id="Resource_ntgug"]
+script = ExtResource("2_rgf8l")
+
+[sub_resource type="Resource" id="Resource_a44wo"]
+script = ExtResource("2_rgf8l")
+
+[sub_resource type="Resource" id="Resource_47ttr"]
+script = ExtResource("2_rgf8l")
+
+[resource]
+script = ExtResource("1_jaxjs")
+slots = Array[ExtResource("2_rgf8l")]([SubResource("Resource_ntgug"), SubResource("Resource_a44wo"), SubResource("Resource_47ttr")])

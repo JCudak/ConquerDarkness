@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://b553bf8xodase"]
+
+[ext_resource type="Script" path="res://scripts/inventory_&_hotbar/hotbar_gui.gd" id="1_b08xn"]
+[ext_resource type="Texture2D" uid="uid://cg7g133by3mex" path="res://assets/sprites/UI/HUD_no_quickslots.png" id="1_f0rqw"]
+[ext_resource type="PackedScene" uid="uid://v3s0c35yl6sp" path="res://assets/scenes/inventory_&_hotbar/slot.tscn" id="2_amu4b"]
+
+[node name="HotbarGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_b08xn")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(384, 128)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -34.0
+offset_right = 96.0
+offset_bottom = -2.0
+grow_vertical = 0
+texture = ExtResource("1_f0rqw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -40.0
+offset_right = 130.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+
+[node name="Slot" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_amu4b")]
+layout_mode = 2
+
+[node name="Slot2" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_amu4b")]
+layout_mode = 2
+
+[node name="Slot3" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_amu4b")]
+layout_mode = 2

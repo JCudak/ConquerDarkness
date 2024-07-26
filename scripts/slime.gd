@@ -4,11 +4,16 @@ const COLLISION_LAYERS = 1
 const SPEED_REDUCTION = 3
 enum State {IDLE, PURSUING, PREPARING_ATTACK, ATTACKING}
 
+signal healthChanged
+
 @export var speed = 50
 @export var burst_speed = 250
 @export var dash_speed = 150
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animation = $AnimationPlayer
+
+@onready var health: int = 3
+@onready var healthBar = $HealthBar
 
 var player: Player = null
 var attack_direction = null
@@ -20,12 +25,19 @@ var dash_duration = 1
 var prepare_duration = 0.4
 var cooldown = 2.5
 var timer = 0.0
+var is_dead = false
+var is_hurt = false
 
 func _physics_process(delta):
+	die()
 	set_line_of_sight()
 	updateAnimation(delta)
+	updateHealth()
 
 func updateAnimation(delta):
+	if is_dead:
+		return
+	
 	if on_cooldown:
 		animation.play('default')
 		timer -= delta
@@ -102,3 +114,37 @@ func set_line_of_sight():
 			has_line_of_sight = true
 		else:
 			has_line_of_sight = false
+
+func die():
+	if health <= 0 and not is_dead:
+		is_dead = true
+		
+		velocity.x = 0
+		velocity.y = 0
+		
+		#effects.play("RESET")
+		#animation.play("death")
+		
+		#await get_tree().create_timer(1).timeout
+		
+		queue_free()
+
+func _on_hurt_box_area_entered(area):
+	if area.name == "SwordDamageArea": # Add more names when more weapons for player
+		is_hurt = true
+		health -= 1
+		#effects.play("hurtBlink")
+		
+		#animation.play("damaged")
+		
+		#await get_tree().create_timer(0.6).timeout
+		#effects.play("RESET")
+		
+		is_hurt = false
+		healthChanged.emit(health)
+
+func updateHealth():
+	healthBar.max_value = 3
+	healthBar.value = health
+	
+	print_debug(healthBar.value)

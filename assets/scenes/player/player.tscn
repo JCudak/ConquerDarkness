@@ -175,6 +175,18 @@ tracks/9/keys = {
 "update": 1,
 "values": [SubResource("CapsuleShape2D_uymes")]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bs1h"]
 size = Vector2(20, 3.1427)
@@ -257,6 +269,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [SubResource("RectangleShape2D_7bs1h"), SubResource("RectangleShape2D_7bs1h"), SubResource("RectangleShape2D_7bs1h"), SubResource("RectangleShape2D_7bs1h"), SubResource("CapsuleShape2D_uymes"), SubResource("RectangleShape2D_cg27p"), SubResource("RectangleShape2D_cg27p"), SubResource("RectangleShape2D_cg27p")]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_civu2"]
 
@@ -338,6 +362,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [SubResource("RectangleShape2D_7bs1h"), SubResource("RectangleShape2D_7bs1h"), SubResource("CapsuleShape2D_civu2"), SubResource("RectangleShape2D_1cpyh")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_mn13f"]
@@ -697,6 +733,7 @@ position = Vector2(-8.44444, -4.23856e-06)
 position = Vector2(8.13113, 1.86886)
 rotation = -0.785398
 shape = SubResource("CapsuleShape2D_uymes")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -731,4 +768,5 @@ libraries = {
 }
 autoplay = "default"
 
+[connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

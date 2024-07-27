@@ -683,6 +683,7 @@ max_value = 3.0
 step = 1.0
 show_percentage = false
 
+[connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

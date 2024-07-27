@@ -32,14 +32,15 @@ func _ready():
 
 func _physics_process(delta):
 	die()
+	
+	if is_dead:
+		return
+	
 	update_animation()
 	move_and_slide()
 	attack_animation()
 
 func update_animation():
-	if is_dead:
-		return
-	
 	var directionX = Input.get_axis("left", "right")
 	var directionY = Input.get_axis("up", "down")
 	
@@ -86,6 +87,9 @@ func die():
 		get_tree().change_scene_to_file("res://assets/scenes/death_menu.tscn")
 
 func _on_hurt_box_area_entered(area):
+	if is_hurt:
+		return
+	
 	if area.name == "hitBox": # Add more names when new enemies
 		is_hurt = true
 		
@@ -99,8 +103,7 @@ func _on_hurt_box_area_entered(area):
 		await hurtTimer.timeout
 		effects.play("RESET")
 		
-		is_hurt = false
-		healthChanged.emit(currentHealth)
+		emit_signal("healthChanged", currentHealth) # Sends signal to health_bar.gd
 
 func attack_animation():
 	if Input.is_action_just_pressed("attack"):
@@ -129,8 +132,9 @@ func attack_animation():
 		
 		is_attacking = false
 
-func deal_damage():
-	pass
-
 func use_item(item: InventoryItem):
 	item.use(self)
+
+func _on_health_changed(currentHealth):
+	await get_tree().create_timer(1).timeout # Offset to not get multiple hits at once
+	is_hurt = false

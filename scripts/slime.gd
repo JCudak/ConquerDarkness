@@ -130,18 +130,23 @@ func die():
 		queue_free()
 
 func _on_hurt_box_area_entered(area):
+	if is_hurt:
+		return
+	
 	if area.name == "SwordDamageArea": # Add more names when more weapons for player
 		is_hurt = true
 		health -= 1
 		#effects.play("hurtBlink")
-		
+
 		#animation.play("damaged")
-		
+
 		#await get_tree().create_timer(0.6).timeout
 		#effects.play("RESET")
-		
-		is_hurt = false
-		healthChanged.emit(health)
+		emit_signal("healthChanged")
 
 func updateHealth():
 	healthBar.value = health
+
+func _on_health_changed():
+	await get_tree().create_timer(1).timeout # Offset to not get multiple hits at once
+	is_hurt = false

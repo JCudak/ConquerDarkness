@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bcxhoajdnqhlq"]
+
+[ext_resource type="Texture2D" uid="uid://detf84eigrx4r" path="res://assets/sprites/UI/BarFill.png" id="1_lm1wo"]
+
+[resource]
+texture = ExtResource("1_lm1wo")
+expand_margin_left = 3.0
+expand_margin_top = 2.0
+expand_margin_right = 3.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 12, 8)

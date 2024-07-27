@@ -1,4 +1,4 @@
-extends SlotsContainerGui
+class_name InventoryGui extends SlotsContainerGui
 
 func _ready():
 	containerType = 1

@@ -13,8 +13,10 @@ const SPEED_REDUCTION = 12
 @onready var animation = $AnimationPlayer
 @export var slotsContainer: Node
 
-@export var maxHealth = 3
+@export var maxHealth = 10
+@export var maxShield = 5
 @onready var currentHealth: int = maxHealth
+@onready var currentShield: int = 0
 @onready var deathTimer = $deathTimer
 @onready var hurtTimer = $hurtTimer
 @onready var effects = $Effects
@@ -103,7 +105,7 @@ func _on_hurt_box_area_entered(area):
 		await hurtTimer.timeout
 		effects.play("RESET")
 		
-		emit_signal("healthChanged", currentHealth) # Sends signal to health_bar.gd
+		emit_signal("healthChanged", currentHealth)
 
 func attack_animation():
 	if Input.is_action_just_pressed("attack"):

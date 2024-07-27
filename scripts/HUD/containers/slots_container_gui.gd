@@ -8,9 +8,10 @@ var isOpen: bool = false
 enum CollectableType {RUNE, POTION}
 
 @onready var inventory: SlotsContainer = preload("res://assets/resources/inventory/player_inventory.tres")
+@export var inventoryContainerGui: InventoryGui
 @onready var hotbar: SlotsContainer = preload("res://assets/resources/inventory/player_hotbar.tres")
 @onready var rune_equip: SlotsContainer = preload("res://assets/resources/inventory/player_rune_equip.tres")
-@onready var ItemGuiClass = preload("res://assets/scenes/containers/item_gui.tscn")
+@onready var ItemGuiClass = preload("res://assets/scenes/HUD/item_gui.tscn")
 @onready var slots: Array
 @export var parent_node: Node
 
@@ -18,7 +19,7 @@ static var itemInHand: ItemGui
 static var oldIndex: int = -1
 static var oldContainerType: int = -1
 static var locked: bool = false
-static var lastSlot: Node
+static var lastSlot: Slot
 var containerType: int = -1
 
 func connect_slots():
@@ -57,6 +58,8 @@ func on_slot_clicked(slot):
 					parent_node.remove_child(itemInHand)
 					itemInHand = null
 					take_item_from_slot(slot)
+				else:
+					replace_item_in_slot(slot)
 					parent_node.remove_child(itemInHand)
 					itemInHand = null
 					update_item_in_hand()
@@ -114,8 +117,11 @@ func put_item_back():
 	var targetSlot: Slot = lastSlot
 	
 	if !is_slot_valid(targetSlot):
-		locked = false
-		return
+		var emptySlots = inventoryContainerGui.slots.filter(func(s): return s.is_empty())
+		if emptySlots.is_empty():
+			locked = false
+			return
+		targetSlot = emptySlots[0]
 	
 	var tween = create_tween()
 	var targetPosition = targetSlot.global_position + Vector2(20,20) # I had to add this cause targetSlot.size/2 didn't work

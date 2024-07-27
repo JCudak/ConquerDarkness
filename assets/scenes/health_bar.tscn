@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://hfhsffe8pkk8"]
-
-[ext_resource type="Script" path="res://scripts/health_bar.gd" id="1_bswp3"]
-
-[node name="healthBar" type="HBoxContainer"]
-script = ExtResource("1_bswp3")

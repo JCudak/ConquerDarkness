@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var inventory = $SlotsContainers/InventoryGUI
-@onready var rune_equip = $SlotsContainers/RuneEquipGUI
+@onready var inventory = $HUD/InventoryGUI
+@onready var rune_equip = $HUD/RuneEquipGUI
 @onready var settings = $InputSettings
 
 func _ready():

@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://cd6fam6jytau6"]
+
+[ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="1_ftm7f"]
+[ext_resource type="Script" path="res://scripts/HUD/pause_menu.gd" id="1_omcdn"]
+[ext_resource type="Texture2D" uid="uid://d1xhmint6od3v" path="res://assets/sprites/UI/big_ui_frame.png" id="3_xnl76"]
+[ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/gui_button.tscn" id="4_4rubm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pnqym"]
+shader = ExtResource("1_ftm7f")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_6a2x7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlurRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_olfar"]
+resource_name = "pause_blur_animation"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlurRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aq0gj"]
+_data = {
+"RESET": SubResource("Animation_6a2x7"),
+"pause_blur_animation": SubResource("Animation_olfar")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_omcdn")
+
+[node name="BlurRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pnqym")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aq0gj")
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(330, 330)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -42.0
+offset_right = 42.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xnl76")
+region_rect = Rect2(28, 28, 72, 72)
+patch_margin_left = 20
+patch_margin_top = 24
+patch_margin_right = 20
+patch_margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -128.0
+offset_right = 109.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 50
+
+[node name="Resume" parent="NinePatchRect/GridContainer" instance=ExtResource("4_4rubm")]
+layout_mode = 2
+
+[node name="Settings" parent="NinePatchRect/GridContainer" instance=ExtResource("4_4rubm")]
+layout_mode = 2
+
+[node name="Quit" parent="NinePatchRect/GridContainer" instance=ExtResource("4_4rubm")]
+layout_mode = 2
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Quit" to="." method="_on_quit_pressed"]

@@ -14,8 +14,8 @@ radius = 134.02
 radius = 33.7731
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wl7y5"]
-radius = 7.5
-height = 22.5
+radius = 8.75
+height = 27.5
 
 [sub_resource type="Animation" id="Animation_n20ch"]
 length = 0.001
@@ -647,7 +647,6 @@ shape = SubResource("CircleShape2D_rglos")
 debug_color = Color(0.949357, 0.164145, 0.39779, 0.42)
 
 [node name="hitBox" type="Area2D" parent="."]
-visible = false
 
 [node name="hitBoxCollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(-1.69407e-21, -6.25)

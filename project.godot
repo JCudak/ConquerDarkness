@@ -18,6 +18,8 @@ config/icon="res://assets/icon.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=640
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
@@ -92,3 +94,4 @@ quickslot_3={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

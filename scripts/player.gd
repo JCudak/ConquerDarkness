@@ -19,6 +19,8 @@ const SPEED_REDUCTION = 12
 @onready var hurtTimer = $hurtTimer
 @onready var effects = $Effects
 
+@export var linked_position_node: Node2D
+
 var is_dead = false
 var is_hurt = false
 var is_attacking = false
@@ -29,6 +31,10 @@ var targetPosition: Vector2
 func _ready():
 	slotsContainer.get_node("HotbarGUI").use_item.connect(use_item)
 	effects.play("RESET")
+
+func _process(delta):
+	if linked_position_node != null:
+		linked_position_node.position = self.position
 
 func _physics_process(delta):
 	die()
@@ -113,7 +119,7 @@ func attack_animation():
 		is_attacking = true
 		targetPosition = get_global_mouse_position()
 		attackDirection = (targetPosition - global_position).normalized()
-		
+
 		
 		if attackDirection[0] > 0 and -attackDirection[1] > 0:
 			sprites.scale.x = abs(sprites.scale.x)

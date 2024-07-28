@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://0e85i1bpk05h"]
+[gd_scene load_steps=7 format=3 uid="uid://0e85i1bpk05h"]
 
 [ext_resource type="Script" path="res://scripts/collectable.gd" id="1_rkf0v"]
 [ext_resource type="Resource" uid="uid://glpb78n2116e" path="res://assets/resources/inventory/items/runes/isa_rune.tres" id="2_s3a3n"]
 [ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="3_qldd4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n28b"]
+atlas = ExtResource("3_qldd4")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oqkwi"]
 atlas = ExtResource("3_qldd4")
@@ -14,6 +18,7 @@ region = Rect2(32, 0, 32, 32)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_rkf0v")
 itemResource = ExtResource("2_s3a3n")
+texture = SubResource("AtlasTexture_1n28b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

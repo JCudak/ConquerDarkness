@@ -1,12 +1,15 @@
 extends Node2D
 
-@onready var healthBar = $CanvasLayer/healthBar
+@onready var healthAndShieldGui = $CanvasLayer/HUD/HpAndShieldGui
 @onready var player = $Player
 
 func _ready():
-	healthBar.setMaxHealth(player.maxHealth)
-	healthBar.updateHealth(player.currentHealth)
-	player.healthChanged.connect(healthBar.updateHealth)
+	healthAndShieldGui.setMaxHealth(player.maxHealth)
+	healthAndShieldGui.updateHealth(player.currentHealth)
+	healthAndShieldGui.setMaxShield(player.maxShield)
+	healthAndShieldGui.updateShield(player.currentShield)
+	player.healthChanged.connect(healthAndShieldGui.updateHealth)
+	player.shieldChanged.connect(healthAndShieldGui.updateShield)
 
 func _process(delta):
 	pass

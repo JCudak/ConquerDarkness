@@ -1,15 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=23 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
 [ext_resource type="PackedScene" uid="uid://chkbbejdqfu" path="res://assets/scenes/player/player.tscn" id="2_jjyrf"]
 [ext_resource type="PackedScene" uid="uid://bydwo0b04c2tx" path="res://assets/scenes/collectables/potions/big_life_potion.tscn" id="3_t80a5"]
 [ext_resource type="Script" path="res://scripts/HUD/canvas_layer.gd" id="4_uxsoa"]
-[ext_resource type="PackedScene" uid="uid://fb25b7dhraf0" path="res://assets/scenes/containers/slots_containers_gui.tscn" id="5_71o2m"]
+[ext_resource type="PackedScene" uid="uid://fb25b7dhraf0" path="res://assets/scenes/HUD/slots_containers_gui.tscn" id="5_71o2m"]
 [ext_resource type="PackedScene" uid="uid://dn3vjaep77r6h" path="res://assets/scenes/input_settings/input_settings.tscn" id="6_4ath2"]
 [ext_resource type="PackedScene" uid="uid://bi8jn22ybpdk6" path="res://assets/scenes/collectables/runes/urus_rune.tscn" id="7_dfics"]
 [ext_resource type="PackedScene" uid="uid://cd6fam6jytau6" path="res://assets/scenes/pause_menu.tscn" id="7_dxhft"]
-[ext_resource type="PackedScene" uid="uid://hfhsffe8pkk8" path="res://assets/scenes/health_bar.tscn" id="7_y4fnx"]
 [ext_resource type="PackedScene" uid="uid://q1siel8qxfll" path="res://assets/scenes/collectables/runes/teiwaz_rune.tscn" id="8_rmnxx"]
 [ext_resource type="PackedScene" uid="uid://b61s65i4hmpw3" path="res://assets/scenes/collectables/runes/sowelu_rune.tscn" id="9_p2xe5"]
 [ext_resource type="PackedScene" uid="uid://diqn4njc8xjdx" path="res://assets/scenes/collectables/runes/rerth_rune.tscn" id="10_ad7qj"]
@@ -17,11 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://dj8rerrrqulah" path="res://assets/scenes/collectables/runes/laguz_rune.tscn" id="12_24c21"]
 [ext_resource type="PackedScene" uid="uid://0e85i1bpk05h" path="res://assets/scenes/collectables/runes/isa_rune.tscn" id="13_o63l3"]
 [ext_resource type="PackedScene" uid="uid://bbjqq6v761tyt" path="res://assets/scenes/collectables/runes/algiz_rune.tscn" id="14_vn2jk"]
-[ext_resource type="PackedScene" uid="uid://dvlk0r4g8q0vt" path="res://assets/scenes/collectables/potions/life_potion.tscn" id="15_jc17h"]
+[ext_resource type="PackedScene" uid="uid://cgm1f5gveitxb" path="res://assets/scenes/collectables/potions/life_potion.tscn" id="15_jc17h"]
 [ext_resource type="PackedScene" uid="uid://c8usqkevbdwpn" path="res://assets/scenes/collectables/potions/small_life_potion.tscn" id="16_pekeg"]
 [ext_resource type="PackedScene" uid="uid://cxdtnlxm0y8aq" path="res://assets/scenes/enemies/slime.tscn" id="18_r7ogc"]
+[ext_resource type="PackedScene" uid="uid://da6p2ltlnxct0" path="res://assets/scenes/collectables/potions/big_immunity_potion.tscn" id="20_5b7en"]
+[ext_resource type="PackedScene" uid="uid://b6gphfrc0ejak" path="res://assets/scenes/collectables/potions/small_immunity_potion.tscn" id="23_60oul"]
+[ext_resource type="PackedScene" uid="uid://ddl17r81ei208" path="res://assets/scenes/collectables/potions/immunity_potion.tscn" id="25_8a47l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p8qjx"]
 
 [node name="World" type="Node2D"]
+material = SubResource("CanvasItemMaterial_p8qjx")
 script = ExtResource("1_jga0u")
 
 [node name="1-entry-block" parent="." instance=ExtResource("1_0ixr5")]
@@ -30,7 +35,7 @@ position = Vector2(-1, 0)
 [node name="Player" parent="." node_paths=PackedStringArray("slotsContainer") instance=ExtResource("2_jjyrf")]
 z_index = 100
 position = Vector2(46, 47)
-slotsContainer = NodePath("../CanvasLayer/SlotsContainers")
+slotsContainer = NodePath("../CanvasLayer/HUD")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-10, 4.44443)
@@ -42,13 +47,11 @@ position_smoothing_speed = 7.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("4_uxsoa")
 
-[node name="SlotsContainers" parent="CanvasLayer" instance=ExtResource("5_71o2m")]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_71o2m")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_dxhft")]
 
 [node name="InputSettings" parent="CanvasLayer" instance=ExtResource("6_4ath2")]
-
-[node name="healthBar" parent="CanvasLayer" instance=ExtResource("7_y4fnx")]
 
 [node name="Consumables" type="Node" parent="."]
 
@@ -80,10 +83,19 @@ position = Vector2(240, 146)
 position = Vector2(86, 49)
 
 [node name="LifePotion" parent="Consumables" instance=ExtResource("15_jc17h")]
-position = Vector2(115, 49)
+position = Vector2(109, 50)
 
 [node name="SmallLifePotion" parent="Consumables" instance=ExtResource("16_pekeg")]
 position = Vector2(110, 80)
 
 [node name="Slime" parent="." instance=ExtResource("18_r7ogc")]
 position = Vector2(240, 179)
+
+[node name="SmallImmunityPotion" parent="." instance=ExtResource("23_60oul")]
+position = Vector2(75, 74)
+
+[node name="ImmunityPotion" parent="." instance=ExtResource("25_8a47l")]
+position = Vector2(91, 76)
+
+[node name="BigImmunityPotion" parent="." instance=ExtResource("20_5b7en")]
+position = Vector2(90, 101)

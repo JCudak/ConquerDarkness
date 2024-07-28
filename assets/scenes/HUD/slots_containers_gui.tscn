@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://fb25b7dhraf0"]
+
+[ext_resource type="PackedScene" uid="uid://cnnpba7fwvyjg" path="res://assets/scenes/HUD/inventory_gui.tscn" id="1_la846"]
+[ext_resource type="PackedScene" uid="uid://b553bf8xodase" path="res://assets/scenes/HUD/hotbar_gui.tscn" id="2_j17dn"]
+[ext_resource type="PackedScene" uid="uid://bmiuolluo66ls" path="res://assets/scenes/HUD/rune_equip_gui.tscn" id="3_p6aor"]
+[ext_resource type="PackedScene" uid="uid://bx1h6obq0umv8" path="res://assets/scenes/HUD/hp_and_shield_gui.tscn" id="4_37hj7"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryGUI" parent="." node_paths=PackedStringArray("inventoryContainerGui", "parent_node") instance=ExtResource("1_la846")]
+layout_mode = 1
+inventoryContainerGui = NodePath(".")
+parent_node = NodePath("..")
+
+[node name="HotbarGUI" parent="." node_paths=PackedStringArray("inventoryContainerGui", "parent_node") instance=ExtResource("2_j17dn")]
+layout_mode = 1
+offset_left = 5.0
+offset_right = 5.0
+inventoryContainerGui = NodePath("../InventoryGUI")
+parent_node = NodePath("..")
+
+[node name="RuneEquipGUI" parent="." node_paths=PackedStringArray("inventoryContainerGui", "parent_node") instance=ExtResource("3_p6aor")]
+layout_mode = 1
+inventoryContainerGui = NodePath("../InventoryGUI")
+parent_node = NodePath("..")
+
+[node name="HpAndShieldGui" parent="." instance=ExtResource("4_37hj7")]
+layout_mode = 1

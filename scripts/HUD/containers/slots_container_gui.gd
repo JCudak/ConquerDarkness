@@ -8,9 +8,10 @@ var isOpen: bool = false
 enum CollectableType {RUNE, POTION}
 
 @onready var inventory: SlotsContainer = preload("res://assets/resources/inventory/player_inventory.tres")
+@export var inventoryContainerGui: InventoryGui
 @onready var hotbar: SlotsContainer = preload("res://assets/resources/inventory/player_hotbar.tres")
 @onready var rune_equip: SlotsContainer = preload("res://assets/resources/inventory/player_rune_equip.tres")
-@onready var ItemGuiClass = preload("res://assets/scenes/containers/item_gui.tscn")
+@onready var ItemGuiClass = preload("res://assets/scenes/HUD/item_gui.tscn")
 @onready var slots: Array
 @export var parent_node: Node
 
@@ -18,7 +19,8 @@ static var itemInHand: ItemGui
 static var oldIndex: int = -1
 static var oldContainerType: int = -1
 static var locked: bool = false
-static var lastSlot: Node
+static var lastSlot: Slot
+static var lastSlotRightClicked: Slot
 var containerType: int = -1
 
 func connect_slots():
@@ -26,9 +28,20 @@ func connect_slots():
 		var slot = slots[i]
 		slot.index = i
 		slot.containerType = containerType
-		var callable = Callable(on_slot_clicked)
-		callable = callable.bind(slot)
-		slot.pressed.connect(callable)
+		
+		# Connect the pressed signal
+		var pressed_callable = Callable(on_slot_clicked)
+		pressed_callable = pressed_callable.bind(slot)
+		slot.pressed.connect(pressed_callable)
+		
+		# Connect the right_clicked signal
+		var right_click_callable = Callable(on_slot_right_clicked)
+		right_click_callable = right_click_callable.bind(slot)
+		slot.right_clicked.connect(right_click_callable)
+		
+		var use_item_callable = Callable(on_use_item)
+		use_item_callable = use_item_callable.bind(slot)
+		slot.use_button_clicked.connect(use_item_callable)
 
 func open():
 	visible=true
@@ -37,6 +50,15 @@ func open():
 func close():
 	visible=false
 	isOpen=false
+
+func on_use_item(slot):
+	use_item.emit(slot.itemGui.inventorySlot.item)
+
+func on_slot_right_clicked(slot):
+	if slot.is_empty(): return
+	lastSlotRightClicked = slot
+	slot.set_usage_panel_visibility(true)
+	slot.usage_panel.global_position = get_global_mouse_position()
 
 func on_slot_clicked(slot):
 	if locked: return
@@ -57,6 +79,8 @@ func on_slot_clicked(slot):
 					parent_node.remove_child(itemInHand)
 					itemInHand = null
 					take_item_from_slot(slot)
+				else:
+					replace_item_in_slot(slot)
 					parent_node.remove_child(itemInHand)
 					itemInHand = null
 					update_item_in_hand()
@@ -108,14 +132,16 @@ func update_item_in_hand():
 	if !itemInHand: return
 	itemInHand.global_position = get_global_mouse_position() - itemInHand.size / 2
 
-
 func put_item_back():
 	locked = true	
 	var targetSlot: Slot = lastSlot
 	
 	if !is_slot_valid(targetSlot):
-		locked = false
-		return
+		var emptySlots = inventoryContainerGui.slots.filter(func(s): return s.is_empty())
+		if emptySlots.is_empty():
+			locked = false
+			return
+		targetSlot = emptySlots[0]
 	
 	var tween = create_tween()
 	var targetPosition = targetSlot.global_position + Vector2(20,20) # I had to add this cause targetSlot.size/2 didn't work

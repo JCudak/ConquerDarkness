@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://frc37sa7ijjb"]
+
+[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_vao0l"]
+[ext_resource type="Resource" uid="uid://del7ah0nu66yh" path="res://assets/resources/inventory/items/potions/small_shield_potion.tres" id="2_oqj86"]
+[ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_yyks7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn0ao"]
+atlas = ExtResource("2_yyks7")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwxib"]
+atlas = ExtResource("2_yyks7")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1yyoh"]
+
+[node name="SmallShieldPotion" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_vao0l")
+itemResource = ExtResource("2_oqj86")
+texture = SubResource("AtlasTexture_sn0ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_hwxib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1yyoh")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -10.0
+offset_top = -42.0
+offset_right = 10.0
+offset_bottom = -14.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

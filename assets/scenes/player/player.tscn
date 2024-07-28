@@ -829,13 +829,6 @@ hframes = 10
 vframes = 6
 frame = 40
 
-[node name="ColorRect" type="ColorRect" parent="Sprites/Aura"]
-offset_left = -20.0
-offset_top = -17.7778
-offset_right = 20.0
-offset_bottom = 22.2222
-color = Color(1, 1, 1, 0)
-
 [node name="Shield" type="Sprite2D" parent="Sprites"]
 position = Vector2(6, 4)
 texture = ExtResource("5_liw03")

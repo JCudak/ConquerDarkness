@@ -109,6 +109,6 @@ func _on_trash_button_pressed():
 func _input(event):
 	
 	if event is InputEventMouseButton and event.pressed:
-		if not get_rect().has_point(event.position) or not usage_panel.get_rect().has_point(event.position):
-			#set_usage_panel_visibility(false)
+		if not get_global_rect().has_point(event.position) and not usage_panel.get_global_rect().has_point(event.position):
+			set_usage_panel_visibility(false)
 			pass

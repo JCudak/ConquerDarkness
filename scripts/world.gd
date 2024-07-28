@@ -9,6 +9,7 @@ func _ready():
 	healthAndShieldGui.setMaxShield(player.maxShield)
 	healthAndShieldGui.updateShield(player.currentShield)
 	player.healthChanged.connect(healthAndShieldGui.updateHealth)
+	player.shieldChanged.connect(healthAndShieldGui.updateShield)
 
 func _process(delta):
 	pass

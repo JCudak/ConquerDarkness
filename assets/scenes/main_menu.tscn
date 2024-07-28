@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnhq30dvhn4ae"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_cq4h6"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_cq4h6"]
 [ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/gui_button.tscn" id="2_icbml"]
 
 [sub_resource type="SystemFont" id="SystemFont_81c8j"]

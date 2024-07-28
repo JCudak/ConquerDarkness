@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ImmunityPotion" load_steps=4 format=3 uid="uid://uxrm3f7d2ao1"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/potions/immunity_potion.gd" id="1_ybaja"]
+[ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_favc7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhbp4"]
+atlas = ExtResource("2_favc7")
+region = Rect2(160, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_ybaja")
+immunities_amount = 1
+name = "Small Immunity Potion"
+type = 1
+texture = SubResource("AtlasTexture_lhbp4")

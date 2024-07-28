@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DamagePotion" load_steps=4 format=3 uid="uid://cmlssgp6m7hp4"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/potions/damage_potion.gd" id="1_h7t4y"]
+[ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_aeswu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hterw"]
+atlas = ExtResource("2_aeswu")
+region = Rect2(32, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_h7t4y")
+damage_increase = 5
+damage_increase_duration = 5
+name = "Small Damage Potion"
+type = 1
+texture = SubResource("AtlasTexture_hterw")

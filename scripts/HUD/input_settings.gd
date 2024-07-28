@@ -21,7 +21,8 @@ var input_actions = {
 	"attack": "Attack",
 	"quickslot_1": "Quickslot 1",
 	"quickslot_2": "Quickslot 2",
-	"quickslot_3": "Quickslot 3"
+	"quickslot_3": "Quickslot 3",
+	"pause": "Pause"
 }
 
 func open():

@@ -29,7 +29,12 @@ var attackDirection: Vector2
 var targetPosition: Vector2
 
 func _ready():
-	slotsContainer.get_node("HotbarGUI").use_item.connect(use_item)
+	var containers = slotsContainer.get_children()
+	
+	for container in containers:
+		if container is SlotsContainerGui:
+			container.use_item.connect(use_item)
+			
 	effects.play("RESET")
 
 func _physics_process(delta):
@@ -140,3 +145,8 @@ func use_item(item: InventoryItem):
 func _on_health_changed(currentHealth):
 	await get_tree().create_timer(1).timeout # Offset to not get multiple hits at once
 	is_hurt = false
+
+func heal(health_increase):
+	currentHealth = min(currentHealth + health_increase, maxHealth)
+	emit_signal("healthChanged", currentHealth)
+	

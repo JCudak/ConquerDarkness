@@ -15,7 +15,7 @@ region = Rect2(0, 8, 12, 8)
 [node name="HpAndShieldGui" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 script = ExtResource("1_l1qdt")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]

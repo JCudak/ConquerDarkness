@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=20 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
@@ -19,7 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://c8usqkevbdwpn" path="res://assets/scenes/collectables/potions/small_life_potion.tscn" id="16_pekeg"]
 [ext_resource type="PackedScene" uid="uid://cxdtnlxm0y8aq" path="res://assets/scenes/enemies/slime.tscn" id="18_r7ogc"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p8qjx"]
+
 [node name="World" type="Node2D"]
+material = SubResource("CanvasItemMaterial_p8qjx")
 script = ExtResource("1_jga0u")
 
 [node name="1-entry-block" parent="." instance=ExtResource("1_0ixr5")]

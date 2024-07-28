@@ -20,6 +20,7 @@ static var oldIndex: int = -1
 static var oldContainerType: int = -1
 static var locked: bool = false
 static var lastSlot: Slot
+static var lastSlotRightClicked: Slot
 var containerType: int = -1
 
 func connect_slots():
@@ -27,9 +28,20 @@ func connect_slots():
 		var slot = slots[i]
 		slot.index = i
 		slot.containerType = containerType
-		var callable = Callable(on_slot_clicked)
-		callable = callable.bind(slot)
-		slot.pressed.connect(callable)
+		
+		# Connect the pressed signal
+		var pressed_callable = Callable(on_slot_clicked)
+		pressed_callable = pressed_callable.bind(slot)
+		slot.pressed.connect(pressed_callable)
+		
+		# Connect the right_clicked signal
+		var right_click_callable = Callable(on_slot_right_clicked)
+		right_click_callable = right_click_callable.bind(slot)
+		slot.right_clicked.connect(right_click_callable)
+		
+		var use_item_callable = Callable(on_use_item)
+		use_item_callable = use_item_callable.bind(slot)
+		slot.use_button_clicked.connect(use_item_callable)
 
 func open():
 	visible=true
@@ -38,6 +50,15 @@ func open():
 func close():
 	visible=false
 	isOpen=false
+
+func on_use_item(slot):
+	use_item.emit(slot.itemGui.inventorySlot.item)
+
+func on_slot_right_clicked(slot):
+	if slot.is_empty(): return
+	lastSlotRightClicked = slot
+	slot.set_usage_panel_visibility(true)
+	slot.usage_panel.global_position = get_global_mouse_position()
 
 func on_slot_clicked(slot):
 	if locked: return
@@ -110,7 +131,6 @@ func insert_item_in_slot(slot):
 func update_item_in_hand():
 	if !itemInHand: return
 	itemInHand.global_position = get_global_mouse_position() - itemInHand.size / 2
-
 
 func put_item_back():
 	locked = true	

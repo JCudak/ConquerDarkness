@@ -10,9 +10,11 @@ signal healthChanged
 @export var dash_speed = 150
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animation = $AnimationPlayer
-
+@onready var deathTimer = $Timers/DeathTimer
+@onready var hurtTimer = $Timers/HurtTimer
 @onready var health: int = 15
 @onready var healthBar = $HealthBar
+@onready var effects = $Effects
 
 var player: Player = null
 var attack_direction = null
@@ -38,6 +40,9 @@ func _physics_process(delta):
 
 func updateAnimation(delta):
 	if is_dead:
+		return
+	
+	if is_hurt:
 		return
 	
 	if on_cooldown:
@@ -124,10 +129,11 @@ func die():
 		velocity.x = 0
 		velocity.y = 0
 		
-		#effects.play("RESET")
-		#animation.play("death")
+		effects.play("RESET")
+		animation.play("death")
 		
-		#await get_tree().create_timer(1).timeout
+		deathTimer.start()
+		await deathTimer.timeout
 		
 		queue_free()
 
@@ -137,18 +143,21 @@ func _on_hurt_box_area_entered(area):
 	
 	if area.name == "SwordDamageArea": # Add more names when more weapons for player
 		is_hurt = true
-		health -= player.damage
-		#effects.play("hurtBlink")
-
-		#animation.play("damaged")
-
-		#await get_tree().create_timer(0.6).timeout
-		#effects.play("RESET")
+		effects.play("hurtBlink")
+		
 		emit_signal("healthChanged")
+		animation.play("damaged")
+		print_debug(health)
+		hurtTimer.start()
+		
+		await hurtTimer.timeout
+		effects.play("RESET")
+		
 
 func updateHealth():
 	healthBar.value = health
 
 func _on_health_changed():
-	await get_tree().create_timer(1).timeout # Offset to not get multiple hits at once
+	health -= player.damage
+	await get_tree().create_timer(0.6).timeout # Offset to not get multiple hits at once
 	is_hurt = false

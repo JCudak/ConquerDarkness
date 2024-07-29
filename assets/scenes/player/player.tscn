@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://chkbbejdqfu"]
+[gd_scene load_steps=25 format=3 uid="uid://chkbbejdqfu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uv8wg"]
 [ext_resource type="Texture2D" uid="uid://cdlpama4b6dtx" path="res://assets/sprites/player/player_no_weapon.png" id="2_d504q"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d41s3i3ukdfx" path="res://assets/sprites/player/player_aura.png" id="4_vyl68"]
 [ext_resource type="Texture2D" uid="uid://cxqnf25dy4sn3" path="res://assets/sprites/player/Shield.png" id="5_liw03"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uymes"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjl04"]
+size = Vector2(22.5708, 3.33911)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1051l"]
 radius = 6.66667
@@ -139,7 +140,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8.13113, 1.86886)]
+"values": [Vector2(10.3533, -0.353355)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -175,35 +176,37 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("CapsuleShape2D_uymes")]
+"values": [SubResource("RectangleShape2D_gjl04")]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/10/path = NodePath("Sprites/Aura:frame_coords")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [Vector2i(0, 4)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Sprites/Aura:frame_coords")
+tracks/11/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 4)]
+"values": [true]
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bs1h"]
 size = Vector2(24.1421, 3.1427)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uymes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cg27p"]
 
@@ -286,26 +289,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/6/path = NodePath("Sprites/Aura:frame_coords")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprites/Aura:frame_coords")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_civu2"]
@@ -392,26 +395,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/6/path = NodePath("Sprites/Aura:frame_coords")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprites/Aura:frame_coords")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_mn13f"]
@@ -816,9 +819,9 @@ vframes = 6
 position = Vector2(-8.44444, -4.23856e-06)
 
 [node name="SwordDamageCollisionShape2D" type="CollisionShape2D" parent="Sprites/Sword/SwordDamageArea"]
-position = Vector2(8.13113, 1.86886)
+position = Vector2(10.3533, -0.353355)
 rotation = -0.785398
-shape = SubResource("CapsuleShape2D_uymes")
+shape = SubResource("RectangleShape2D_gjl04")
 disabled = true
 
 [node name="Aura" type="Sprite2D" parent="Sprites"]
@@ -834,7 +837,6 @@ position = Vector2(6, 4)
 texture = ExtResource("5_liw03")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1.11111, 5.55555)
 shape = SubResource("CapsuleShape2D_1051l")
 debug_color = Color(0.770836, 0.222732, 9.62615e-08, 0.42)

@@ -1,5 +1,8 @@
 class_name UrusRune extends Rune
 
-func use(player: Player):
-	#player.increase_health(health_increase)
+func activate(player: Player):
+	player.rune_damage_change(1)
+	
+func deactivate(player: Player):
+	player.rune_damage_change(-1)
 	pass

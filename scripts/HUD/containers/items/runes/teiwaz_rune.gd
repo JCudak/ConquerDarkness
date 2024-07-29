@@ -1,5 +1,9 @@
 class_name TeiwazRune extends Rune
 
-func use(player: Player):
-	#player.increase_health(health_increase)
+func activate(player: Player):
+	print("Teiwaz")
+	pass
+	
+func deactivate(player: Player):
+	print("UnTeiwaz")
 	pass

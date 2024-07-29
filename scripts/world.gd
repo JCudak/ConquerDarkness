@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var healthBar = $LightView/TileMap/CanvasLayer/healthBar
-@onready var player = $LightView/Player
+@onready var healthBar = $SubViewportContainer/LightView/TileMap/CanvasLayer/healthBar
+@onready var player = $SubViewportContainer/LightView/Player
 
 func _ready():
 	healthBar.setMaxHealth(player.maxHealth)

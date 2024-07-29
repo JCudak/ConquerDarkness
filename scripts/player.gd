@@ -29,7 +29,7 @@ var attackDirection: Vector2
 var targetPosition: Vector2
 
 func _ready():
-	slotsContainer.get_node("HotbarGUI").use_item.connect(use_item)
+	#slotsContainer.get_node("HotbarGUI").use_item.connect(use_item)
 	effects.play("RESET")
 
 func _process(delta):
@@ -117,7 +117,8 @@ func attack_animation():
 			return
 		
 		is_attacking = true
-		targetPosition = get_global_mouse_position()
+		targetPosition = get_viewport().get_mouse_position()
+		
 		attackDirection = (targetPosition - global_position).normalized()
 
 		

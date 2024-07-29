@@ -739,7 +739,6 @@ shape = SubResource("RectangleShape2D_gjl04")
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1.11111, 5.55555)
 shape = SubResource("CapsuleShape2D_1051l")
 debug_color = Color(0.770836, 0.222732, 9.62615e-08, 0.42)

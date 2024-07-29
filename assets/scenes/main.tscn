@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=31 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
 [ext_resource type="Texture2D" uid="uid://cn7noqmtchbbo" path="res://assets/sprites/terrain.png" id="2_5qiba"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cxdtnlxm0y8aq" path="res://assets/scenes/enemies/slime.tscn" id="18_r7ogc"]
 [ext_resource type="Texture2D" uid="uid://dbprd3kd0re14" path="res://assets/scenes/light.tres" id="19_oe1wx"]
 [ext_resource type="Shader" path="res://shaders/all_white.gdshader" id="20_dq3kw"]
+[ext_resource type="PackedScene" uid="uid://bbkyj4i025eeo" path="res://assets/scenes/collectables/potions/big_damage_potion.tscn" id="20_tkafa"]
 [ext_resource type="Texture2D" uid="uid://wir41qdb40om" path="res://assets/icon.svg" id="22_147ug"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c12je"]
@@ -113,7 +114,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_kdehk")
 
 [node name="World" type="Node2D"]
-material = SubResource("CanvasItemMaterial_p8qjx")
 script = ExtResource("1_jga0u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -199,13 +199,16 @@ position = Vector2(115, 49)
 [node name="SmallLifePotion" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("16_pekeg")]
 position = Vector2(110, 80)
 
+[node name="BigDamagePotion" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("20_tkafa")]
+position = Vector2(84, 82)
+
 [node name="Slime" parent="SubViewportContainer/LightView/TileMap" instance=ExtResource("18_r7ogc")]
 position = Vector2(240, 179)
 
 [node name="Player" parent="SubViewportContainer/LightView" node_paths=PackedStringArray("slotsContainer", "linked_position_node") instance=ExtResource("2_jjyrf")]
 z_index = 100
 position = Vector2(46, 47)
-slotsContainer = NodePath("../../../CanvasLayer/SlotsContainers")
+slotsContainer = NodePath("../../../CanvasLayer/HUD")
 linked_position_node = NodePath("../../VisibilityViewport/PointLight2D")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="SubViewportContainer/LightView/Player"]

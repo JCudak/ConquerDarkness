@@ -8,7 +8,7 @@ signal shieldChanged
 const SPEED_REDUCTION = 12
 @export var speed = 100.0
 @onready var sprite_2d = $Sprites/Sprite2D
-@onready var sword = $Sprites/Sword
+
 @onready var sprites = $Sprites
 @onready var animation = $AnimationPlayer
 @export var slotsContainer: Node
@@ -25,6 +25,7 @@ const SPEED_REDUCTION = 12
 @onready var effects = $Effects
 @onready var aura = $Sprites/Aura
 @onready var shield = $Sprites/Shield
+@onready var sword = $Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D
 
 @export var linked_position_node: Node2D
 
@@ -53,7 +54,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	die()
-	
+	print_debug(sword.disabled)
 	if is_dead:
 		return
 	
@@ -140,7 +141,9 @@ func attack_animation():
 		if is_attacking: 
 			return
 		
+		sword.disabled = false
 		is_attacking = true
+		
 		targetPosition = get_viewport().get_mouse_position()
 		
 		attackDirection = (targetPosition - global_position).normalized()
@@ -160,8 +163,9 @@ func attack_animation():
 			animation.play("attackDown") 
 		
 		await get_tree().create_timer(0.6).timeout
-		
+
 		is_attacking = false
+		sword.disabled = true
 
 func use_item(item: InventoryItem):
 	item.use(self)

@@ -52,7 +52,7 @@ func close():
 	isOpen=false
 
 func on_use_item(slot):
-	use_item.emit(slot.itemGui.inventorySlot.item)
+	use_item.emit(slot.get_resource())
 
 func on_slot_right_clicked(slot):
 	if slot.is_empty(): return
@@ -104,6 +104,7 @@ func is_slot_valid(slot):
 		return false
 
 func take_item_from_slot(slot):
+	special_unequip(slot)
 	itemInHand = slot.take_item()
 	parent_node.add_child(itemInHand)
 	update_item_in_hand()
@@ -112,7 +113,14 @@ func take_item_from_slot(slot):
 	oldContainerType = slot.containerType
 	lastSlot = slot
 	
+func special_equip(slot):
+	pass
+	
+func special_unequip(slot):
+	pass
+	
 func replace_item_in_slot(slot):
+	special_unequip(slot)
 	var item = slot.take_item()
 	insert_item_in_slot(slot)
 	
@@ -125,6 +133,7 @@ func insert_item_in_slot(slot):
 	parent_node.remove_child(itemInHand)
 	itemInHand = null
 	slot.insert(item)
+	special_equip(slot)
 	oldIndex = -1
 	oldContainerType = -1
 

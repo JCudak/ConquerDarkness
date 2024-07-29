@@ -1,5 +1,10 @@
 class_name Rune extends InventoryItem
 
-func use(player: Player):
+
+
+func activate(player: Player):
 	#player.increase_health(health_increase)
+	pass
+	
+func deactivate(player: Player):
 	pass

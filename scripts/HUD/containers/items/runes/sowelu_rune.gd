@@ -1,5 +1,9 @@
 class_name SoweluRune extends Rune
 
-func use(player: Player):
-	#player.increase_health(health_increase)
+func activate(player: Player):
+	print("Sowelu")
+	pass
+	
+func deactivate(player: Player):
+	print("UnSowelu")
 	pass

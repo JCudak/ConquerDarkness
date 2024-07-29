@@ -2,7 +2,8 @@ class_name DungeonGenerator extends Node
 
 enum Tiles {EMPTY, SOLID}
 
-@export var player: Player
+const PlayerScene = preload("res://assets/scenes/player/player.tscn")
+@onready var hud = $CanvasLayer2/HUD
 @export var steps: int = 200
 @export var border_size: int = 2
 
@@ -22,6 +23,8 @@ func generate(tile_map: TileMap, width:int, height:int):
 	var walker = Walker.new(Vector2((border_size+width)/2, (border_size+height)/2), borders)
 	var map = walker.walk(steps)
 	
+	spawn_player(walker)
+	
 	walker.queue_free()
 	var tmp_location: Vector2
 	for location in map:
@@ -35,6 +38,12 @@ func generate(tile_map: TileMap, width:int, height:int):
 	ensure_minimum_wall_group_size(tile_map, true)
 	connect_atlas_tiles(tile_map)
 
+
+func spawn_player(walker):
+	var player = PlayerScene.instantiate()
+	player.slotsContainer = hud
+	add_child(player)
+	player.position = walker.get_end_room().position*32
 
 func connect_atlas_tiles(tile_map: TileMap):
 	var used_cells = tile_map.get_used_cells(GROUND_LAYER)

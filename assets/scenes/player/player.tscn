@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d41s3i3ukdfx" path="res://assets/sprites/player/player_aura.png" id="4_vyl68"]
 [ext_resource type="Texture2D" uid="uid://cxqnf25dy4sn3" path="res://assets/sprites/player/Shield.png" id="5_liw03"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uymes"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjl04"]
+size = Vector2(22.5708, 3.33911)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1051l"]
 radius = 6.66667
@@ -139,7 +140,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8.13113, 1.86886)]
+"values": [Vector2(10.3533, -0.353355)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -175,7 +176,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("CapsuleShape2D_uymes")]
+"values": [SubResource("RectangleShape2D_gjl04")]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -204,6 +205,8 @@ tracks/11/keys = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bs1h"]
 size = Vector2(24.1421, 3.1427)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uymes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cg27p"]
 
@@ -816,9 +819,9 @@ vframes = 6
 position = Vector2(-8.44444, -4.23856e-06)
 
 [node name="SwordDamageCollisionShape2D" type="CollisionShape2D" parent="Sprites/Sword/SwordDamageArea"]
-position = Vector2(8.13113, 1.86886)
+position = Vector2(10.3533, -0.353355)
 rotation = -0.785398
-shape = SubResource("CapsuleShape2D_uymes")
+shape = SubResource("RectangleShape2D_gjl04")
 disabled = true
 
 [node name="Aura" type="Sprite2D" parent="Sprites"]
@@ -834,7 +837,6 @@ position = Vector2(6, 4)
 texture = ExtResource("5_liw03")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1.11111, 5.55555)
 shape = SubResource("CapsuleShape2D_1051l")
 debug_color = Color(0.770836, 0.222732, 9.62615e-08, 0.42)

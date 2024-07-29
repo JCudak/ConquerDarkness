@@ -1,7 +1,9 @@
 extends Node2D
 
+
+@onready var player = $SubViewportContainer/LightView/Player
 @onready var healthAndShieldGui = $CanvasLayer/HUD/HpAndShieldGui
-@onready var player = $Player
+
 
 func _ready():
 	healthAndShieldGui.setMaxHealth(player.maxHealth)

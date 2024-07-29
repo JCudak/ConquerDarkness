@@ -29,7 +29,7 @@ var attackDirection: Vector2
 var targetPosition: Vector2
 
 func _ready():
-	#slotsContainer.get_node("HotbarGUI").use_item.connect(use_item)
+	slotsContainer.get_node("HotbarGUI").use_item.connect(use_item)
 	effects.play("RESET")
 
 func _process(delta):

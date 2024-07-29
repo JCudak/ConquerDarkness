@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var healthBar = $SubViewportContainer/LightView/TileMap/CanvasLayer/healthBar
+@onready var healthBar = $CanvasLayer/healthBar
 @onready var player = $SubViewportContainer/LightView/Player
 
 func _ready():

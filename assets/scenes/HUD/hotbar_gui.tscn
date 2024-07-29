@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/HUD/containers/hotbar_gui.gd" id="1_b08xn"]
 [ext_resource type="Texture2D" uid="uid://cg7g133by3mex" path="res://assets/sprites/UI/HUD_no_quickslots.png" id="1_f0rqw"]
-[ext_resource type="PackedScene" uid="uid://v3s0c35yl6sp" path="res://assets/scenes/containers/slot.tscn" id="2_amu4b"]
+[ext_resource type="PackedScene" uid="uid://v3s0c35yl6sp" path="res://assets/scenes/HUD/slot.tscn" id="2_amu4b"]
 
 [node name="HotbarGUI" type="Control"]
 layout_mode = 3

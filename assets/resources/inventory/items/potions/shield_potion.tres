@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShieldPotion" load_steps=4 format=3 uid="uid://bi041kje6lp21"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/potions/shield_potion.gd" id="1_g310m"]
+[ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_62jcb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xou0b"]
+atlas = ExtResource("2_62jcb")
+region = Rect2(192, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_g310m")
+shield_increase = 3
+name = "Shield Potion"
+type = 1
+texture = SubResource("AtlasTexture_xou0b")

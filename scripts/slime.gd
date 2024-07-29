@@ -7,12 +7,11 @@ enum State {IDLE, PURSUING, PREPARING_ATTACK, ATTACKING}
 signal healthChanged
 
 @export var speed = 50
-@export var burst_speed = 250
 @export var dash_speed = 150
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animation = $AnimationPlayer
 
-@onready var health: int = 3
+@onready var health: int = 15
 @onready var healthBar = $HealthBar
 
 var player: Player = null
@@ -27,6 +26,9 @@ var cooldown = 2.5
 var timer = 0.0
 var is_dead = false
 var is_hurt = false
+
+func _ready():
+	healthBar.max_value = health
 
 func _physics_process(delta):
 	die()
@@ -135,7 +137,7 @@ func _on_hurt_box_area_entered(area):
 	
 	if area.name == "SwordDamageArea": # Add more names when more weapons for player
 		is_hurt = true
-		health -= 1
+		health -= player.damage
 		#effects.play("hurtBlink")
 
 		#animation.play("damaged")

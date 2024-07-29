@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmiuolluo66ls"]
 
 [ext_resource type="Script" path="res://scripts/HUD/containers/rune_equip_gui.gd" id="1_4jqbu"]
-[ext_resource type="PackedScene" uid="uid://v3s0c35yl6sp" path="res://assets/scenes/containers/slot.tscn" id="2_f4gph"]
+[ext_resource type="PackedScene" uid="uid://v3s0c35yl6sp" path="res://assets/scenes/HUD/slot.tscn" id="2_f4gph"]
 [ext_resource type="Texture2D" uid="uid://d4inkiiecehuu" path="res://assets/sprites/UI/HUD_runes_no_slot.png" id="2_iwug8"]
 
 [node name="RuneEquipGUI" type="Control"]

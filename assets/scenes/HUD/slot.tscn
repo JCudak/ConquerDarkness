@@ -1,0 +1,216 @@
+[gd_scene load_steps=9 format=3 uid="uid://v3s0c35yl6sp"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/slot.gd" id="1_q8dr1"]
+[ext_resource type="Texture2D" uid="uid://dvhxk3ssqx723" path="res://assets/sprites/UI/UI_slot.png" id="2_lsjx3"]
+[ext_resource type="Texture2D" uid="uid://srhfqd2upcek" path="res://assets/sprites/UI/UI_name_frame.png" id="3_xfmqc"]
+
+[sub_resource type="SystemFont" id="SystemFont_c2ypn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pbndr"]
+font = SubResource("SystemFont_c2ypn")
+font_size = 31
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_7sfha"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_is5d8"]
+font = SubResource("SystemFont_7sfha")
+font_size = 11
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_nc48r"]
+
+[node name="Slot" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q8dr1")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_lsjx3")
+centered = false
+offset = Vector2(-6, -6)
+hframes = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.05
+anchor_top = -0.05
+anchor_right = -0.05
+anchor_bottom = -0.05
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 83.0
+offset_bottom = 83.0
+scale = Vector2(0.75, 0.75)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.05
+anchor_top = -0.05
+anchor_right = -0.05
+anchor_bottom = -0.05
+offset_right = 67.0
+offset_bottom = 66.0
+label_settings = SubResource("LabelSettings_pbndr")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="DetailsPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+offset_right = 60.0
+offset_bottom = 20.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DetailsPanel"]
+texture_filter = 1
+custom_minimum_size = Vector2(111, 28)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -37.0
+offset_right = 50.0
+offset_bottom = -9.0
+grow_horizontal = 2
+texture = ExtResource("3_xfmqc")
+region_rect = Rect2(7, 11, 19, 9)
+patch_margin_left = 3
+patch_margin_top = 7
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="Label" type="Label" parent="DetailsPanel/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -9.0
+offset_right = 53.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_is5d8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UsagePanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -47.0
+offset_right = 102.0
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UsagePanel"]
+texture_filter = 1
+custom_minimum_size = Vector2(99, 44)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xfmqc")
+region_rect = Rect2(7, 11, 19, 9)
+patch_margin_left = 3
+patch_margin_top = 7
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UsagePanel/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -10.0
+offset_right = 37.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="UseButton" type="Button" parent="UsagePanel/NinePatchRect/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(12, 15)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_nc48r")
+theme_override_font_sizes/font_size = 11
+
+[node name="Label" type="Label" parent="UsagePanel/NinePatchRect/VBoxContainer/UseButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -9.0
+offset_right = 53.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use"
+label_settings = SubResource("LabelSettings_is5d8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TrashButton" type="Button" parent="UsagePanel/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(12, 15)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UsagePanel/NinePatchRect/VBoxContainer/TrashButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -9.0
+offset_right = 53.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Trash"
+label_settings = SubResource("LabelSettings_is5d8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="UsagePanel/NinePatchRect/VBoxContainer/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="UsagePanel/NinePatchRect/VBoxContainer/TrashButton" to="." method="_on_trash_button_pressed"]

@@ -1,4 +1,8 @@
 extends SlotsContainerGui
+class_name RuneEquipGui
+
+signal on_rune_equip
+signal on_rune_unequip
 
 func _ready():
 	containerType = 2
@@ -22,3 +26,11 @@ func update():
 		
 		itemGui.inventorySlot = inventorySlot
 		itemGui.update()
+		
+func special_equip(slot):
+	if containerType == 2:
+		on_rune_equip.emit(slot.get_resource())
+		
+func special_unequip(slot):
+	if containerType == 2:
+		on_rune_unequip.emit(slot.get_resource())

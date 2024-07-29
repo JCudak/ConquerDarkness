@@ -21,6 +21,9 @@ signal right_clicked
 signal use_button_clicked
 signal trash_button_clicked
 
+func get_resource():
+	return itemGui.inventorySlot.item
+
 func insert(ig: ItemGui):
 	itemGui = ig
 	
@@ -79,8 +82,8 @@ func _gui_input(event):
 			emit_signal("right_clicked")
 
 func _on_mouse_entered():
-	if itemGui and itemGui.inventorySlot.item:
-		set_item_name_label(itemGui.inventorySlot.item.name)
+	if itemGui and get_resource():
+		set_item_name_label(get_resource().name)
 		details_panel.visible = true
 
 
@@ -89,7 +92,7 @@ func _on_mouse_exited():
 
 func set_usage_panel_visibility(visible: bool):
 	usage_panel.visible = visible
-	if itemGui and itemGui.inventorySlot.item.type == CollectableType.RUNE:
+	if itemGui and get_resource().type == CollectableType.RUNE:
 		use_button.disabled = true
 	else:
 		use_button.disabled = false

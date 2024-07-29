@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cea4klgxmlhqk"]
+[gd_scene load_steps=9 format=3 uid="uid://cea4klgxmlhqk"]
 
 [ext_resource type="Texture2D" uid="uid://c8ehjhko7h3au" path="res://assets/sprites/tiles/FloorBrick.png" id="1_e2qdn"]
 [ext_resource type="Script" path="res://scripts/dungeon/dungeon.gd" id="1_msg2b"]
 [ext_resource type="Texture2D" uid="uid://cvtujqll83xv3" path="res://assets/sprites/tiles/Walls.png" id="3_mnr3g"]
-[ext_resource type="Script" path="res://assets/scenes/skrypcik_tmp.gd" id="4_nvbfb"]
+[ext_resource type="Texture2D" uid="uid://l5p3rem5p58u" path="res://assets/sprites/failed_to_load_texture.png" id="3_sorar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqcth"]
 texture = ExtResource("1_e2qdn")
@@ -268,6 +268,13 @@ texture = ExtResource("3_mnr3g")
 0:6/0/terrains_peering_bit/top_side = 0
 0:6/0/terrains_peering_bit/top_right_corner = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p28ua"]
+texture = ExtResource("3_sorar")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_peaks"]
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "floor"
@@ -283,6 +290,7 @@ terrain_set_1/terrain_3/name = "wall"
 terrain_set_1/terrain_3/color = Color(0.203208, 0.51212, 0.336006, 1)
 sources/0 = SubResource("TileSetAtlasSource_dqcth")
 sources/1 = SubResource("TileSetAtlasSource_eb0hq")
+sources/2 = SubResource("TileSetAtlasSource_p28ua")
 
 [node name="Dungeon" type="TileMap"]
 tile_set = SubResource("TileSet_peaks")
@@ -296,7 +304,3 @@ script = ExtResource("1_msg2b")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "DUPA"
-
-[node name="CanvasLayer" type="Node2D" parent="."]
-visible = false
-script = ExtResource("4_nvbfb")

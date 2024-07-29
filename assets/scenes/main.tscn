@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=25 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="PackedScene" uid="uid://cudhf3metsc00" path="res://assets/scenes/terrain_blocks/1-entry-block.tscn" id="1_0ixr5"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
@@ -19,9 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://cgm1f5gveitxb" path="res://assets/scenes/collectables/potions/life_potion.tscn" id="15_jc17h"]
 [ext_resource type="PackedScene" uid="uid://c8usqkevbdwpn" path="res://assets/scenes/collectables/potions/small_life_potion.tscn" id="16_pekeg"]
 [ext_resource type="PackedScene" uid="uid://cxdtnlxm0y8aq" path="res://assets/scenes/enemies/slime.tscn" id="18_r7ogc"]
-[ext_resource type="PackedScene" uid="uid://da6p2ltlnxct0" path="res://assets/scenes/collectables/potions/big_immunity_potion.tscn" id="20_5b7en"]
+[ext_resource type="PackedScene" uid="uid://cjd0bf7s5yqc3" path="res://assets/scenes/collectables/potions/speed_potion.tscn" id="21_ldf3q"]
+[ext_resource type="PackedScene" uid="uid://gwg4578xey7p" path="res://assets/scenes/collectables/potions/shield_potion.tscn" id="22_54ea1"]
 [ext_resource type="PackedScene" uid="uid://b6gphfrc0ejak" path="res://assets/scenes/collectables/potions/small_immunity_potion.tscn" id="23_60oul"]
-[ext_resource type="PackedScene" uid="uid://ddl17r81ei208" path="res://assets/scenes/collectables/potions/immunity_potion.tscn" id="25_8a47l"]
+[ext_resource type="PackedScene" uid="uid://d0mo6hy2ei440" path="res://assets/scenes/collectables/potions/damage_potion.tscn" id="23_hj5hs"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p8qjx"]
 
@@ -94,8 +95,11 @@ position = Vector2(240, 179)
 [node name="SmallImmunityPotion" parent="." instance=ExtResource("23_60oul")]
 position = Vector2(75, 74)
 
-[node name="ImmunityPotion" parent="." instance=ExtResource("25_8a47l")]
-position = Vector2(91, 76)
+[node name="SpeedPotion" parent="." instance=ExtResource("21_ldf3q")]
+position = Vector2(91, 85)
 
-[node name="BigImmunityPotion" parent="." instance=ExtResource("20_5b7en")]
-position = Vector2(90, 101)
+[node name="ShieldPotion" parent="." instance=ExtResource("22_54ea1")]
+position = Vector2(93, 109)
+
+[node name="DamagePotion" parent="." instance=ExtResource("23_hj5hs")]
+position = Vector2(74, 111)

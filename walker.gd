@@ -10,7 +10,14 @@ var step_history = []
 var steps_since_turn = 0
 var rooms = []
 
+@export var min_room_size: int = 2
+@export var max_room_size: int = 4
+
+#var rng
+
 func _init(starting_position, new_borders):
+	#rng = RandomNumberGenerator.new()
+	#rng.seed = 8315447009724114850
 	assert(new_borders.has_point(starting_position))
 	position = starting_position
 	step_history.append(position)
@@ -37,6 +44,16 @@ func step():
 	else:
 		return false
 
+#func shuffle_array(array: Array):
+	#var n = array.size()
+	#while n > 1:
+		#n -= 1
+		#var k = rng.randf_range(0, n)
+		#k = int(k)
+		#var temp = array[n]
+		#array[n] = array[k]
+		#array[k] = temp
+
 func change_direction():
 	place_room(position)
 	steps_since_turn = 0
@@ -44,6 +61,7 @@ func change_direction():
 	directions.erase(direction)
 	directions.erase(-direction)
 	directions.shuffle()
+	#shuffle_array(directions)
 	direction = directions.pop_front()
 	while not borders.has_point(position + direction):
 		direction = directions.pop_front()
@@ -52,7 +70,7 @@ func create_room(position, size):
 	return {position = position, size = size}
 
 func place_room(position):
-	var size = Vector2(randi() % 4 + 2, randi() % 4 + 2)
+	var size = Vector2(randi() % (max_room_size - min_room_size) + min_room_size, randi() % (max_room_size - min_room_size) + min_room_size)
 	var top_left_corner = (position - size/2).ceil()
 	rooms.append(create_room(position, size))
 	for y in size.y:

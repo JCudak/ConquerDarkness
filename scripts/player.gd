@@ -162,8 +162,6 @@ func attack_animation():
 		sword.disabled = false
 		is_attacking = true
 		
-		print("DUOPA")
-		
 		targetPosition = get_viewport().get_mouse_position()
 		
 		attackDirection = (targetPosition - global_position).normalized()

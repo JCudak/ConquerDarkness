@@ -26,7 +26,7 @@ func _on_resume_pressed():
 
 
 func _on_settings_pressed():
-	pass # Replace with function body.
+	pass
 
 
 func _on_quit_pressed():

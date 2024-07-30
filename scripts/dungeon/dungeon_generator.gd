@@ -3,7 +3,7 @@ class_name DungeonGenerator extends Node
 enum Tiles {EMPTY, SOLID}
 
 @export var steps: int = 200
-@export var border_size: int = 2
+@export var border_size: int = 3
 var PlayerScene = preload("res://assets/scenes/player/player.tscn")
 
 const MIN_HEIGHT: int = 4
@@ -19,8 +19,9 @@ func _ready():
 
 func generate(visibility_tile_map: TileMap, tile_map: TileMap, width:int, height:int):
 	
-	var borders = Rect2(border_size, border_size, width + border_size, height + border_size)
-	var walker = Walker.new(Vector2((border_size+width)/2, (border_size+height)/2), borders)
+	var borders = Rect2(border_size, border_size, width + 2*border_size, height + 2*border_size)
+	var strict_borders = Rect2(border_size-1, border_size -1, width + 2*border_size+1, height + 2*border_size+1)
+	var walker = Walker.new(Vector2((border_size+width)/2, (border_size+height)/2), borders, strict_borders)
 	var map = walker.walk(steps)
 	
 	var tmp_location: Vector2

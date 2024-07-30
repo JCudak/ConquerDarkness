@@ -1,33 +1,35 @@
 extends CharacterBody2D
 
-const COLLISION_LAYERS = 1
-const SPEED_REDUCTION = 3
+const COLLISION_LAYERS: int = 1
+const SPEED_REDUCTION: int = 3
 enum State {IDLE, PURSUING, PREPARING_ATTACK, ATTACKING}
 
 signal healthChanged
 
-@export var speed = 50
-@export var dash_speed = 150
-@onready var collision_shape_2d = $CollisionShape2D
-@onready var animation = $AnimationPlayer
-@onready var deathTimer = $Timers/DeathTimer
-@onready var hurtTimer = $Timers/HurtTimer
+@export var speed := 50
+@export var dash_speed := 150
+@onready var collision_shape_2d := $CollisionShape2D
+@onready var animation := $AnimationPlayer
+@onready var deathTimer := $Timers/DeathTimer
+@onready var hurtTimer := $Timers/HurtTimer
 @onready var health: int = 15
-@onready var healthBar = $HealthBar
-@onready var effects = $Effects
+@onready var healthBar := $HealthBar
+@onready var effects := $Effects
 
 var player: Player = null
 var attack_direction = null
 var current_state: State = State.IDLE
-var has_line_of_sight = false
-var on_cooldown = false
+var has_line_of_sight: bool = false
+var on_cooldown: bool = false
+var is_dead: bool = false
+var is_hurt: bool = false
+
 var burst_duration = 0.2
 var dash_duration = 1
 var prepare_duration = 0.4
 var cooldown = 2.5
 var timer = 0.0
-var is_dead = false
-var is_hurt = false
+
 
 func _ready():
 	healthBar.max_value = health
@@ -68,11 +70,11 @@ func updateAnimation(delta):
 				current_state = State.PREPARING_ATTACK
 	elif has_line_of_sight:
 			animation.play('walk')
-			pursue_player(delta)
+			pursue_player()
 	else:
 		animation.play("default")
 
-func pursue_player(delta):
+func pursue_player():
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction[0] * speed
 	velocity.y = direction[1] * speed 
@@ -147,7 +149,6 @@ func _on_hurt_box_area_entered(area):
 		
 		emit_signal("healthChanged")
 		animation.play("damaged")
-		print_debug(health)
 		hurtTimer.start()
 		
 		await hurtTimer.timeout

@@ -65,7 +65,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	die()
-	print_debug(sword.disabled)
+
 	if is_dead:
 		return
 	

@@ -1,28 +1,14 @@
-[gd_scene load_steps=31 format=3 uid="uid://c3j5g5nb4t434"]
+[gd_scene load_steps=17 format=3 uid="uid://c3j5g5nb4t434"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_jga0u"]
 [ext_resource type="Texture2D" uid="uid://cn7noqmtchbbo" path="res://assets/sprites/tiles/terrain.png" id="2_5qiba"]
 [ext_resource type="PackedScene" uid="uid://chkbbejdqfu" path="res://assets/scenes/player/player.tscn" id="2_jjyrf"]
-[ext_resource type="PackedScene" uid="uid://bydwo0b04c2tx" path="res://assets/scenes/collectables/potions/big_life_potion.tscn" id="3_t80a5"]
 [ext_resource type="Script" path="res://scripts/HUD/canvas_layer.gd" id="4_uxsoa"]
 [ext_resource type="PackedScene" uid="uid://fb25b7dhraf0" path="res://assets/scenes/HUD/slots_containers_gui.tscn" id="5_71o2m"]
 [ext_resource type="PackedScene" uid="uid://dn3vjaep77r6h" path="res://assets/scenes/input_settings/input_settings.tscn" id="6_4ath2"]
-[ext_resource type="PackedScene" uid="uid://bi8jn22ybpdk6" path="res://assets/scenes/collectables/runes/urus_rune.tscn" id="7_dfics"]
 [ext_resource type="PackedScene" path="res://assets/scenes/pause_menu.tscn" id="7_dxhft"]
-[ext_resource type="PackedScene" uid="uid://q1siel8qxfll" path="res://assets/scenes/collectables/runes/teiwaz_rune.tscn" id="8_rmnxx"]
-[ext_resource type="PackedScene" uid="uid://b61s65i4hmpw3" path="res://assets/scenes/collectables/runes/sowelu_rune.tscn" id="9_p2xe5"]
-[ext_resource type="PackedScene" uid="uid://diqn4njc8xjdx" path="res://assets/scenes/collectables/runes/rerth_rune.tscn" id="10_ad7qj"]
-[ext_resource type="PackedScene" uid="uid://162e8ll4xk2b" path="res://assets/scenes/collectables/runes/nauthiz_rune.tscn" id="11_2jtm2"]
-[ext_resource type="PackedScene" uid="uid://dj8rerrrqulah" path="res://assets/scenes/collectables/runes/laguz_rune.tscn" id="12_24c21"]
-[ext_resource type="PackedScene" uid="uid://0e85i1bpk05h" path="res://assets/scenes/collectables/runes/isa_rune.tscn" id="13_o63l3"]
-[ext_resource type="PackedScene" uid="uid://bbjqq6v761tyt" path="res://assets/scenes/collectables/runes/algiz_rune.tscn" id="14_vn2jk"]
-[ext_resource type="PackedScene" uid="uid://cgm1f5gveitxb" path="res://assets/scenes/collectables/potions/life_potion.tscn" id="15_jc17h"]
-[ext_resource type="PackedScene" uid="uid://c8usqkevbdwpn" path="res://assets/scenes/collectables/potions/small_life_potion.tscn" id="16_pekeg"]
-[ext_resource type="PackedScene" uid="uid://cxdtnlxm0y8aq" path="res://assets/scenes/enemies/slime.tscn" id="18_r7ogc"]
 [ext_resource type="Texture2D" uid="uid://dbprd3kd0re14" path="res://assets/resources/light.tres" id="19_oe1wx"]
 [ext_resource type="Shader" path="res://shaders/all_white.gdshader" id="20_dq3kw"]
-[ext_resource type="PackedScene" uid="uid://bbkyj4i025eeo" path="res://assets/scenes/collectables/potions/big_damage_potion.tscn" id="20_tkafa"]
-[ext_resource type="PackedScene" uid="uid://dro3pwr15c6o4" path="res://assets/scenes/torch.tscn" id="23_jywji"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c12je"]
 shader = ExtResource("20_dq3kw")
@@ -166,44 +152,7 @@ layer_0/tile_data = PackedInt32Array(1835008, 196608, 0, 1900544, 196608, 1, 183
 
 [node name="Consumables" type="Node" parent="SubViewportContainer/LightView/TileMap"]
 
-[node name="UrusRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("7_dfics")]
-position = Vector2(117, 113)
-
-[node name="TeiwazRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("8_rmnxx")]
-position = Vector2(149, 111)
-
-[node name="SoweluRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("9_p2xe5")]
-position = Vector2(184, 114)
-
-[node name="RerthRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("10_ad7qj")]
-position = Vector2(220, 114)
-
-[node name="NauthizRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("11_2jtm2")]
-position = Vector2(239, 91)
-
-[node name="LaguzRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("12_24c21")]
-position = Vector2(239, 63)
-
-[node name="IsaRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("13_o63l3")]
-position = Vector2(240, 121)
-
-[node name="AlgizRune" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("14_vn2jk")]
-position = Vector2(240, 146)
-
-[node name="BigLifePotion" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("3_t80a5")]
-position = Vector2(86, 49)
-
-[node name="LifePotion" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("15_jc17h")]
-position = Vector2(115, 49)
-
-[node name="SmallLifePotion" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("16_pekeg")]
-position = Vector2(110, 80)
-
-[node name="BigDamagePotion" parent="SubViewportContainer/LightView/TileMap/Consumables" instance=ExtResource("20_tkafa")]
-position = Vector2(84, 82)
-
-[node name="Slime" parent="SubViewportContainer/LightView/TileMap" instance=ExtResource("18_r7ogc")]
-position = Vector2(240, 179)
+[node name="Enemies" type="Node" parent="SubViewportContainer/LightView/TileMap"]
 
 [node name="Player" parent="SubViewportContainer/LightView" node_paths=PackedStringArray("slotsContainer", "linked_position_node") instance=ExtResource("2_jjyrf")]
 z_index = 100
@@ -219,15 +168,6 @@ shadow_enabled = true
 texture = ExtResource("19_oe1wx")
 
 [node name="Lights" type="Node2D" parent="SubViewportContainer/LightView"]
-
-[node name="Torch1" parent="SubViewportContainer/LightView/Lights" instance=ExtResource("23_jywji")]
-position = Vector2(375, 90)
-
-[node name="Torch2" parent="SubViewportContainer/LightView/Lights" instance=ExtResource("23_jywji")]
-position = Vector2(390, 394)
-
-[node name="Torch3" parent="SubViewportContainer/LightView/Lights" instance=ExtResource("23_jywji")]
-position = Vector2(241, 145)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="SubViewportContainer/LightView"]
 color = Color(0.12549, 0.12549, 0.12549, 1)

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
 const COLLISION_LAYERS = 1
 const SPEED_REDUCTION = 3
@@ -8,6 +8,7 @@ signal healthChanged
 
 @export var speed = 50
 @export var dash_speed = 150
+@export var damage = 10
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animation = $AnimationPlayer
 @onready var deathTimer = $Timers/DeathTimer
@@ -173,7 +174,6 @@ func _on_hurt_box_area_entered(area):
 		
 		emit_signal("healthChanged")
 		animation.play("damaged")
-		print_debug(health)
 		hurtTimer.start()
 		
 		await hurtTimer.timeout

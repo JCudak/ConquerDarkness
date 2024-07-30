@@ -13,8 +13,8 @@ const SPEED_REDUCTION: int = 12
 @onready var animation := $AnimationPlayer
 @export var slotsContainer: Node
 
-@export var maxHealth: int = 10
-@export var maxShield: int = 5
+@export var maxHealth: int = 100
+@export var maxShield: int = 50
 @export var damage: int = 5
 
 # rune variables
@@ -27,7 +27,6 @@ const SPEED_REDUCTION: int = 12
 @onready var currentShield: int = 0
 @onready var deathTimer := $Timers/DeathTimer
 @onready var hurtTimer := $Timers/HurtTimer
-@onready var darknessTimer := $Timers/DarknessDamageTimer
 @onready var speed_up_timer := $Timers/SpeedUpTimer
 @onready var damage_up_timer := $Timers/DamageUpTimer
 @onready var effects := $Effects
@@ -139,12 +138,13 @@ func _on_hurt_box_area_entered(area):
 		else:
 			is_hurt = true
 			damaged_time = 0
+			var enemy: Enemy = area.get_parent()
 			
 			if currentShield > 0:
-				currentShield -= 1
+				currentShield -= enemy.damage
 				emit_signal("shieldChanged", currentShield)
 			else:
-				currentHealth -= 1
+				currentHealth -= enemy.damage
 				emit_signal("healthChanged", currentHealth)
 			
 			effects.play("hurtBlink")

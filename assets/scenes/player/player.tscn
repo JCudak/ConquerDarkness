@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://d41s3i3ukdfx" path="res://assets/sprites/player/player_aura.png" id="4_vyl68"]
 [ext_resource type="Texture2D" uid="uid://cxqnf25dy4sn3" path="res://assets/sprites/player/Shield.png" id="5_liw03"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjl04"]
-size = Vector2(22.5708, 3.33911)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1051l"]
 radius = 6.66667
 height = 23.9216
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjl04"]
+size = Vector2(22.5708, 3.33911)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypxcp"]
 radius = 9.87654
@@ -73,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/path = NodePath("PlayerArea2D/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +85,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/path = NodePath("PlayerArea2D/CollisionShape2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -436,7 +436,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/path = NodePath("PlayerArea2D/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -448,7 +448,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/path = NodePath("PlayerArea2D/CollisionShape2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -550,7 +550,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/path = NodePath("PlayerArea2D/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -562,7 +562,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:scale")
+tracks/4/path = NodePath("PlayerArea2D/CollisionShape2D:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -615,7 +615,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/path = NodePath("PlayerArea2D/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -627,7 +627,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/path = NodePath("PlayerArea2D/CollisionShape2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -728,7 +728,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/path = NodePath("PlayerArea2D/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -740,7 +740,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:scale")
+tracks/4/path = NodePath("PlayerArea2D/CollisionShape2D:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -793,6 +793,11 @@ collision_mask = 3
 platform_floor_layers = 4294967293
 script = ExtResource("1_uv8wg")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.11111, 5.55555)
+shape = SubResource("CapsuleShape2D_1051l")
+debug_color = Color(0.770836, 0.222732, 9.62615e-08, 0.42)
+
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]
@@ -836,7 +841,9 @@ frame = 40
 position = Vector2(6, 4)
 texture = ExtResource("5_liw03")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
 position = Vector2(-1.11111, 5.55555)
 shape = SubResource("CapsuleShape2D_1051l")
 debug_color = Color(0.770836, 0.222732, 9.62615e-08, 0.42)
@@ -872,6 +879,9 @@ one_shot = true
 [node name="SpeedUpTimer" type="Timer" parent="Timers"]
 
 [node name="DamageUpTimer" type="Timer" parent="Timers"]
+
+[node name="DarknessDamageTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
 
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

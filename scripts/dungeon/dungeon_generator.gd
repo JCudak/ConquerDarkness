@@ -2,30 +2,28 @@ class_name DungeonGenerator extends Node
 
 enum Tiles {EMPTY, SOLID}
 
-const PlayerScene = preload("res://assets/scenes/player/player.tscn")
-@onready var hud = $CanvasLayer2/HUD
 @export var steps: int = 200
-@export var border_size: int = 2
+@export var border_size: int = 3
+var PlayerScene = preload("res://assets/scenes/player/player.tscn")
 
-const MIN_HEIGHT = 4
-const MIN_WIDTH = 2
-const WALL_LAYER = 1
-const GROUND_LAYER = 0
-const MIDDLE_WALL = 2
-const TOP_WALL = 1
-const VOID = 0
+const MIN_HEIGHT: int = 4
+const MIN_WIDTH: int = 2
+const WALL_LAYER: int = 1
+const GROUND_LAYER: int = 0
+const MIDDLE_WALL: int = 2
+const TOP_WALL: int = 1
+const VOID: int = 0
+
 func _ready():
 	pass
 
-func generate(tile_map: TileMap, width:int, height:int):
+func generate(visibility_tile_map: TileMap, tile_map: TileMap, width:int, height:int):
 	
-	var borders = Rect2(border_size, border_size, width + border_size, height + border_size)
-	var walker = Walker.new(Vector2((border_size+width)/2, (border_size+height)/2), borders)
+	var borders = Rect2(border_size, border_size, width + 2*border_size, height + 2*border_size)
+	var strict_borders = Rect2(border_size-1, border_size -1, width + 2*border_size+1, height + 2*border_size+1)
+	var walker = Walker.new(Vector2((border_size+width)/2, (border_size+height)/2), borders, strict_borders)
 	var map = walker.walk(steps)
 	
-	spawn_player(walker)
-	
-	walker.queue_free()
 	var tmp_location: Vector2
 	for location in map:
 		tmp_location = location
@@ -35,15 +33,14 @@ func generate(tile_map: TileMap, width:int, height:int):
 				tmp_location.y=2*location.y+j
 				tile_map.set_cell(GROUND_LAYER, tmp_location, 0, Vector2i(0, 0))
 				tile_map.set_cell(WALL_LAYER, tmp_location, 1, Vector2i(-1,-1))
+				visibility_tile_map.set_cell(GROUND_LAYER, tmp_location, 0, Vector2i(0, 0))
+				visibility_tile_map.set_cell(WALL_LAYER, tmp_location, 1, Vector2i(-1,-1))
 	ensure_minimum_wall_group_size(tile_map, true)
 	connect_atlas_tiles(tile_map)
-
-
-func spawn_player(walker):
-	var player = PlayerScene.instantiate()
-	player.slotsContainer = hud
-	add_child(player)
-	player.position = walker.get_end_room().position*32
+	ensure_minimum_wall_group_size(visibility_tile_map, true)
+	connect_atlas_tiles(visibility_tile_map)
+	
+	return walker
 
 func connect_atlas_tiles(tile_map: TileMap):
 	var used_cells = tile_map.get_used_cells(GROUND_LAYER)
@@ -53,7 +50,7 @@ func connect_atlas_tiles(tile_map: TileMap):
 	var meets_condition_1 = func(cell):
 		var below_cell_1 = Vector2i(cell.x, cell.y + 1)
 		var below_cell_2 = Vector2i(cell.x, cell.y + 2)
-		return used_cells.has(below_cell_1) or (used_cells_wall.has(below_cell_1) and used_cells.has(below_cell_2))
+		return used_cells.has(below_cell_1) or (used_cells_wall.has(below_cell_1) and used_cells_wall.has(below_cell_2))
 	var meets_condition_2 = func(cell):
 		var below_cell_1 = Vector2i(cell.x, cell.y + 1)
 		var below_cell_2 = Vector2i(cell.x, cell.y + 2)
@@ -106,9 +103,9 @@ func is_floor_tile_with_wall_below(tile_map: TileMap, floor_cell: Vector2i) -> b
 	return wall_length >= 1 and wall_length < 4
 
 func is_part_of_wall_of_height_3_or_less(tile_map: TileMap, cell: Vector2i) -> bool:
-	var max_wall_height = 3
-	var wall_length_up = 0
-	var wall_length_down = 0
+	var max_wall_height: int = 3
+	var wall_length_up: int = 0
+	var wall_length_down: int = 0
 	
 	for offset in range(max_wall_height + 1):
 		var check_cell_down = cell + Vector2i(0, offset)

@@ -1,4 +1,4 @@
-extends Sprite2D
+class_name Torch extends Sprite2D
 
 signal enteredLight
 signal exitedLight

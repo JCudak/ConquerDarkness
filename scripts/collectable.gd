@@ -7,12 +7,12 @@ extends Area2D
 @onready var label = $Label
 @onready var sprite_2d = $Sprite2D
 
-var canPick = false
-const PICKUP_KEY = 'E'
+var canInteract = false
+const INTERACT_KEY = 'E'
 
 func _ready():
 	set_process_input(false)
-	label.text = "["+PICKUP_KEY+"]"
+	label.text = "["+INTERACT_KEY+"]"
 	label.visible = false
 	if texture:
 		sprite_2d.texture = texture
@@ -20,16 +20,17 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		label.visible = true
-		canPick = true
+		canInteract = true
 		set_process_input(true)
 
 func _on_body_exited(body):
 	if body.name == "Player":
 		label.visible = false
-		canPick = false
+		canInteract = false
 		set_process_input(false)
+
 func _input(event):
-	if event.is_action_pressed("pickup_item") and canPick:
+	if event.is_action_pressed("interact") and canInteract:
 		if hotbar.has_space() && itemResource.type == itemResource.CollectableType.POTION:
 			hotbar.insert(itemResource)
 			queue_free()

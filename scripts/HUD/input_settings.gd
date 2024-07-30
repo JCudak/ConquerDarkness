@@ -16,7 +16,7 @@ var input_actions = {
 	"right": "Move right",
 	"toggle_inventory": "Toggle inventory",
 	"toggle_settings": "Toggle settings",
-	"pickup_item": "Pickup item",
+	"interact": "Interact",
 	"right_click": "Reset item in inventory",
 	"attack": "Attack",
 	"quickslot_1": "Quickslot 1",

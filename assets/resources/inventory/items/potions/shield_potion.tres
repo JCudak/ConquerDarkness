@@ -9,7 +9,7 @@ region = Rect2(192, 32, 32, 32)
 
 [resource]
 script = ExtResource("1_g310m")
-shield_increase = 3
+shield_increase = 30
 name = "Shield Potion"
 type = 1
 texture = SubResource("AtlasTexture_xou0b")

@@ -9,7 +9,7 @@ func _ready():
 	quit.text = "quit"
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://assets/scenes/main.tscn")
+	get_tree().change_scene_to_file("res://assets/scenes/level_manager.tscn")
 
 
 func _on_settings_pressed():

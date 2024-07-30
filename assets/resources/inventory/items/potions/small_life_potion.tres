@@ -9,7 +9,7 @@ region = Rect2(0, 64, 32, 32)
 
 [resource]
 script = ExtResource("1_g7vvm")
-health_increase = 1
+health_increase = 10
 name = "Small Life Potion"
 type = 1
 texture = SubResource("AtlasTexture_5yv6a")

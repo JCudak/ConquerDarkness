@@ -1,22 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://dro3pwr15c6o4"]
 
-[ext_resource type="Texture2D" uid="uid://wir41qdb40om" path="res://assets/icon.svg" id="1_tfwla"]
-[ext_resource type="Texture2D" uid="uid://dbprd3kd0re14" path="res://assets/scenes/light.tres" id="2_0a8lc"]
-[ext_resource type="Script" path="res://assets/scenes/torch.gd" id="2_g3wf1"]
+[ext_resource type="Texture2D" uid="uid://bm58p8vvbea0d" path="res://assets/sprites/LightOrb.png" id="1_pdx8o"]
+[ext_resource type="Texture2D" uid="uid://dbprd3kd0re14" path="res://assets/resources/light.tres" id="2_0a8lc"]
+[ext_resource type="Script" path="res://scripts/torch.gd" id="2_g3wf1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t6mra"]
-radius = 604.152
+radius = 60.0
 
 [node name="Torch" type="Sprite2D"]
 position = Vector2(3.05176e-05, 3.8147e-06)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_tfwla")
+texture = ExtResource("1_pdx8o")
 script = ExtResource("2_g3wf1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.243137, 1)
+range_z_min = -100
+range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("2_0a8lc")
-texture_scale = 6.0
+texture_scale = 0.6
 
 [node name="LightRangeArea2D" type="Area2D" parent="."]
 

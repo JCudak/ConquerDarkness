@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7x77n"]
 [ext_resource type="Script" path="res://scripts/HUD/canvas_layer.gd" id="2_etfvp"]
 [ext_resource type="PackedScene" uid="uid://fb25b7dhraf0" path="res://assets/scenes/HUD/slots_containers_gui.tscn" id="3_r7285"]
-[ext_resource type="PackedScene" path="res://assets/scenes/pause_menu.tscn" id="4_6qi1p"]
+[ext_resource type="PackedScene" uid="uid://b15xw453ocop2" path="res://assets/scenes/pause_menu.tscn" id="4_6qi1p"]
 [ext_resource type="PackedScene" uid="uid://dn3vjaep77r6h" path="res://assets/scenes/input_settings/input_settings.tscn" id="5_5gtpt"]
 [ext_resource type="Texture2D" uid="uid://dbprd3kd0re14" path="res://assets/resources/light.tres" id="6_05tdo"]
 [ext_resource type="PackedScene" uid="uid://cea4klgxmlhqk" path="res://assets/scenes/dungeon.tscn" id="7_ks4jm"]
@@ -19,7 +19,7 @@ script = ExtResource("1_7x77n")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(46, 47)
 scale = Vector2(0.9, 0.9)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
@@ -61,7 +61,7 @@ render_target_update_mode = 4
 [node name="CanvasModulate" type="CanvasModulate" parent="SubViewportContainer/LightView"]
 color = Color(0, 0, 0, 1)
 
-[node name="Consumables" type="Node" parent="SubViewportContainer/LightView"]
+[node name="Collectables" type="Node" parent="SubViewportContainer/LightView"]
 
 [node name="Enemies" type="Node" parent="SubViewportContainer/LightView"]
 

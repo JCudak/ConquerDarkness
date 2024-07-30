@@ -39,6 +39,8 @@ func generate(visibility_tile_map: TileMap, tile_map: TileMap, width:int, height
 	connect_atlas_tiles(tile_map)
 	ensure_minimum_wall_group_size(visibility_tile_map, true)
 	connect_atlas_tiles(visibility_tile_map)
+	#tile_map = visibility_tile_map.duplicate()
+	#tile_map.material = null
 	
 	return walker
 

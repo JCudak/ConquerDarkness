@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dbprd3kd0re14" path="res://assets/scenes/light.tres" id="19_oe1wx"]
 [ext_resource type="Shader" path="res://shaders/all_white.gdshader" id="20_dq3kw"]
 [ext_resource type="PackedScene" uid="uid://bbkyj4i025eeo" path="res://assets/scenes/collectables/potions/big_damage_potion.tscn" id="20_tkafa"]
-[ext_resource type="Texture2D" uid="uid://wir41qdb40om" path="res://assets/icon.svg" id="22_147ug"]
+[ext_resource type="PackedScene" uid="uid://dro3pwr15c6o4" path="res://assets/scenes/torch.tscn" id="23_jywji"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c12je"]
 shader = ExtResource("20_dq3kw")
@@ -220,25 +220,14 @@ texture = ExtResource("19_oe1wx")
 
 [node name="Lights" type="Node2D" parent="SubViewportContainer/LightView"]
 
-[node name="Torch1" type="Sprite2D" parent="SubViewportContainer/LightView/Lights"]
-position = Vector2(299, 50)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("22_147ug")
+[node name="Torch1" parent="SubViewportContainer/LightView/Lights" instance=ExtResource("23_jywji")]
+position = Vector2(375, 90)
 
-[node name="PointLight2D" type="PointLight2D" parent="SubViewportContainer/LightView/Lights/Torch1"]
-shadow_enabled = true
-texture = ExtResource("19_oe1wx")
-texture_scale = 6.0
+[node name="Torch2" parent="SubViewportContainer/LightView/Lights" instance=ExtResource("23_jywji")]
+position = Vector2(390, 394)
 
-[node name="Torch2" type="Sprite2D" parent="SubViewportContainer/LightView/Lights"]
-position = Vector2(81, 367)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("22_147ug")
-
-[node name="PointLight2D" type="PointLight2D" parent="SubViewportContainer/LightView/Lights/Torch2"]
-shadow_enabled = true
-texture = ExtResource("19_oe1wx")
-texture_scale = 6.0
+[node name="Torch3" parent="SubViewportContainer/LightView/Lights" instance=ExtResource("23_jywji")]
+position = Vector2(241, 145)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="SubViewportContainer/LightView"]
 color = Color(0.12549, 0.12549, 0.12549, 1)

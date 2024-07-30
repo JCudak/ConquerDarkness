@@ -33,7 +33,6 @@ const SPEED_REDUCTION: int = 12
 @onready var aura := $Sprites/Aura
 @onready var shield := $Sprites/Shield
 @onready var sword := $Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D
-
 @export var linked_position_node: Node2D
 
 var is_dead: bool = false
@@ -162,6 +161,8 @@ func attack_animation():
 		
 		sword.disabled = false
 		is_attacking = true
+		
+		print("DUOPA")
 		
 		targetPosition = get_viewport().get_mouse_position()
 		

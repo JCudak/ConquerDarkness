@@ -6,6 +6,7 @@ const PlayerScene = preload("res://assets/scenes/player/player.tscn")
 @onready var hud = $CanvasLayer2/HUD
 @export var steps: int = 200
 @export var border_size: int = 2
+@onready var camera_2d = $Camera2D
 
 const MIN_HEIGHT = 4
 const MIN_WIDTH = 2
@@ -44,6 +45,8 @@ func spawn_player(walker):
 	player.slotsContainer = hud
 	add_child(player)
 	player.position = walker.get_end_room().position*32
+	camera_2d.position = player.position
+	print(player.position)
 
 func connect_atlas_tiles(tile_map: TileMap):
 	var used_cells = tile_map.get_used_cells(GROUND_LAYER)

@@ -8,7 +8,7 @@ radius = 6.25
 height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8on0p"]
-radius = 134.02
+radius = 111.273
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rglos"]
 radius = 33.7731
@@ -885,7 +885,6 @@ offset_bottom = 22.2222
 color = Color(1, 1, 1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -6.25)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3x0fo")

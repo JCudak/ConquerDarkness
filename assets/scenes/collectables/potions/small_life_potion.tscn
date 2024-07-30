@@ -15,6 +15,7 @@ region = Rect2(0, 64, 32, 32)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1yyoh"]
 
 [node name="SmallLifePotion" type="Area2D"]
+texture_filter = 1
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jtnk5")
 itemResource = ExtResource("2_tt6m5")

@@ -15,6 +15,7 @@ func next_level():
 
 func switch_level(level_scene):
 	if current_level_instance:
+		save_player_data()
 		current_level_instance.queue_free()
 	
 	current_level_instance = level_scene.instantiate()
@@ -22,17 +23,20 @@ func switch_level(level_scene):
 	var exit_node = current_level_instance.get_node("SubViewportContainer/LightView/Lights/Exit")
 	exit_node.next_level.connect(next_level)
 	
-	#if !player_data.is_empty():
-		#var player = current_level_instance.get_node("SubViewportContainer/LightView/Player")
-		#player.health = player_data["health"]
-		#player.shield = player_data["shield"]
-	#var healthAndShieldGui = current_level_instance.get_node("$CanvasLayer/HUD/HpAndShieldGui")
-	#healthAndShieldGui.setMaxHealth(player_data["max_health"])
-	#healthAndShieldGui.updateHealth(player_data["health"])
-	#healthAndShieldGui.setMaxShield(player_data["shield"])
-	#healthAndShieldGui.updateShield(player_data["max_shield"])
+	var player = current_level_instance.get_node("SubViewportContainer/LightView/Player")
+	var healthAndShieldGui = current_level_instance.get_node("CanvasLayer/HUD/HpAndShieldGui")
+	player.maxHealth = player_data["max_health"]
+	player.currentHealth = player_data["health"]
+	player.currentShield = player_data["shield"]
+	player.maxShield = player_data["max_shield"]
+	healthAndShieldGui.setMaxHealth(player.maxHealth)
+	healthAndShieldGui.setMaxShield(player.maxShield)
+	player.emit_signal("healthChanged", player.currentHealth)
+	player.emit_signal("shieldChanged", player.currentShield)
 
 func save_player_data():
-	var player = current_level_instance.get_node("Player")
-	player_data["health"] = player.health
-	player_data["shield"] = player.shield
+	var player = current_level_instance.get_node("SubViewportContainer/LightView/Player")
+	player_data["health"] = player.currentHealth
+	player_data["max_health"] = player.maxHealth
+	player_data["shield"] = player.currentShield
+	player_data["max_shield"] = player.maxShield

@@ -17,6 +17,8 @@ signal healthChanged
 @onready var prepareAttackTimer = $Timers/PrepareAttackTimer
 @onready var attackTimer = $Timers/AttackTimer
 
+signal spawn_collectable
+
 @onready var health: int = 15
 @onready var healthBar = $HealthBar
 @onready var effects = $Effects
@@ -162,6 +164,7 @@ func die():
 		deathTimer.start()
 		await deathTimer.timeout
 		
+		emit_signal("spawn_collectable", position)
 		queue_free()
 
 func _on_hurt_box_area_entered(area):

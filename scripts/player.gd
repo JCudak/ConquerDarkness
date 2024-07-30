@@ -79,15 +79,19 @@ func _physics_process(delta):
 	update_timers(delta)
 
 func update_animation():
-	var directionX = Input.get_axis("left", "right")
-	var directionY = Input.get_axis("up", "down")
+	var direction: Vector2
+	direction.x = Input.get_axis("left", "right")
+	direction.y = Input.get_axis("up", "down")
 	
-	if directionX:
-		velocity.x = directionX * speed
+	direction = direction.normalized()
+	
+	if direction.x:
+		velocity.x = direction.x * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED_REDUCTION)
-	if directionY:
-		velocity.y = directionY * speed
+		
+	if direction.y:
+		velocity.y = direction.y * speed
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED_REDUCTION)
 	

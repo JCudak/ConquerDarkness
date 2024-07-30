@@ -42,6 +42,10 @@ func connect_slots():
 		var use_item_callable = Callable(on_use_item)
 		use_item_callable = use_item_callable.bind(slot)
 		slot.use_button_clicked.connect(use_item_callable)
+		
+		var unequip_callable = Callable(special_unequip)
+		unequip_callable = unequip_callable.bind(slot)
+		slot.trash_button_clicked.connect(unequip_callable)
 
 func open():
 	visible=true

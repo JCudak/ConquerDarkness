@@ -106,6 +106,7 @@ func _on_use_button_pressed():
 
 
 func _on_trash_button_pressed():
+	trash_button_clicked.emit()
 	take_item()
 	usage_panel.visible = false
 

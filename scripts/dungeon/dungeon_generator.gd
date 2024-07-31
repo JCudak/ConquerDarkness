@@ -31,16 +31,14 @@ func generate(visibility_tile_map: TileMap, tile_map: TileMap, width:int, height
 			tmp_location.x = 2*location.x+i
 			for j in range(2):
 				tmp_location.y=2*location.y+j
-				tile_map.set_cell(GROUND_LAYER, tmp_location, 0, Vector2i(0, 0))
-				tile_map.set_cell(WALL_LAYER, tmp_location, 1, Vector2i(-1,-1))
 				visibility_tile_map.set_cell(GROUND_LAYER, tmp_location, 0, Vector2i(0, 0))
 				visibility_tile_map.set_cell(WALL_LAYER, tmp_location, 1, Vector2i(-1,-1))
-	ensure_minimum_wall_group_size(tile_map, true)
-	connect_atlas_tiles(tile_map)
+	
+	
 	ensure_minimum_wall_group_size(visibility_tile_map, true)
 	connect_atlas_tiles(visibility_tile_map)
-	#tile_map = visibility_tile_map.duplicate()
-	#tile_map.material = null
+	
+	copy_tile_map_data(visibility_tile_map, tile_map)
 	
 	return walker
 
@@ -73,6 +71,16 @@ func connect_atlas_tiles(tile_map: TileMap):
 	var used_cells_with_walls_3 = used_cells_wall.filter(meets_condition_3)
 	tile_map.set_cells_terrain_connect(WALL_LAYER, used_cells_with_walls_3, WALL_LAYER, VOID)
 
+func copy_tile_map_data(src_tile_map: TileMap, dst_tile_map: TileMap):
+	
+	for cell in src_tile_map.get_used_cells(GROUND_LAYER):
+		var atlas_coords = src_tile_map.get_cell_atlas_coords(GROUND_LAYER, cell)
+		dst_tile_map.set_cell(GROUND_LAYER, cell, src_tile_map.get_cell_source_id(GROUND_LAYER, cell), atlas_coords)
+		dst_tile_map.set_cell(WALL_LAYER, cell, 1, Vector2i(-1,-1))
+	# Copy wall layer
+	for cell in src_tile_map.get_used_cells(WALL_LAYER):
+		var atlas_coords = src_tile_map.get_cell_atlas_coords(WALL_LAYER, cell)
+		dst_tile_map.set_cell(WALL_LAYER, cell, src_tile_map.get_cell_source_id(WALL_LAYER, cell), atlas_coords)
 
 func ensure_minimum_wall_group_size(tile_map: TileMap, try_to_draw: bool = false):
 	var used_cells_wall

@@ -169,6 +169,7 @@ func _spawn_multiple(walker: Walker, THINGS: Array[PackedScene], parent: Node, c
 				while tries_amount > 0 and tile_map.get_cell_atlas_coords(GROUND_LAYER, randomized_position) != Vector2i(-1, -1):
 					randomized_position = tile_position + random_position()
 					tries_amount -= 1
+				if tries_amount == 0: continue
 				tile_position = randomized_position
 				
 			if tile_position not in busy_positions:

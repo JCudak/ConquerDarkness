@@ -1,7 +1,7 @@
 extends Control
 
-@onready var restart = $MarginContainer/VBoxContainer/VBoxContainer2/Restart/NinePatchRect/Label
-@onready var quit = $MarginContainer/VBoxContainer/VBoxContainer2/Quit/NinePatchRect/Label
+@onready var restart = $TextureRect/MarginContainer/VBoxContainer/VBoxContainer2/Restart/NinePatchRect/Label
+@onready var quit = $TextureRect/MarginContainer/VBoxContainer/VBoxContainer2/Quit/NinePatchRect/Label
 
 func _ready():
 	restart.text = "restart"

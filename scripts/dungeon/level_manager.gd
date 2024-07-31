@@ -21,10 +21,9 @@ func _ready():
 func next_level():
 	if current_level >= levels.size():
 		get_tree().change_scene_to_file("res://assets/scenes/menus/win_menu.tscn")
-		return
-	
-	switch_level(levels[current_level])
-	current_level+=1
+	else:
+		switch_level(levels[current_level])
+		current_level+=1
 
 func switch_level(level_scene):
 	if current_level_instance:
@@ -58,6 +57,6 @@ func reset_all():
 	current_level = 0
 	player_data = {health = 100, max_health = 100, shield = 0, max_shield = 50}
 	current_level_instance = null
-	PLAYER_HOTBAR
+	PLAYER_HOTBAR.clear_all_slots()
 	PLAYER_INVENTORY.clear_all_slots()
 	PLAYER_RUNE_EQUIP.clear_all_slots()

@@ -131,7 +131,6 @@ func generate_map():
 	_spawn_lights(walker)
 	_spawn_monsters(walker)
 	_spawn_collectables(walker)
-	spawn_runes_under_player(RERTH_RUNE, 3)
 	walker.queue_free()
 
 func _place_player(walker: Walker):

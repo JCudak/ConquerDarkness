@@ -19,22 +19,22 @@ signal healthChanged
 
 signal spawn_collectable
 
-@onready var health: int = 15
+@export var health: int = 15
 @onready var healthBar = $HealthBar
 @onready var effects = $Effects
 
 var player: Player = null
 var attack_direction = null
 var current_state: State = State.IDLE
-var has_line_of_sight = false
-var on_cooldown = false
-var dash_duration = 1.0
-var prepare_duration = 0.4
-var cooldown = 2
-var is_dead = false
-var is_hurt = false
-var is_in_attack_area = false
-var is_in_detection_area = false
+var has_line_of_sight: bool = false
+var on_cooldown: bool = false
+@export var dash_duration: float = 1.0
+@export var prepare_duration: float = 0.4
+@export var cooldown:float = 2.0
+var is_dead: bool = false
+var is_hurt: bool = false
+var is_in_attack_area: bool = false
+var is_in_detection_area: bool = false
 
 func _ready():
 	healthBar.max_value = health

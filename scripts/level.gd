@@ -17,7 +17,16 @@ const GROUND_LAYER: int = 0
 const TILE_SIZE: int = 32
 const TORCH = preload("res://assets/scenes/torch.tscn")
 const EXIT = preload("res://assets/scenes/exit.tscn")
+
+# ENEMIES
 const SLIME = preload("res://assets/scenes/enemies/slime.tscn")
+const SLIME_BLUE = preload("res://assets/scenes/enemies/slimeBlue.tscn")
+const SLIME_RED = preload("res://assets/scenes/enemies/slimeRed.tscn")
+const ENEMIES: Array[PackedScene] = [
+	SLIME,
+	SLIME_BLUE,
+	SLIME_RED
+	]
 
 # POTIONS
 const BIG_DAMAGE_POTION = preload("res://assets/scenes/collectables/potions/big_damage_potion.tscn")
@@ -114,7 +123,7 @@ func _spawn_lights(walker: Walker):
 	_spawn_multiple(walker, [TORCH], lights, 0.05, false)
 
 func _spawn_monsters(walker: Walker):
-	_spawn_multiple(walker, [SLIME], enemies, 0.2, true)
+	_spawn_multiple(walker, ENEMIES, enemies, 0.2, true)
 			
 func _spawn_collectables(walker: Walker):
 	_spawn_multiple(walker, POTIONS, collectables, 0.2, true)

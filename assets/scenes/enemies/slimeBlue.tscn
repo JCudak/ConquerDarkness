@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxdtnlxm0y8aq"]
+[gd_scene load_steps=18 format=3 uid="uid://v186f13f51g7"]
 
-[ext_resource type="Script" path="res://scripts/slime.gd" id="1_4sx4k"]
-[ext_resource type="Texture2D" uid="uid://4dlgbo47jt47" path="res://assets/sprites/enemies/Slime.png" id="2_ult4b"]
+[ext_resource type="Script" path="res://scripts/slime.gd" id="1_nellp"]
+[ext_resource type="Texture2D" uid="uid://bqw2qgkn4prao" path="res://assets/sprites/enemies/BlueSlime.png" id="2_jfjyb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3x0fo"]
 radius = 6.25
@@ -866,14 +866,16 @@ collision_layer = 2
 floor_stop_on_slope = false
 floor_block_on_wall = false
 platform_floor_layers = 4294967294
-script = ExtResource("1_4sx4k")
-speed = 30
+script = ExtResource("1_nellp")
+damage = 15
+health = 30
+dash_duration = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 clip_children = 2
 texture_filter = 1
 position = Vector2(0, -16.25)
-texture = ExtResource("2_ult4b")
+texture = ExtResource("2_jfjyb")
 hframes = 9
 vframes = 6
 frame = 1

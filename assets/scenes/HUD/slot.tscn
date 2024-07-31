@@ -163,14 +163,14 @@ grow_vertical = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="UseButton" type="Button" parent="UsagePanel/NinePatchRect/VBoxContainer"]
+[node name="ActionButton" type="Button" parent="UsagePanel/NinePatchRect/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(12, 15)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_nc48r")
 theme_override_font_sizes/font_size = 11
 
-[node name="Label" type="Label" parent="UsagePanel/NinePatchRect/VBoxContainer/UseButton"]
+[node name="Label" type="Label" parent="UsagePanel/NinePatchRect/VBoxContainer/ActionButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -212,5 +212,5 @@ vertical_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="UsagePanel/NinePatchRect/VBoxContainer/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="UsagePanel/NinePatchRect/VBoxContainer/ActionButton" to="." method="_on_action_button_pressed"]
 [connection signal="pressed" from="UsagePanel/NinePatchRect/VBoxContainer/TrashButton" to="." method="_on_trash_button_pressed"]

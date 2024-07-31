@@ -22,7 +22,8 @@ signal use_button_clicked
 signal trash_button_clicked
 
 func get_resource():
-	return itemGui.inventorySlot.item
+	if itemGui != null:
+		return itemGui.inventorySlot.item
 
 func insert(ig: ItemGui):
 	itemGui = ig

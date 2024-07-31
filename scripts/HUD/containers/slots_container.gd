@@ -31,3 +31,7 @@ func remove_at_index(index: int):
 func insert_slot(index: int, inventorySlot: InventorySlot):
 	slots[index] = inventorySlot
 	updated.emit()
+
+func clear_all_slots():
+	for i in slots.size():
+		remove_at_index(i)

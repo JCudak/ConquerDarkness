@@ -9,6 +9,7 @@ region = Rect2(96, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_8u4we")
+wait_time = 10.0
 name = "Algiz Rune"
 type = 0
 texture = SubResource("AtlasTexture_y2wpw")

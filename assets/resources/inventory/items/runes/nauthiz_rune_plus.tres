@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NauthizRune" load_steps=4 format=3 uid="uid://bhnnfdm7lff0j"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/nauthiz_rune.gd" id="1_6qauf"]
+[ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_qug6g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_307di"]
+atlas = ExtResource("2_qug6g")
+region = Rect2(192, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_6qauf")
+name = "Nauthiz Rune +"
+type = 0
+texture = SubResource("AtlasTexture_307di")

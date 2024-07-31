@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AlgizRune" load_steps=4 format=3 uid="uid://yjftlvhwa1jm"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/algiz_rune.gd" id="1_5pmaq"]
+[ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_sqrlv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sboe3"]
+atlas = ExtResource("2_sqrlv")
+region = Rect2(96, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_5pmaq")
+wait_time = 5.0
+name = "Algiz Rune +"
+type = 0
+texture = SubResource("AtlasTexture_sboe3")

@@ -78,7 +78,3 @@ linked_position_node = NodePath("../../VisibilityViewport/PointLight2D")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="SubViewportContainer/LightView/Player"]
 remote_path = NodePath("../../../../Camera2D")
-
-[node name="PointLight2D" type="PointLight2D" parent="SubViewportContainer/LightView/Player"]
-shadow_enabled = true
-texture = ExtResource("6_yrf83")

@@ -7,6 +7,7 @@ enum State {IDLE, PURSUING, PREPARING_ATTACK, ATTACKING}
 signal healthChanged
 
 @export var speed = 50
+@export var max_speed = 50
 @export var dash_speed = 150
 @export var damage = 10
 @onready var collision_shape_2d = $CollisionShape2D
@@ -16,6 +17,8 @@ signal healthChanged
 @onready var cooldownTimer = $Timers/CooldownTimer
 @onready var prepareAttackTimer = $Timers/PrepareAttackTimer
 @onready var attackTimer = $Timers/AttackTimer
+@onready var slow_effect_timer = $Timers/SlowEffectTimer
+@onready var slow_status_icon = $hurtBox/hurtBoxCollisionShape2D/SlowStatusIcon
 
 signal spawn_collectable
 
@@ -35,12 +38,15 @@ var is_dead: bool = false
 var is_hurt: bool = false
 var is_in_attack_area: bool = false
 var is_in_detection_area: bool = false
+var slow_status_time: float = 4.0
 
 func _ready():
+	slow_status_icon.visible = false
 	healthBar.max_value = health
 	cooldownTimer.timeout.connect(_on_cooldown_timer_timeout)
 	prepareAttackTimer.timeout.connect(_on_prepare_attack_timer_timeout)
 	attackTimer.timeout.connect(_on_attack_timer_timeout)
+	slow_effect_timer.timeout.connect(_on_slow_effect_timer_timeout)
 
 func _physics_process(delta):
 	die()
@@ -81,6 +87,10 @@ func _on_attack_timer_timeout():
 	on_cooldown = true
 	cooldownTimer.wait_time = cooldown
 	cooldownTimer.start()
+
+func _on_slow_effect_timer_timeout():
+	slow_status_icon.visible = false
+	speed = max_speed
 
 func _reset_state():
 	if is_in_attack_area:
@@ -173,6 +183,11 @@ func _on_hurt_box_area_entered(area):
 	
 	if area.name == "SwordDamageArea": # Add more names when more weapons for player
 		is_hurt = true
+		if player.slow_power != 0:
+			slow_status_icon.visible = true
+			speed = max_speed - player.slow_power
+			slow_effect_timer.wait_time = slow_status_time
+			slow_effect_timer.start()
 		effects.play("hurtBlink")
 		
 		emit_signal("healthChanged")

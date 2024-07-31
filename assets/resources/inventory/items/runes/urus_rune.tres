@@ -9,6 +9,7 @@ region = Rect2(0, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_2dhsq")
+damage_increase = 1
 name = "Urus Rune"
 type = 0
 texture = SubResource("AtlasTexture_jabl1")

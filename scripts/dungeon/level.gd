@@ -60,7 +60,7 @@ const POTIONS: Array[PackedScene] = [
 	SMALL_SHIELD_POTION,
 	SMALL_SPEED_POTION,
 	SPEED_POTION
-	]
+]
 
 # RUNES
 const ALGIZ_RUNE = preload("res://assets/scenes/collectables/runes/algiz_rune.tscn")
@@ -75,12 +75,32 @@ const RUNES: Array[PackedScene] = [
 	ALGIZ_RUNE,
 	ISA_RUNE,
 	LAGUZ_RUNE,
-	NAUTHIZ_RUNE,
+	#NAUTHIZ_RUNE,
 	RERTH_RUNE,
 	SOWELU_RUNE,
 	TEIWAZ_RUNE,
 	URUS_RUNE
-	]
+]
+
+const ALGIZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/algiz_rune_plus.tscn")
+const URUS_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/urus_rune_plus.tscn")
+const TEIWAZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/teiwaz_rune_plus.tscn")
+const RERTH_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/rerth_rune_plus.tscn")
+const SOWELU_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/sowelu_rune_plus.tscn")
+const LAGUZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/laguz_rune_plus.tscn")
+const ISA_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/isa_rune_plus.tscn")
+
+const RUNES_PLUS: Array[PackedScene] = [
+	ALGIZ_RUNE_PLUS,
+	URUS_RUNE_PLUS,
+	TEIWAZ_RUNE_PLUS,
+	RERTH_RUNE_PLUS,
+	SOWELU_RUNE_PLUS,
+	LAGUZ_RUNE_PLUS,
+	ISA_RUNE_PLUS
+]
+
+var rune_plus_spawn_chance: float = 0.0
 
 var player_room: Vector2
 var exit_room: Vector2
@@ -115,9 +135,15 @@ func generate_map():
 	walker.queue_free()
 
 func _place_player(walker: Walker):
-	print("player: ", player_room)
 	player.position = player_room*TILE_SIZE
 	add_safe_positions(player_room)
+
+func spawn_runes_under_player(RUNE:PackedScene, amount):
+	for i in range(amount):
+		var rune = RUNE.instantiate()
+		rune.position = player.position
+		collectables.add_child(rune)
+	
 
 func _spawn_lights(walker: Walker):
 	_spawn_multiple(walker, [TORCH], lights, 0.05, false)
@@ -161,12 +187,18 @@ func _spawn_exit(walker: Walker):
 	add_safe_positions(exit_room)
 
 func _spawn_rune_at_place(spawn_position: Vector2):
+	if randf_range(0,1) < rune_plus_spawn_chance:
+		var random_index = randi_range(0, RUNES_PLUS.size() - 1)
+		var rune = RUNES_PLUS[random_index].instantiate()
+		rune.position = spawn_position
+		collectables.add_child(rune)
+	
 	if randf_range(0,1) < 0.5:
 		var random_index = randi_range(0, RUNES.size() - 1)
 		var rune = RUNES[random_index].instantiate()
 		rune.position = spawn_position
 		collectables.add_child(rune)
-
+		
 func random_position() -> Vector2:
 	var x = int(randi_range(0, 1))
 	var y = int(randi_range(0, 1))

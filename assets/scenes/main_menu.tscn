@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnhq30dvhn4ae"]
+[gd_scene load_steps=6 format=3 uid="uid://cnhq30dvhn4ae"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_cq4h6"]
 [ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/gui_button.tscn" id="2_icbml"]
+[ext_resource type="PackedScene" uid="uid://dn3vjaep77r6h" path="res://assets/scenes/input_settings/input_settings.tscn" id="3_1hwxp"]
 
 [sub_resource type="SystemFont" id="SystemFont_81c8j"]
 
@@ -66,6 +67,9 @@ layout_mode = 2
 
 [node name="Quit" parent="MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("2_icbml")]
 layout_mode = 2
+
+[node name="InputSettings" parent="." instance=ExtResource("3_1hwxp")]
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]

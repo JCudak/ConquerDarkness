@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://chkbbejdqfu"]
+[gd_scene load_steps=28 format=3 uid="uid://chkbbejdqfu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uv8wg"]
 [ext_resource type="Texture2D" uid="uid://cdlpama4b6dtx" path="res://assets/sprites/player/player_no_weapon.png" id="2_d504q"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d41s3i3ukdfx" path="res://assets/sprites/player/player_aura.png" id="4_vyl68"]
 [ext_resource type="Texture2D" uid="uid://cxqnf25dy4sn3" path="res://assets/sprites/player/Shield.png" id="5_liw03"]
 [ext_resource type="Texture2D" uid="uid://dbprd3kd0re14" path="res://assets/resources/light.tres" id="6_ntfsh"]
+[ext_resource type="AudioStream" uid="uid://jikmsxwywuak" path="res://audio/walking_sfx.mp3" id="7_htt04"]
+[ext_resource type="AudioStream" uid="uid://boj505txtxibl" path="res://audio/attack_sfx.mp3" id="8_gqb7v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1051l"]
 radius = 6.66667
@@ -890,6 +892,23 @@ one_shot = true
 [node name="PointLight2D" type="PointLight2D" parent="."]
 shadow_enabled = true
 texture = ExtResource("6_ntfsh")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="SoundEffects"]
+one_shot = true
+
+[node name="WalkingTimer" type="Timer" parent="SoundEffects"]
+one_shot = true
+
+[node name="WalkingSFX" type="AudioStreamPlayer2D" parent="SoundEffects"]
+position = Vector2(3.8147e-06, 3.8147e-06)
+scale = Vector2(0.9, 0.9)
+stream = ExtResource("7_htt04")
+area_mask = 2
+
+[node name="AttackSFX" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("8_gqb7v")
 
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

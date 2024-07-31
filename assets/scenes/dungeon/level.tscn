@@ -42,6 +42,7 @@ offset_bottom = 40.0
 
 [node name="VisibilityViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
+audio_listener_enable_2d = true
 size = Vector2i(10000, 10000)
 render_target_update_mode = 4
 
@@ -55,6 +56,7 @@ material = SubResource("ShaderMaterial_snudw")
 
 [node name="LightView" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
+audio_listener_enable_2d = true
 size = Vector2i(10000, 10000)
 render_target_update_mode = 4
 

@@ -19,6 +19,8 @@ signal healthChanged
 @onready var attackTimer = $Timers/AttackTimer
 @onready var slow_effect_timer = $Timers/SlowEffectTimer
 @onready var slow_status_icon = $hurtBox/hurtBoxCollisionShape2D/SlowStatusIcon
+@onready var enemy_dash = $SoundEffects/EnemyDash
+@onready var enemy_walk = $SoundEffects/EnemyWalk
 
 signal spawn_collectable
 
@@ -36,11 +38,13 @@ var on_cooldown: bool = false
 @export var cooldown:float = 2.0
 var is_dead: bool = false
 var is_hurt: bool = false
+var walk_sound: bool = false
 var is_in_attack_area: bool = false
 var is_in_detection_area: bool = false
 var slow_status_time: float = 4.0
 
 func _ready():
+	
 	slow_status_icon.visible = false
 	healthBar.max_value = health
 	cooldownTimer.timeout.connect(_on_cooldown_timer_timeout)
@@ -81,6 +85,8 @@ func _on_prepare_attack_timer_timeout():
 	current_state = State.ATTACKING
 	attackTimer.wait_time = dash_duration
 	attackTimer.start()
+	
+	AudioController.play_sfx($SoundEffects/EnemyDash.stream, $SoundEffects, -30.0, 10.0)
 
 func _on_attack_timer_timeout():
 	attackTimer.stop()
@@ -107,7 +113,17 @@ func pursue_player(delta):
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction[0] * speed
 	velocity.y = direction[1] * speed 
+	
+	if !walk_sound:
+		play_walk_sound()
+	
 	move_and_slide()
+
+func play_walk_sound():
+	walk_sound = true
+	AudioController.play_sfx($SoundEffects/EnemyWalk.stream, $SoundEffects, -30.0, 5.0)
+	await get_tree().create_timer(0.6).timeout
+	walk_sound = false
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":

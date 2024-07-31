@@ -122,6 +122,9 @@ func update_animation():
 	
 	if (absf(velocity.x) > 1.0 || absf(velocity.y) > 1.0):
 		animation.play("running")
+		if $SoundEffects/WalkingTimer.time_left <= 0:
+			AudioController.play_sfx($SoundEffects/WalkingSFX.stream, $SoundEffects, -20.0, 10.0)
+			$SoundEffects/WalkingTimer.start(0.4)
 	else:
 		animation.play("default")
 
@@ -198,6 +201,10 @@ func attack_animation():
 		else:
 			sprites.scale.x = abs(sprites.scale.x)
 			animation.play("attackDown") 
+		
+		if $SoundEffects/AttackTimer.time_left <= 0:
+			AudioController.play_sfx($SoundEffects/AttackSFX.stream, $SoundEffects, -20.0, 10.0)
+			$SoundEffects/AttackTimer.start(0.4)
 		
 		await get_tree().create_timer(attack_cooldown).timeout
 		

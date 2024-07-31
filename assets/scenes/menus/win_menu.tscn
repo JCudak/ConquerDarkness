@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c0h4bg18j1dg5" path="res://assets/sprites/UI/WinMenu.png" id="2_7bdpi"]
 [ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/menus/gui_button.tscn" id="2_ounlr"]
 
-[sub_resource type="SystemFont" id="SystemFont_vaa0p"]
+[sub_resource type="SystemFont" id="SystemFont_whn7g"]
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_5w56x"]
-font = SubResource("SystemFont_vaa0p")
+font = SubResource("SystemFont_whn7g")
 font_size = 150
 outline_size = 25
 outline_color = Color(0, 0, 0, 1)

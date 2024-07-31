@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxdtnlxm0y8aq"]
+[gd_scene load_steps=21 format=3 uid="uid://cxdtnlxm0y8aq"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_4sx4k"]
 [ext_resource type="Texture2D" uid="uid://4dlgbo47jt47" path="res://assets/sprites/enemies/Slime.png" id="2_ult4b"]
 [ext_resource type="Texture2D" uid="uid://c8jl8pagi8lil" path="res://assets/sprites/SlowStatus.png" id="3_eckqd"]
+[ext_resource type="AudioStream" uid="uid://ctxlsboekwn30" path="res://audio/slime-squish-13-219048.mp3" id="4_b5m4c"]
+[ext_resource type="AudioStream" uid="uid://2lxdcot23cl4" path="res://audio/goopy-slime-13-219787.mp3" id="5_i0tfp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3x0fo"]
 radius = 6.25
@@ -928,7 +930,6 @@ shape = SubResource("CapsuleShape2D_wl7y5")
 [node name="SlowStatusIcon" type="Sprite2D" parent="hurtBox/hurtBoxCollisionShape2D"]
 position = Vector2(-20, 0)
 rotation = -1.5708
-scale = Vector2(1, 1)
 texture = ExtResource("3_eckqd")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -960,6 +961,12 @@ libraries = {
 
 [node name="Timers" type="Node" parent="."]
 
+[node name="DashTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="WalkingTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="DeathTimer" type="Timer" parent="Timers"]
 wait_time = 1.3
 one_shot = true
@@ -975,6 +982,16 @@ one_shot = true
 [node name="AttackTimer" type="Timer" parent="Timers"]
 
 [node name="SlowEffectTimer" type="Timer" parent="Timers"]
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="EnemyDash" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("4_b5m4c")
+volume_db = -20.079
+
+[node name="EnemyWalk" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("5_i0tfp")
+volume_db = -20.0
 
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvlk0r4g8q0vt"]
 
-[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_vun0x"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/collectable.gd" id="1_vun0x"]
 [ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="3_mnopa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwxib"]

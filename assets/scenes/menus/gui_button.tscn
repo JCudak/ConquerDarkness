@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cov4wvkxrxhmx"]
 
-[ext_resource type="Texture2D" uid="uid://d1xhmint6od3v" path="res://assets/sprites/UI/big_ui_frame.png" id="1_ent5t"]
+[ext_resource type="Texture2D" uid="uid://d1xhmint6od3v" path="res://assets/sprites/UI/big_ui_frame.png" id="1_nemy6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5woeb"]
 bg_color = Color(0.247059, 0.662745, 0.74902, 0)
@@ -13,12 +13,15 @@ shadow_offset = Vector2(15, 15)
 
 [sub_resource type="LabelSettings" id="LabelSettings_r24km"]
 font = SubResource("SystemFont_tpy1t")
-font_size = 27
-outline_size = 5
+font_size = 50
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
 [node name="GuiButton" type="Button"]
-custom_minimum_size = Vector2(200, 50)
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+custom_minimum_size = Vector2(375, 100)
+offset_right = 300.0
+offset_bottom = 75.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_5woeb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5woeb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5woeb")
@@ -27,18 +30,12 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_k22ux")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -26.5
-offset_right = 100.0
-offset_bottom = 26.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ent5t")
+texture = ExtResource("1_nemy6")
 region_rect = Rect2(28, 32, 72, 68)
 patch_margin_left = 12
 patch_margin_top = 12
@@ -53,12 +50,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -26.5
-offset_right = 100.5
-offset_bottom = 18.5
+offset_left = -45.5
+offset_top = -32.5
+offset_right = 45.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
+text = "Settings"
 label_settings = SubResource("LabelSettings_r24km")
 horizontal_alignment = 1
 vertical_alignment = 1

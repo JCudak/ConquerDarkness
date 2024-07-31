@@ -1,7 +1,11 @@
 class_name LevelManager extends Node2D
 
 # Preload your levels
-@onready var levels = [preload("res://assets/scenes/level.tscn"), preload("res://assets/scenes/level.tscn"), preload("res://assets/scenes/level.tscn")]
+@onready var levels: Array = [
+	preload("res://assets/scenes/dungeon/level.tscn"), 
+	preload("res://assets/scenes/dungeon/level.tscn"), 
+	preload("res://assets/scenes/dungeon/level.tscn")
+	]
 var current_level_instance = null
 var current_level: int = 0
 var player_data = {health = 100, max_health = 100, shield = 0, max_shield = 50}
@@ -10,6 +14,10 @@ func _ready():
 	next_level()
 
 func next_level():
+	if current_level >= levels.size():
+		get_tree().change_scene_to_file("res://assets/scenes/menus/win_menu.tscn")
+		return
+	
 	switch_level(levels[current_level])
 	current_level+=1
 

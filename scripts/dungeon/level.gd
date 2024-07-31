@@ -15,8 +15,8 @@ extends Node2D
 const GROUND_LAYER: int = 0
 
 const TILE_SIZE: int = 32
-const TORCH = preload("res://assets/scenes/torch.tscn")
-const EXIT = preload("res://assets/scenes/exit.tscn")
+const TORCH = preload("res://assets/scenes/dungeon/torch.tscn")
+const EXIT = preload("res://assets/scenes/dungeon/exit.tscn")
 
 # ENEMIES
 const SLIME = preload("res://assets/scenes/enemies/slime.tscn")

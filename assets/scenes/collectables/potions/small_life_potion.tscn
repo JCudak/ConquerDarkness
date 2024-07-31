@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8usqkevbdwpn"]
 
-[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_jtnk5"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/collectable.gd" id="1_jtnk5"]
 [ext_resource type="Resource" uid="uid://4a80fpilmeit" path="res://assets/resources/inventory/items/potions/small_life_potion.tres" id="2_tt6m5"]
 [ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="3_ak7pc"]
 

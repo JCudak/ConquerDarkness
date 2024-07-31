@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddl17r81ei208"]
 
-[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_bn0t6"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/collectable.gd" id="1_bn0t6"]
 [ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_fedyg"]
 [ext_resource type="Resource" uid="uid://vxxct7ynaknu" path="res://assets/resources/inventory/items/potions/immunity_potion.tres" id="2_pys18"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbkyj4i025eeo"]
 
-[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_gxdnw"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/collectable.gd" id="1_gxdnw"]
 [ext_resource type="Resource" uid="uid://3yshqtqtbo1j" path="res://assets/resources/inventory/items/potions/big_damage_potion.tres" id="2_em8h7"]
 [ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_y3tna"]
 

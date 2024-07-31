@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0mo6hy2ei440"]
 
-[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_ga408"]
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/collectable.gd" id="1_ga408"]
 [ext_resource type="Resource" uid="uid://3no3kb5gel01" path="res://assets/resources/inventory/items/potions/damage_potion.tres" id="2_rtn1c"]
 [ext_resource type="Texture2D" uid="uid://bwthfkr0rs1ia" path="res://assets/sprites/collectables/Potions.png" id="2_twfxr"]
 

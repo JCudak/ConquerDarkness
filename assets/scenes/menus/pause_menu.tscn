@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://b15xw453ocop2"]
 
 [ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="1_ftm7f"]
-[ext_resource type="Script" path="res://scripts/HUD/pause_menu.gd" id="1_omcdn"]
+[ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_omcdn"]
 [ext_resource type="Texture2D" uid="uid://d1xhmint6od3v" path="res://assets/sprites/UI/big_ui_frame.png" id="3_xnl76"]
-[ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/gui_button.tscn" id="4_4rubm"]
+[ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/menus/gui_button.tscn" id="4_4rubm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pnqym"]
 shader = ExtResource("1_ftm7f")
@@ -83,9 +83,12 @@ script = ExtResource("1_omcdn")
 
 [node name="BlurRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_pnqym")
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -95,7 +98,7 @@ libraries = {
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-custom_minimum_size = Vector2(330, 330)
+custom_minimum_size = Vector2(475, 475)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

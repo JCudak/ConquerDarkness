@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn3vjaep77r6h"]
 
-[ext_resource type="Script" path="res://scripts/HUD/input_settings.gd" id="1_br2po"]
-[ext_resource type="PackedScene" uid="uid://c2boi33dg7won" path="res://assets/scenes/input_settings/input_button.tscn" id="1_k1nge"]
+[ext_resource type="Script" path="res://scripts/menus/input_settings.gd" id="1_br2po"]
+[ext_resource type="PackedScene" uid="uid://c2boi33dg7won" path="res://assets/scenes/menus/input_settings/input_button.tscn" id="1_k1nge"]
 [ext_resource type="Texture2D" uid="uid://d1xhmint6od3v" path="res://assets/sprites/UI/big_ui_frame.png" id="2_jd4sr"]
 
 [sub_resource type="SystemFont" id="SystemFont_bkjo1"]

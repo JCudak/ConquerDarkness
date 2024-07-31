@@ -126,7 +126,7 @@ func die():
 		deathTimer.start()
 		await deathTimer.timeout
 		
-		get_tree().change_scene_to_file("res://assets/scenes/death_menu.tscn")
+		get_tree().change_scene_to_file("res://assets/scenes/menus/death_menu.tscn")
 
 func _on_hurt_box_area_entered(area):
 	if is_hurt:

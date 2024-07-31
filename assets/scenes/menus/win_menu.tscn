@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://lswnpf347cfu"]
+
+[ext_resource type="Script" path="res://scripts/menus/death_menu.gd" id="1_pham6"]
+[ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/menus/gui_button.tscn" id="2_ounlr"]
+
+[sub_resource type="SystemFont" id="SystemFont_vaa0p"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5w56x"]
+font = SubResource("SystemFont_vaa0p")
+font_size = 150
+font_color = Color(0.529412, 1, 1, 1)
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.537255)
+shadow_offset = Vector2(15, 15)
+
+[node name="WinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pham6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -435.0
+offset_top = -124.0
+offset_right = 435.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+text = "You kicked butt 
+like a boss"
+label_settings = SubResource("LabelSettings_5w56x")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Restart" parent="MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("2_ounlr")]
+layout_mode = 2
+
+[node name="Quit" parent="MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("2_ounlr")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]

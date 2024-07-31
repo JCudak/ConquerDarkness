@@ -9,7 +9,7 @@ region = Rect2(64, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_aooqn")
-speed_increase = 50
+speed_increase = 25
 speed_increase_duration = 20
 name = "Big Speed Potion"
 type = 1

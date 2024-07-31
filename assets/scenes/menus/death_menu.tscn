@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dr2u1oeaagx6j"]
 
-[ext_resource type="Script" path="res://scripts/HUD/death_menu.gd" id="1_arbrm"]
-[ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/gui_button.tscn" id="1_efmlc"]
+[ext_resource type="Script" path="res://scripts/menus/death_menu.gd" id="1_arbrm"]
+[ext_resource type="PackedScene" uid="uid://cov4wvkxrxhmx" path="res://assets/scenes/menus/gui_button.tscn" id="1_efmlc"]
 
 [sub_resource type="SystemFont" id="SystemFont_vaa0p"]
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_5w56x"]
 font = SubResource("SystemFont_vaa0p")
-font_size = 50
+font_size = 130
 font_color = Color(0.529412, 1, 1, 1)
 outline_size = 14
 outline_color = Color(0, 0, 0, 1)
@@ -38,20 +38,20 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 200
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-text = "Game over bitch"
+text = "The Darkness Prevails"
 label_settings = SubResource("LabelSettings_5w56x")
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

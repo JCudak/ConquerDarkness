@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://wjwq34h5cfjn"]
+
+[ext_resource type="Script" path="res://assets/scenes/audio/audio_controller.gd" id="1_a5vvh"]
+[ext_resource type="AudioStream" uid="uid://8w7ngsueq5os" path="res://audio/a_dungeon_ambience_loop-79423.mp3" id="1_ttxyq"]
+
+[node name="AudioController" type="Node2D"]
+script = ExtResource("1_a5vvh")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ttxyq")
+autoplay = true

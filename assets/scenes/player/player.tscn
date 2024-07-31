@@ -891,5 +891,7 @@ one_shot = true
 shadow_enabled = true
 texture = ExtResource("6_ntfsh")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

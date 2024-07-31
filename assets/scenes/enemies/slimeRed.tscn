@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://6be7tqg0mnmn"]
+[gd_scene load_steps=21 format=3 uid="uid://6be7tqg0mnmn"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_2bvit"]
 [ext_resource type="Texture2D" uid="uid://cnv1mxmsfvmg1" path="res://assets/sprites/enemies/RedSlime.png" id="2_hwu5i"]
 [ext_resource type="Texture2D" uid="uid://c8jl8pagi8lil" path="res://assets/sprites/SlowStatus.png" id="3_twx7d"]
+[ext_resource type="AudioStream" uid="uid://ctxlsboekwn30" path="res://audio/slime-squish-13-219048.mp3" id="4_6dseu"]
+[ext_resource type="AudioStream" uid="uid://2lxdcot23cl4" path="res://audio/goopy-slime-13-219787.mp3" id="5_ws3n4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3x0fo"]
 radius = 6.25
@@ -932,7 +934,6 @@ shape = SubResource("CapsuleShape2D_wl7y5")
 [node name="SlowStatusIcon" type="Sprite2D" parent="hurtBox/hurtBoxCollisionShape2D"]
 position = Vector2(-20, 0)
 rotation = -1.5708
-scale = Vector2(1, 1)
 texture = ExtResource("3_twx7d")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -979,6 +980,16 @@ one_shot = true
 [node name="AttackTimer" type="Timer" parent="Timers"]
 
 [node name="SlowEffectTimer" type="Timer" parent="Timers"]
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="EnemyDash" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("4_6dseu")
+volume_db = -20.079
+
+[node name="EnemyWalk" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("5_ws3n4")
+volume_db = -20.0
 
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+AudioController="*res://assets/scenes/audio/audio_controller.tscn"
+
 [display]
 
 window/size/viewport_width=1920

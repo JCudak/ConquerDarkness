@@ -19,6 +19,8 @@ signal healthChanged
 @onready var attackTimer = $Timers/AttackTimer
 @onready var slow_effect_timer = $Timers/SlowEffectTimer
 @onready var slow_status_icon = $hurtBox/hurtBoxCollisionShape2D/SlowStatusIcon
+@onready var enemy_dash = $SoundEffects/EnemyDash
+@onready var enemy_walk = $SoundEffects/EnemyWalk
 
 signal spawn_collectable
 
@@ -81,6 +83,8 @@ func _on_prepare_attack_timer_timeout():
 	current_state = State.ATTACKING
 	attackTimer.wait_time = dash_duration
 	attackTimer.start()
+	
+	AudioController.play_sfx($SoundEffects/EnemyDash.stream, $SoundEffects, -30.0, 10.0)
 
 func _on_attack_timer_timeout():
 	attackTimer.stop()
@@ -107,6 +111,7 @@ func pursue_player(delta):
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction[0] * speed
 	velocity.y = direction[1] * speed 
+	AudioController.play_sfx($SoundEffects/EnemyWalk.stream, $SoundEffects, -30.0, 5.0)
 	move_and_slide()
 
 func _on_detection_area_body_entered(body):

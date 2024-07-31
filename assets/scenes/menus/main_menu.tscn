@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bq1ehye12hi1a" path="res://assets/sprites/UI/MainMenu.png" id="2_sk1tt"]
 [ext_resource type="PackedScene" uid="uid://dn3vjaep77r6h" path="res://assets/scenes/menus/input_settings/input_settings.tscn" id="3_1hwxp"]
 
-[sub_resource type="SystemFont" id="SystemFont_81c8j"]
+[sub_resource type="SystemFont" id="SystemFont_nxafu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lyl3"]
-font = SubResource("SystemFont_81c8j")
+font = SubResource("SystemFont_nxafu")
 font_size = 175
 font_color = Color(0, 0, 0, 1)
 outline_size = 14

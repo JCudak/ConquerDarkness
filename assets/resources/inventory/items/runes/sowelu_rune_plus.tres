@@ -9,6 +9,7 @@ region = Rect2(128, 32, 32, 32)
 
 [resource]
 script = ExtResource("1_2j33u")
+vision_increase = 0.1
 name = "Sowelu Rune +"
 type = 0
 texture = SubResource("AtlasTexture_4ivcv")

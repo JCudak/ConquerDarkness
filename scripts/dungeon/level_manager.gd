@@ -10,7 +10,12 @@ var current_level_instance = null
 var current_level: int = 0
 var player_data = {health = 100, max_health = 100, shield = 0, max_shield = 50}
 
+const PLAYER_HOTBAR = preload("res://assets/resources/inventory/player_hotbar.tres")
+const PLAYER_INVENTORY = preload("res://assets/resources/inventory/player_inventory.tres")
+const PLAYER_RUNE_EQUIP = preload("res://assets/resources/inventory/player_rune_equip.tres")
+
 func _ready():
+	reset_all()
 	next_level()
 
 func next_level():
@@ -48,3 +53,11 @@ func save_player_data():
 	player_data["max_health"] = player.maxHealth
 	player_data["shield"] = player.currentShield
 	player_data["max_shield"] = player.maxShield
+
+func reset_all():
+	current_level = 0
+	player_data = {health = 100, max_health = 100, shield = 0, max_shield = 50}
+	current_level_instance = null
+	PLAYER_HOTBAR
+	PLAYER_INVENTORY.clear_all_slots()
+	PLAYER_RUNE_EQUIP.clear_all_slots()

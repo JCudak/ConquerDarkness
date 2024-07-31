@@ -60,7 +60,7 @@ const POTIONS: Array[PackedScene] = [
 	SMALL_SHIELD_POTION,
 	SMALL_SPEED_POTION,
 	SPEED_POTION
-	]
+]
 
 # RUNES
 const ALGIZ_RUNE = preload("res://assets/scenes/collectables/runes/algiz_rune.tscn")
@@ -80,7 +80,11 @@ const RUNES: Array[PackedScene] = [
 	SOWELU_RUNE,
 	TEIWAZ_RUNE,
 	URUS_RUNE
-	]
+]
+const ALGIZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/algiz_rune_plus.tscn")
+const RUNES_PLUS: Array[PackedScene] = [
+	ALGIZ_RUNE_PLUS
+]
 
 var player_room: Vector2
 var exit_room: Vector2
@@ -118,6 +122,15 @@ func _place_player(walker: Walker):
 	print("player: ", player_room)
 	player.position = player_room*TILE_SIZE
 	add_safe_positions(player_room)
+	spawn_runes_under_player(ALGIZ_RUNE, 2)
+	spawn_runes_under_player(ALGIZ_RUNE_PLUS, 1)
+
+func spawn_runes_under_player(RUNE:PackedScene, amount):
+	for i in range(amount):
+		var rune = RUNE.instantiate()
+		rune.position = player.position
+		collectables.add_child(rune)
+	
 
 func _spawn_lights(walker: Walker):
 	_spawn_multiple(walker, [TORCH], lights, 0.05, false)

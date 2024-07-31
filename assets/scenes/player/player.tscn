@@ -883,5 +883,8 @@ one_shot = true
 [node name="DarknessDamageTimer" type="Timer" parent="Timers"]
 wait_time = 0.5
 
+[node name="NotDamagedTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

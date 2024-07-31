@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RerthRune" load_steps=4 format=3 uid="uid://dh0kmbpp33xod"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/rerth_rune.gd" id="1_v4nyb"]
+[ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_cepvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37ugj"]
+atlas = ExtResource("2_cepvy")
+region = Rect2(224, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_v4nyb")
+name = "Rerth Rune +"
+type = 0
+texture = SubResource("AtlasTexture_37ugj")

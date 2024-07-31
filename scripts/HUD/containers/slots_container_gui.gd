@@ -169,3 +169,8 @@ func _input(event):
 		put_item_back()
 		
 	update_item_in_hand()
+	
+
+func clear_all_slots():
+	for slot in slots:
+		slot.clear()

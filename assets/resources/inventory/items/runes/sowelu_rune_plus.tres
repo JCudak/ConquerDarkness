@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoweluRune" load_steps=4 format=3 uid="uid://cls2yfbxo5tqt"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/sowelu_rune.gd" id="1_2j33u"]
+[ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_8nm64"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ivcv"]
+atlas = ExtResource("2_8nm64")
+region = Rect2(128, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_2j33u")
+name = "Sowelu Rune +"
+type = 0
+texture = SubResource("AtlasTexture_4ivcv")

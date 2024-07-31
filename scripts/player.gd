@@ -18,17 +18,19 @@ const SPEED_REDUCTION: int = 12
 @export var damage: int = 5
 
 # rune variables
-@export var damaged_time = 0.0
-@export var Algiz_count = 0
-@export var Algiz_shield = 2
-@export var Algiz_time = 10 # in seconds
+@export var algiz_count = 0
+var algiz_time = 10.0
 
 @onready var currentHealth: int = maxHealth
 @onready var currentShield: int = 0
+
+# Timers
 @onready var deathTimer := $Timers/DeathTimer
 @onready var hurtTimer := $Timers/HurtTimer
 @onready var speed_up_timer := $Timers/SpeedUpTimer
 @onready var damage_up_timer := $Timers/DamageUpTimer
+@onready var not_damaged_timer = $Timers/NotDamagedTimer
+
 @onready var effects := $Effects
 @onready var aura := $Sprites/Aura
 @onready var shield := $Sprites/Shield
@@ -48,6 +50,13 @@ var targetPosition: Vector2
 func _ready():
 	aura.visible = false
 	shield.visible = false
+	update_connects()
+			
+	effects.play("RESET")
+	
+
+func update_connects():
+	
 	var containers = slotsContainer.get_children()
 	
 	for container in containers:
@@ -57,8 +66,8 @@ func _ready():
 		if container is RuneEquipGui:
 			container.on_rune_equip.connect(on_rune_equip)
 			container.on_rune_unequip.connect(on_rune_unequip)
-			
-	effects.play("RESET")
+	
+	not_damaged_timer.timeout.connect(add_algiz_shield)
 
 func _process(delta):
 	if linked_position_node != null:
@@ -76,7 +85,6 @@ func _physics_process(delta):
 	update_animation()
 	move_and_slide()
 	attack_animation()
-	update_timers(delta)
 
 func update_animation():
 	var direction: Vector2
@@ -133,6 +141,9 @@ func _on_hurt_box_area_entered(area):
 		return
 	
 	if area.name == "hitBox": # Add more names when new enemies
+		if algiz_count > 0 and current_immunities < 2:
+			not_damaged_timer.wait_time = algiz_time
+			not_damaged_timer.start()
 		if current_immunities > 0:
 			current_immunities -= 1
 			if current_immunities == 0:
@@ -140,7 +151,7 @@ func _on_hurt_box_area_entered(area):
 				pass
 		else:
 			is_hurt = true
-			damaged_time = 0
+			
 			var enemy: Enemy = area.get_parent()
 			
 			if currentShield > 0:
@@ -189,10 +200,9 @@ func attack_animation():
 		is_attacking = false
 		sword.disabled = true
 
-func update_timers(delta):
-	damaged_time += delta
-	if Algiz_count > 0 and damaged_time > Algiz_time and damaged_time <= Algiz_time + delta:
-		add_shield(Algiz_shield * Algiz_count)
+func add_algiz_shield():
+	if algiz_count > 0 and current_immunities == 0:
+		add_immunity(algiz_count)
 
 func use_item(item: InventoryItem):
 	item.use(self)
@@ -248,13 +258,19 @@ func damage_up(damage_increase, damage_increase_duration):
 func rune_damage_change(damage_increase):
 	damage += damage_increase
 
-func add_rune(rune: String):
-	match rune:
-		"Algiz":
-			if Algiz_count == 0:
-				damaged_time = 0.0
-			Algiz_count += 1
-
+func update_algiz_time():
+	algiz_time = 0
+	for slot in slotsContainer.get_node("RuneEquipGUI").slots:
+		var rune: Rune = slot.get_resource()
+		
+		if rune and rune is AlgizRune:
+			algiz_time += rune.wait_time
+	
+	algiz_time /= algiz_count
+	if not_damaged_timer.is_stopped():
+		not_damaged_timer.wait_time = algiz_time
+		not_damaged_timer.start()
+		
 func darkness_damage():
 	is_hurt_by_darkness = true
 	if currentShield > 0:

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TeiwazRune" load_steps=4 format=3 uid="uid://cjua0s7fx2elp"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/teiwaz_rune.gd" id="1_5llaj"]
+[ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_i7k4w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uopsv"]
+atlas = ExtResource("2_i7k4w")
+region = Rect2(160, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_5llaj")
+name = "Teiwaz Rune +"
+type = 0
+texture = SubResource("AtlasTexture_uopsv")

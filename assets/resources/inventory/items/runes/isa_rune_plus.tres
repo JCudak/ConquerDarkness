@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="IsaRune" load_steps=4 format=3 uid="uid://bh67m828gk0lf"]
+
+[ext_resource type="Script" path="res://scripts/HUD/containers/items/runes/isa_rune.gd" id="1_20dyo"]
+[ext_resource type="Texture2D" uid="uid://ek78fy4u0pe7" path="res://assets/sprites/collectables/Runes.png" id="2_gd6u4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eab4y"]
+atlas = ExtResource("2_gd6u4")
+region = Rect2(32, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_20dyo")
+name = "Isa Rune +"
+type = 0
+texture = SubResource("AtlasTexture_eab4y")

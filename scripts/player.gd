@@ -16,10 +16,12 @@ const SPEED_REDUCTION: int = 12
 @export var maxHealth: int = 100
 @export var maxShield: int = 50
 @export var damage: int = 5
+@export var attack_cooldown: float = 0.8
+
 
 # rune variables
 @export var algiz_count = 0
-var algiz_time = 10.0
+var algiz_time = 0
 
 @onready var currentHealth: int = maxHealth
 @onready var currentShield: int = 0
@@ -36,6 +38,7 @@ var algiz_time = 10.0
 @onready var shield := $Sprites/Shield
 @onready var sword := $Sprites/Sword/SwordDamageArea/SwordDamageCollisionShape2D
 @export var linked_position_node: Node2D
+@onready var world := $"../../.."
 
 var is_dead: bool = false
 var is_hurt: bool = false
@@ -195,7 +198,7 @@ func attack_animation():
 			sprites.scale.x = abs(sprites.scale.x)
 			animation.play("attackDown") 
 		
-		await get_tree().create_timer(0.6).timeout
+		await get_tree().create_timer(attack_cooldown).timeout
 		
 		is_attacking = false
 		sword.disabled = true
@@ -254,9 +257,6 @@ func damage_up(damage_increase, damage_increase_duration):
 	
 	damage -= damage_increase
 	aura.visible = false
-
-func rune_damage_change(damage_increase):
-	damage += damage_increase
 
 func update_algiz_time():
 	algiz_time = 0

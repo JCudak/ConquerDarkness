@@ -9,6 +9,7 @@ region = Rect2(224, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_froo1")
+drop_chance_increase = 0.05
 name = "Rerth Rune"
 type = 0
 texture = SubResource("AtlasTexture_nwc4k")

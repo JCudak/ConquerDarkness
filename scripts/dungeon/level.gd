@@ -81,10 +81,22 @@ const RUNES: Array[PackedScene] = [
 	TEIWAZ_RUNE,
 	URUS_RUNE
 ]
+
 const ALGIZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/algiz_rune_plus.tscn")
+const URUS_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/urus_rune_plus.tscn")
+const TEIWAZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/teiwaz_rune_plus.tscn")
+const RERTH_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/rerth_rune_plus.tscn")
+
+
+
 const RUNES_PLUS: Array[PackedScene] = [
-	ALGIZ_RUNE_PLUS
+	ALGIZ_RUNE_PLUS,
+	URUS_RUNE_PLUS,
+	TEIWAZ_RUNE_PLUS,
+	RERTH_RUNE_PLUS
 ]
+
+var rune_plus_spawn_chance: float = 0.0
 
 var player_room: Vector2
 var exit_room: Vector2
@@ -122,8 +134,8 @@ func _place_player(walker: Walker):
 	print("player: ", player_room)
 	player.position = player_room*TILE_SIZE
 	add_safe_positions(player_room)
-	spawn_runes_under_player(ALGIZ_RUNE, 2)
-	spawn_runes_under_player(ALGIZ_RUNE_PLUS, 1)
+	spawn_runes_under_player(RERTH_RUNE, 2)
+	spawn_runes_under_player(RERTH_RUNE_PLUS, 1)
 
 func spawn_runes_under_player(RUNE:PackedScene, amount):
 	for i in range(amount):
@@ -174,12 +186,18 @@ func _spawn_exit(walker: Walker):
 	add_safe_positions(exit_room)
 
 func _spawn_rune_at_place(spawn_position: Vector2):
+	if randf_range(0,1) < rune_plus_spawn_chance:
+		var random_index = randi_range(0, RUNES_PLUS.size() - 1)
+		var rune = RUNES_PLUS[random_index].instantiate()
+		rune.position = spawn_position
+		collectables.add_child(rune)
+	
 	if randf_range(0,1) < 0.5:
 		var random_index = randi_range(0, RUNES.size() - 1)
 		var rune = RUNES[random_index].instantiate()
 		rune.position = spawn_position
 		collectables.add_child(rune)
-
+		
 func random_position() -> Vector2:
 	var x = int(randi_range(0, 1))
 	var y = int(randi_range(0, 1))

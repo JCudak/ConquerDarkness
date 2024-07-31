@@ -9,6 +9,7 @@ region = Rect2(160, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_r1fju")
+cooldown_reduction = 0.1
 name = "Teiwaz Rune"
 type = 0
 texture = SubResource("AtlasTexture_y8im2")

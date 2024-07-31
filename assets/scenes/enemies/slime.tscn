@@ -961,6 +961,12 @@ libraries = {
 
 [node name="Timers" type="Node" parent="."]
 
+[node name="DashTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="WalkingTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="DeathTimer" type="Timer" parent="Timers"]
 wait_time = 1.3
 one_shot = true

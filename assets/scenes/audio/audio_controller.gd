@@ -11,9 +11,11 @@ func play_sfx(sound: AudioStream, parent: Node, volume: float = 0.0, seek: float
 		var stream = AudioStreamPlayer.new()
 		
 		stream.stream = sound
+		stream.connect("finished", Callable(stream, "queue_free"))
 		#stream.seek = seek
 		stream.volume_db = volume
 		
 		parent.add_child(stream)
 		
 		stream.play()
+		

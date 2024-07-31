@@ -43,6 +43,7 @@ var is_in_detection_area: bool = false
 var slow_status_time: float = 4.0
 
 func _ready():
+	
 	slow_status_icon.visible = false
 	healthBar.max_value = health
 	cooldownTimer.timeout.connect(_on_cooldown_timer_timeout)
@@ -111,7 +112,9 @@ func pursue_player(delta):
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction[0] * speed
 	velocity.y = direction[1] * speed 
+	
 	AudioController.play_sfx($SoundEffects/EnemyWalk.stream, $SoundEffects, -30.0, 5.0)
+	
 	move_and_slide()
 
 func _on_detection_area_body_entered(body):

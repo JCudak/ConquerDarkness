@@ -38,6 +38,7 @@ var on_cooldown: bool = false
 @export var cooldown:float = 2.0
 var is_dead: bool = false
 var is_hurt: bool = false
+var walk_sound: bool = false
 var is_in_attack_area: bool = false
 var is_in_detection_area: bool = false
 var slow_status_time: float = 4.0
@@ -113,9 +114,16 @@ func pursue_player(delta):
 	velocity.x = direction[0] * speed
 	velocity.y = direction[1] * speed 
 	
-	AudioController.play_sfx($SoundEffects/EnemyWalk.stream, $SoundEffects, -30.0, 5.0)
+	if !walk_sound:
+		play_walk_sound()
 	
 	move_and_slide()
+
+func play_walk_sound():
+	walk_sound = true
+	AudioController.play_sfx($SoundEffects/EnemyWalk.stream, $SoundEffects, -30.0, 5.0)
+	await get_tree().create_timer(0.6).timeout
+	walk_sound = false
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":

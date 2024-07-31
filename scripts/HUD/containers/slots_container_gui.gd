@@ -3,6 +3,7 @@ extends Control
 class_name SlotsContainerGui
 
 signal use_item
+signal merge_item
 var isOpen: bool = false
 
 enum CollectableType {RUNE, POTION}
@@ -14,6 +15,26 @@ enum CollectableType {RUNE, POTION}
 @onready var ItemGuiClass = preload("res://assets/scenes/HUD/item_gui.tscn")
 @onready var slots: Array
 @export var parent_node: Node
+
+
+# PLUS RUNES RESOURCES
+const ALGIZ_RUNE_PLUS = preload("res://assets/resources/inventory/items/runes/algiz_rune_plus.tres")
+const ISA_RUNE_PLUS = preload("res://assets/resources/inventory/items/runes/isa_rune_plus.tres")
+const LAGUZ_RUNE_PLUS = preload("res://assets/resources/inventory/items/runes/laguz_rune_plus.tres")
+const RERTH_RUNE_PLUS = preload("res://assets/resources/inventory/items/runes/rerth_rune_plus.tres")
+const SOWELU_RUNE_PLUS = preload("res://assets/resources/inventory/items/runes/sowelu_rune_plus.tres")
+const TEIWAZ_RUNE_PLUS = preload("res://assets/resources/inventory/items/runes/teiwaz_rune_plus.tres")
+const URUS_RUNE_PLUS = preload("res://assets/resources/inventory/items/runes/urus_rune_plus.tres")
+
+var PLUS_RUNES : Dictionary = {
+	"Algiz Rune +": ALGIZ_RUNE_PLUS,
+	"Isa Rune +":ISA_RUNE_PLUS, 
+	"Laguz Rune +":LAGUZ_RUNE_PLUS,
+	"Rerth Rune +":RERTH_RUNE_PLUS,
+	"Sowelu Rune +":SOWELU_RUNE_PLUS,
+	"Teiwaz Rune +":TEIWAZ_RUNE_PLUS,
+	"Urus Rune +":URUS_RUNE_PLUS
+}
 
 static var itemInHand: ItemGui
 static var oldIndex: int = -1
@@ -39,9 +60,9 @@ func connect_slots():
 		right_click_callable = right_click_callable.bind(slot)
 		slot.right_clicked.connect(right_click_callable)
 		
-		var use_item_callable = Callable(on_use_item)
-		use_item_callable = use_item_callable.bind(slot)
-		slot.use_button_clicked.connect(use_item_callable)
+		var action_item_callable = Callable(on_action_item)
+		action_item_callable = action_item_callable.bind(slot)
+		slot.action_button_clicked.connect(action_item_callable)
 		
 		var unequip_callable = Callable(special_unequip)
 		unequip_callable = unequip_callable.bind(slot)
@@ -55,8 +76,20 @@ func close():
 	visible=false
 	isOpen=false
 
-func on_use_item(slot):
-	use_item.emit(slot.get_resource())
+func on_action_item(slot: Slot):
+	if slot.get_resource().type == CollectableType.RUNE:
+		for another_slot in inventoryContainerGui.slots:
+			if another_slot != slot and !another_slot.is_empty() and another_slot.get_resource().name == slot.get_resource().name:
+				var upgraded_name = slot.get_resource().name + " +"
+				take_item_from_slot(another_slot)
+				parent_node.remove_child(itemInHand)
+				itemInHand = null
+				var plus_rune = PLUS_RUNES[upgraded_name]
+				inventory.insert(plus_rune)
+				await get_tree().create_timer(0.25).timeout
+				break
+	else:
+		use_item.emit(slot.get_resource())
 
 func on_slot_right_clicked(slot):
 	if slot.is_empty(): return

@@ -10,15 +10,17 @@ enum CollectableType {RUNE, POTION}
 @onready var rune_equip = preload("res://assets/resources/inventory/player_rune_equip.tres")
 @onready var details_panel = $DetailsPanel
 @onready var usage_panel = $UsagePanel
-@onready var use_button = $UsagePanel/NinePatchRect/VBoxContainer/UseButton
+@onready var action_button = $UsagePanel/NinePatchRect/VBoxContainer/ActionButton
 @onready var item_name_label = $DetailsPanel/NinePatchRect/Label
+@onready var action_button_label = $UsagePanel/NinePatchRect/VBoxContainer/ActionButton/Label
+
 
 var itemGui: ItemGui
 var index: int
 var containerType: int
 
 signal right_clicked
-signal use_button_clicked
+signal action_button_clicked
 signal trash_button_clicked
 
 func get_resource():
@@ -92,15 +94,25 @@ func _on_mouse_exited():
 	details_panel.visible = false
 
 func set_usage_panel_visibility(visible: bool):
+	if visible:
+		if containerType == 1:
+			var slot_container_gui: SlotsContainerGui = $"../../.."
+			for slot in slot_container_gui.slots:
+				if slot != self and !slot.is_empty() and slot.get_resource().name == get_resource().name:
+					action_button.disabled = false
+					break
+		elif containerType == 2:
+			action_button.disabled = true
+		else:
+			action_button.disabled = false
 	usage_panel.visible = visible
 	if itemGui and get_resource().type == CollectableType.RUNE:
-		use_button.disabled = true
+		action_button_label.text = "merge"
 	else:
-		use_button.disabled = false
+		action_button_label.text = "use"
 
-
-func _on_use_button_pressed():
-	use_button_clicked.emit()
+func _on_action_button_pressed():
+	action_button_clicked.emit()
 	
 	take_item()
 	usage_panel.visible = false

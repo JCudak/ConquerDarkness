@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxdtnlxm0y8aq"]
+[gd_scene load_steps=19 format=3 uid="uid://cxdtnlxm0y8aq"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_4sx4k"]
 [ext_resource type="Texture2D" uid="uid://4dlgbo47jt47" path="res://assets/sprites/enemies/Slime.png" id="2_ult4b"]
+[ext_resource type="Texture2D" uid="uid://c8jl8pagi8lil" path="res://assets/sprites/SlowStatus.png" id="3_eckqd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3x0fo"]
 radius = 6.25
@@ -868,6 +869,7 @@ floor_block_on_wall = false
 platform_floor_layers = 4294967294
 script = ExtResource("1_4sx4k")
 speed = 30
+max_speed = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 clip_children = 2
@@ -923,6 +925,12 @@ position = Vector2(2.4869e-14, -6.25)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wl7y5")
 
+[node name="SlowStatusIcon" type="Sprite2D" parent="hurtBox/hurtBoxCollisionShape2D"]
+position = Vector2(-20, 0)
+rotation = -1.5708
+scale = Vector2(1, 1)
+texture = ExtResource("3_eckqd")
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0, 0, 1)
 anchors_preset = 8
@@ -965,6 +973,8 @@ one_shot = true
 [node name="PrepareAttackTimer" type="Timer" parent="Timers"]
 
 [node name="AttackTimer" type="Timer" parent="Timers"]
+
+[node name="SlowEffectTimer" type="Timer" parent="Timers"]
 
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

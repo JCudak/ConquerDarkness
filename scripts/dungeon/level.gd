@@ -75,7 +75,7 @@ const RUNES: Array[PackedScene] = [
 	ALGIZ_RUNE,
 	ISA_RUNE,
 	LAGUZ_RUNE,
-	NAUTHIZ_RUNE,
+	#NAUTHIZ_RUNE,
 	RERTH_RUNE,
 	SOWELU_RUNE,
 	TEIWAZ_RUNE,
@@ -86,14 +86,18 @@ const ALGIZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/algiz_ru
 const URUS_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/urus_rune_plus.tscn")
 const TEIWAZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/teiwaz_rune_plus.tscn")
 const RERTH_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/rerth_rune_plus.tscn")
-
-
+const SOWELU_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/sowelu_rune_plus.tscn")
+const LAGUZ_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/laguz_rune_plus.tscn")
+const ISA_RUNE_PLUS = preload("res://assets/scenes/collectables/runes/isa_rune_plus.tscn")
 
 const RUNES_PLUS: Array[PackedScene] = [
 	ALGIZ_RUNE_PLUS,
 	URUS_RUNE_PLUS,
 	TEIWAZ_RUNE_PLUS,
-	RERTH_RUNE_PLUS
+	RERTH_RUNE_PLUS,
+	SOWELU_RUNE_PLUS,
+	LAGUZ_RUNE_PLUS,
+	ISA_RUNE_PLUS
 ]
 
 var rune_plus_spawn_chance: float = 0.0
@@ -131,11 +135,8 @@ func generate_map():
 	walker.queue_free()
 
 func _place_player(walker: Walker):
-	print("player: ", player_room)
 	player.position = player_room*TILE_SIZE
 	add_safe_positions(player_room)
-	spawn_runes_under_player(RERTH_RUNE, 2)
-	spawn_runes_under_player(RERTH_RUNE_PLUS, 1)
 
 func spawn_runes_under_player(RUNE:PackedScene, amount):
 	for i in range(amount):

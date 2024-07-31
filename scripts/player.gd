@@ -17,6 +17,7 @@ const SPEED_REDUCTION: int = 12
 @export var maxShield: int = 50
 @export var damage: int = 5
 @export var attack_cooldown: float = 0.8
+@onready var point_light_2d = $PointLight2D
 
 
 # rune variables
@@ -46,7 +47,7 @@ var is_attacking: bool = false
 var is_in_light: bool = false
 var is_hurt_by_darkness: bool = false
 var current_immunities = 0
-
+var slow_power: int = 0
 var attackDirection: Vector2
 var targetPosition: Vector2
 

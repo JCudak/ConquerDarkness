@@ -79,7 +79,11 @@ func on_slot_clicked(slot):
 			return
 		else:
 			if containerType == 2:
-				if current_item_name == "Laguz Rune":
+				if current_item_name == "Laguz Rune +":
+					put_item_back()
+					await get_tree().create_timer(0.25).timeout
+					take_item_from_slot(slot)
+				elif current_item_name == "Laguz Rune":
 					parent_node.remove_child(itemInHand)
 					itemInHand = null
 					take_item_from_slot(slot)
@@ -149,7 +153,7 @@ func put_item_back():
 	locked = true	
 	var targetSlot: Slot = lastSlot
 	
-	if !is_slot_valid(targetSlot):
+	if !is_slot_valid(targetSlot) or lastSlot.containerType == 2:
 		var emptySlots = inventoryContainerGui.slots.filter(func(s): return s.is_empty())
 		if emptySlots.is_empty():
 			locked = false

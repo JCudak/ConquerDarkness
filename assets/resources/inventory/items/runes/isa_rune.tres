@@ -9,6 +9,7 @@ region = Rect2(32, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_rxnho")
+slow_power = 5
 name = "Isa Rune"
 type = 0
 texture = SubResource("AtlasTexture_kw30l")

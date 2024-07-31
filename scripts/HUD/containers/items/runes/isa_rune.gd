@@ -1,9 +1,9 @@
 class_name IsaRune extends Rune
 
+@export var slow_power: int = 5
+
 func activate(player: Player):
-	print("Isa")
-	pass
+	player.slow_power += slow_power
 	
 func deactivate(player: Player):
-	print("UnIsa")
-	pass
+	player.slow_power -= slow_power

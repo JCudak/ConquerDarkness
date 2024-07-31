@@ -23,8 +23,10 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera_2d")]
+process_mode = 3
 script = ExtResource("2_etfvp")
+camera_2d = NodePath("../Camera2D")
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_r7285")]
 

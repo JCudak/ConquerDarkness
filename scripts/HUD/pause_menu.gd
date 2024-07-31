@@ -1,6 +1,9 @@
 extends Control
 
 
+@onready var settings = $"../InputSettings"
+@onready var canvas_layer = $".."
+
 func resume():
 	get_tree().paused = false
 	
@@ -14,10 +17,16 @@ func pause():
 	$AnimationPlayer.play("pause_blur_animation")
 	
 func testInput():
-	if Input.is_action_just_pressed("pause") and not get_tree().paused:
+	if Input.is_action_just_pressed("pause") and visible == false:
 		pause()
-	elif Input.is_action_just_pressed("pause") and get_tree().paused:
-		resume()
+	elif Input.is_action_just_pressed("pause") and visible == true:
+		if !canvas_layer.is_map_open:
+			resume()
+		else:
+			visible = false
+			$AnimationPlayer.play_backwards("pause_blur_animation")
+			
+		settings.close()
 
 # buttons
 
@@ -26,7 +35,10 @@ func _on_resume_pressed():
 
 
 func _on_settings_pressed():
-	pass
+	if settings.isOpen:
+			settings.close()
+	else:
+		settings.open()
 
 
 func _on_quit_pressed():

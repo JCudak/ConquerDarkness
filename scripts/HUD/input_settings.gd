@@ -1,7 +1,7 @@
 extends Control
 
 @onready var input_button_scene = preload("res://assets/scenes/input_settings/input_button.tscn")
-@onready var action_list = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList
+@onready var action_list = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/ActionList
 
 var is_remapping = false
 var action_to_remap = null
@@ -14,15 +14,15 @@ var input_actions = {
 	"left": "Move left",
 	"down": "Move down",
 	"right": "Move right",
-	"toggle_inventory": "Toggle inventory",
-	"toggle_settings": "Toggle settings",
-	"interact": "Interact",
-	"right_click": "Reset item in inventory",
+	"pause": "Pause",
 	"attack": "Attack",
+	"interact": "Interact",
 	"quickslot_1": "Quickslot 1",
 	"quickslot_2": "Quickslot 2",
 	"quickslot_3": "Quickslot 3",
-	"pause": "Pause"
+	"toggle_map": "Toggle map",
+	"toggle_inventory": "Toggle inventory",
+	"right_click": "Reset item in inventory"
 }
 
 func open():
@@ -86,3 +86,6 @@ func _update_action_list(button, event):
 
 func _on_reset_button_pressed():
 	_create_action_list()
+
+func _on_close_button_pressed():
+	close()

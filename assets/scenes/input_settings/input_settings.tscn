@@ -8,6 +8,9 @@
 subpixel_positioning = 0
 
 [node name="InputSettings" type="Control"]
+process_mode = 3
+z_index = 2
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +30,7 @@ anchor_bottom = 0.5
 offset_left = -280.0
 offset_top = -211.0
 offset_right = 280.0
-offset_bottom = 211.0
+offset_bottom = 249.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -56,15 +59,22 @@ theme_override_constants/separation = 12
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ActionList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="ActionList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="InputButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("1_k1nge")]
+[node name="InputButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/ActionList" instance=ExtResource("1_k1nge")]
 layout_mode = 2
 
-[node name="InputButton2" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("1_k1nge")]
+[node name="InputButton2" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/ActionList" instance=ExtResource("1_k1nge")]
 layout_mode = 2
 
 [node name="ResetButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -73,4 +83,11 @@ focus_mode = 0
 theme_override_fonts/font = SubResource("SystemFont_bkjo1")
 text = "RESET TO DEFAULT"
 
+[node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = SubResource("SystemFont_bkjo1")
+text = "CLOSE"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
